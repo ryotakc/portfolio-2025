@@ -137,6 +137,8 @@
 
 /* globals.cssに追加 */
 
+
+
 @layer utilities {
   .mdx-container {
     width: 100%;
@@ -144,24 +146,21 @@
     margin-right: auto;
   }
   
-  /* モバイル向けデフォルト設定 */
   @media (max-width: 768px) {
     .mdx-container {
       width: 95%;
     }
   }
   
-  /* タブレット向け */
   @media (min-width: 769px) and (max-width: 1024px) {
     .mdx-container {
       width: 80%;
     }
   }
   
-  /* デスクトップ向け */
   @media (min-width: 1025px) {
     .mdx-container {
-      width: 66.666%; /* 2/3幅 */
+      width: 66.666%; 
     }
   }
 }
