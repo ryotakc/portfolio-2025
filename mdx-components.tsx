@@ -3,6 +3,7 @@ import type { FC } from 'react'
 import { codeToHtml, createCssVariablesTheme } from 'shiki'
 import Link from 'next/link'
 import Image from 'next/image'
+import Balancer from 'react-wrap-balancer'
 
 // @ts-ignore
 import { InlineMath, BlockMath } from 'react-katex'
@@ -16,21 +17,27 @@ const cssVariablesTheme = createCssVariablesTheme({})
 export const components: Record<string, FC<any>> = {
   h1: (props) => (
     <h1
-      className='font-semibold mb-7 text-rurikon-600 text-balance'
+      className='font-semibold mb-7 text-rurikon-600'
       {...props}
-    />
+    >
+      <Balancer>{props.children}</Balancer>
+    </h1>
   ),
   h2: (props) => (
     <h2
-      className='font-semibold mt-14 mb-7 text-rurikon-600 text-balance'
+      className='font-semibold mt-14 mb-7 text-rurikon-600'
       {...props}
-    />
+    >
+      <Balancer>{props.children}</Balancer>
+    </h2>
   ),
   h3: (props) => (
     <h3
-      className='font-semibold mt-14 mb-7 text-rurikon-600 text-balance'
+      className='font-semibold mt-14 mb-7 text-rurikon-600'
       {...props}
-    />
+    >
+      <Balancer>{props.children}</Balancer>
+    </h3>
   ),
   ul: (props) => (
     <ul
@@ -62,12 +69,18 @@ export const components: Record<string, FC<any>> = {
     )
   },
   strong: (props) => <strong className='font-bold' {...props} />,
-  p: (props) => <p className='mt-7' {...props} />,
+  p: (props) => (
+    <p className='mt-7' {...props}>
+      <Balancer>{props.children}</Balancer>
+    </p>
+  ),
   blockquote: (props) => (
     <blockquote
       className='pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-rurikon-400'
       {...props}
-    />
+    >
+      <Balancer>{props.children}</Balancer>
+    </blockquote>
   ),
   pre: (props) => (
     <pre className='mt-7 whitespace-pre md:whitespace-pre-wrap' {...props} />
