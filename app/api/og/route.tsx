@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
               color: theme === 'dark' ? '#888888' : '#666666',
             }}
           >
-            leofolio.vercel.app
+            Portfolio
           </div>
           
           <div
@@ -82,7 +82,7 @@ export async function GET(request: NextRequest) {
             {description}
           </div>
           
-          {/* Bottom signature */}
+          {/* Bottom signature - 洗練されたLアイコン */}
           <div
             style={{
               position: 'absolute',
@@ -98,7 +98,7 @@ export async function GET(request: NextRequest) {
                 borderRadius: '50%',
                 width: '48px',
                 height: '48px',
-                backgroundColor: theme === 'dark' ? '#7B68EE' : '#6A5ACD',
+                background: `linear-gradient(135deg, ${theme === 'dark' ? '#8B7FFF' : '#7B68EE'}, ${theme === 'dark' ? '#6A5ACD' : '#483D8B'})`,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -106,6 +106,9 @@ export async function GET(request: NextRequest) {
                 color: '#FFFFFF',
                 fontWeight: 'bold',
                 fontSize: '24px',
+                boxShadow: theme === 'dark' ? 
+                  '0 2px 8px rgba(255, 255, 255, 0.15)' : 
+                  '0 2px 8px rgba(0, 0, 0, 0.15)',
               }}
             >
               L
