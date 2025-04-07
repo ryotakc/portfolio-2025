@@ -1,3 +1,4 @@
+// lib/metadata.ts
 import type { Metadata } from 'next';
 
 export type MetadataProps = {
@@ -9,7 +10,7 @@ export type MetadataProps = {
 }
 
 // サイトのベースURL（デプロイ環境に合わせて変更）
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://portfoilo-2025-leo.vercel.app';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://portfolio-2025-leo.vercel.app';
 
 export function generateMetadata({
   title = "Leo's Portfolio",
@@ -24,8 +25,10 @@ export function generateMetadata({
   ogImageUrl.searchParams.set('title', title);
   ogImageUrl.searchParams.set('description', description);
   ogImageUrl.searchParams.set('theme', theme);
+  ogImageUrl.searchParams.set('t', Date.now().toString());
   
   const canonical = path ? `${baseUrl}/${path}` : baseUrl;
+  const ogImageUrlString = ogImageUrl.toString();
 
   return {
     title,
@@ -42,7 +45,7 @@ export function generateMetadata({
       locale: 'en_US',
       type: 'website',
       images: [{
-        url: ogImageUrl.toString(),
+        url: ogImageUrlString,
         width: 1200,
         height: 630,
         alt: title
@@ -52,7 +55,9 @@ export function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: [ogImageUrl.toString()]
+      images: [ogImageUrlString],
+      creator: '@yourusername', // あなたのTwitterユーザー名を設定（オプション）
+      site: '@yourusername',    // あなたのTwitterユーザー名を設定（オプション）
     }
   };
 }
