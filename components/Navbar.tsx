@@ -14,20 +14,32 @@ function Item(props: React.ComponentProps<typeof Link>) {
 
   const isActive = pathname === href || pathname.startsWith(href + '/')
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === href) {
+      e.preventDefault() // 現在と同じページなら遷移防止
+    }
+  }
+
   return (
     <li
       className={cn(
         isActive
           ? 'text-rurikon-800'
           : 'text-rurikon-300 hover:text-rurikon-600',
-        'transition-colors hover:transform-none',
+        'hover:underline',
         '-mx-2 md:pb-4'
       )}
     >
-      <Link {...props} className='inline-block w-full px-2' draggable={false} />
+      <Link
+        {...props}
+        onClick={handleClick}
+        className='inline-block w-full px-2'
+        draggable={false}
+      />
     </li>
   )
 }
+
 
 export default function Navbar() {
   return (
@@ -69,11 +81,11 @@ export default function Navbar() {
 //     : "flex flex-col gap-4";
 
 //   // 同じページリンクをクリックした場合のイベントハンドラを追加
-//   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-//     if (pathname === href) {
-//       e.preventDefault(); // 現在のページと同じリンクなら、ナビゲーションを防止
-//     }
-//   };
+  // const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  //   if (pathname === href) {
+  //     e.preventDefault(); // 現在のページと同じリンクなら、ナビゲーションを防止
+  //   }
+  // };
 
 //   return (
 //     <nav className={containerClasses}>
