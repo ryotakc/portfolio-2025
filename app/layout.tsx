@@ -40,15 +40,19 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >  
-          <div className="container flex font-mono justify-center pt-18 gap-12">
-            <Navbar />
-            <div>
-              <Separator orientation="vertical"/>
+          <div className="md:hidden w-full pt-4 px-4 place-items-end font-mono">
+            <Navbar orientation="horizontal" />
+          </div>
+          <div className="container flex font-mono justify-center pt-10 md:pt-18 gap-12">
+            <div className="hidden md:flex flex gap-10">
+              <Navbar />
+              <Separator orientation="vertical"/>        
             </div>
+
             
             <Provider>
               <ViewTransition name="crossfade">
-                <div className="mdx-width">
+                <div className="mdx-container">
                   <HistoryTracker />
                   {children}
                 </div>
