@@ -1,6 +1,6 @@
 'use client'
 
-export function Card({
+export function Tweet({
   image,
   title,
   desc,

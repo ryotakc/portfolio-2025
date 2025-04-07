@@ -181,8 +181,6 @@
   }
 }
 
-
-
 @supports (view-transition-name: none) {
   @media not (prefers-reduced-motion: reduce) {
     ::view-transition-old(crossfade) {
@@ -218,13 +216,18 @@
   }  
 }
 
-  /* MDX */
+/* MDX コードブロックスタイリング - ダークモード対応 */
 pre {
   background-color: #f7f7f7;
   contain: paint;
   overflow-x: auto;
   padding: 0.875rem 1.25rem;
   -webkit-font-smoothing: auto;
+  border-radius: var(--radius-md);
+}
+
+.dark pre {
+  background-color: #1e1e1e; /* ダークモードの背景色 */
 }
 
 pre code {
@@ -249,13 +252,42 @@ code {
   --shiki-token-parameter: #ff9800;
 }
 
+/* ダークモード用のトークン色を追加 */
+.dark code {
+  --shiki-token-comment: hsl(215deg 32% 70% / 45%);
+  --shiki-token-punctuation: hsl(215deg 32% 70% / 65%);
+  --shiki-token-keyword: hsl(215deg 32% 70% / 85%);
+  --shiki-token-function: hsl(223deg 85% 75%);
+  --shiki-token-string: #42d392;
+  --shiki-token-string-expression: #42d392;
+  --shiki-token-constant: hsl(215deg 32% 75%);
+  --shiki-token-link: #42d392;
+  --shiki-token-parameter: #ffb74d;
+}
+
 pre {
   --shiki-foreground: #414141;
   --shiki-background: transparent;
 }
 
+.dark pre {
+  --shiki-foreground: #e0e0e0; /* ダークモードの文字色 */
+  --shiki-background: transparent;
+}
+
 code span {
   transition: color 0.2s;
+}
+
+/* インラインコードのスタイリング */
+:not(pre) > code {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  padding: 0.2em 0.4em;
+}
+
+.dark :not(pre) > code {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 blockquote {
@@ -310,8 +342,6 @@ article {
   }
 }
 
-
-
 @utility container {
   width: 100%;
   max-width: 100%; /* モバイルではフル幅 */
@@ -324,7 +354,6 @@ article {
   }
 }
 
-
 @layer utilities {
   .mdx-width {
     width: 100%;
@@ -335,7 +364,6 @@ article {
     }
   }
   
-
   .content-area {
     width: 100%;
     
