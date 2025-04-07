@@ -19,7 +19,7 @@ const cssVariablesTheme = createCssVariablesTheme({})
 export const components: Record<string, FC<any>> = {
   h1: (props) => (
     <h1
-      className='font-semibold mb-7 text-rurikon-600'
+      className='font-semibold mb-7 text-rurikon-600 text-2xl'
       {...props}
     >
       <Balancer>{props.children}</Balancer>
@@ -27,7 +27,7 @@ export const components: Record<string, FC<any>> = {
   ),
   h2: (props) => (
     <h2
-      className='font-semibold mt-14 mb-7 text-rurikon-600'
+      className='font-semibold mt-14 mb-7 text-rurikon-600 text-xl'
       {...props}
     >
       <Balancer>{props.children}</Balancer>
@@ -35,7 +35,7 @@ export const components: Record<string, FC<any>> = {
   ),
   h3: (props) => (
     <h3
-      className='font-semibold mt-14 mb-7 text-rurikon-600'
+      className='font-semibold mt-14 mb-7 text-rurikon-600 text-lg'
       {...props}
     >
       <Balancer>{props.children}</Balancer>
