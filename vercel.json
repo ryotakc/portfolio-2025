@@ -1,8 +1,5 @@
 {
-    "build": {
-      "env": {
-        "NPM_FLAGS": "--legacy-peer-deps"
-      }
-    }
+    "installCommand": "pnpm install",
+    "buildCommand": "pnpm build"
   }
   
