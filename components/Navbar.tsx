@@ -21,7 +21,7 @@ function Item(props: React.ComponentProps<typeof Link>) {
           ? 'text-rurikon-800'
           : 'text-rurikon-300 hover:text-rurikon-600',
         'transition-colors hover:transform-none',
-        '-mx-2'
+        '-mx-2 mb:pb-3'
       )}
     >
       <Link {...props} className='inline-block w-full px-2' draggable={false} />
