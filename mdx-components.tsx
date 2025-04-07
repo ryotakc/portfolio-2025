@@ -9,6 +9,7 @@ import { InlineMath, BlockMath } from 'react-katex'
 
 import { Card } from '@/components/tweet-card'
 import { BlockSideTitle } from '@/components/block-sidetitle'
+import ReturnButton from './components/return-back'
 
 const cssVariablesTheme = createCssVariablesTheme({})
 
@@ -148,6 +149,7 @@ export const components: Record<string, FC<any>> = {
   BlockSideTitle,
   InlineMath,
   BlockMath,
+  ReturnButton,
 }
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {

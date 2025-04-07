@@ -48,7 +48,7 @@ export default function RootLayout({
             
             <Provider>
               <ViewTransition name="crossfade">
-                <div >
+                <div className="mdx-width">
                   <HistoryTracker />
                   {children}
                 </div>
@@ -60,12 +60,6 @@ export default function RootLayout({
                 
           </div>
 
-
-        {/* <Provider>
-          <div className="container font-mono pt-10">
-            {children}
-          </div>     
-        </Provider> */}
         </ThemeProvider>
 
       </body>

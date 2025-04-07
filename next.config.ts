@@ -1,10 +1,24 @@
-import type { NextConfig } from "next";
+import withMDX from '@next/mdx'
+import type { NextConfig } from 'next'
 
-const nextConfig: NextConfig = {
-  /* config options here */
+export default withMDX()({
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  // redirects: async () => [
+  //   {
+  //     source: '/posts/:slug',
+  //     destination: '/thoughts/:slug',
+  //     permanent: false,
+  //   },
+  // ],
   experimental: {
     viewTransition: true,
-},
-};
-
-export default nextConfig;
+    mdxRs: {
+      mdxType: 'gfm',
+    },
+  },
+  transpilePackages: ['shiki'],
+  images: {
+    contentDispositionType: 'inline',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+} satisfies NextConfig)

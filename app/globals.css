@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@source "../mdx-components.tsx";
+
 @custom-variant dark (&:is(.dark *));
 
 @utility container {
@@ -148,6 +150,14 @@
   }
 }
 
+@layer utilities {
+  .mdx-width {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+
 
 @supports (view-transition-name: none) {
   @media not (prefers-reduced-motion: reduce) {
@@ -181,5 +191,98 @@
   100% {
     opacity: 1;
     filter: blur(0);
+  }  
+}
+
+  /* MDX */
+pre {
+  background-color: #f7f7f7;
+  contain: paint;
+  overflow-x: auto;
+  padding: 0.875rem 1.25rem;
+  -webkit-font-smoothing: auto;
+}
+
+pre code {
+  display: inline-block;
+  padding: 0;
+  line-height: 1.45rem;
+}
+
+code {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, 'Liberation Mono', 'Courier New', monospace;
+  word-spacing: -0.15em;
+  padding: 0.15em 0.2em;
+  --shiki-token-comment: hsl(215deg 32% 37% / 45%);
+  --shiki-token-punctuation: hsl(215deg 32% 37% / 65%);
+  --shiki-token-keyword: hsl(215deg 32% 37% / 85%);
+  --shiki-token-function: hsl(223deg 85% 46%);
+  --shiki-token-string: #0fb359;
+  --shiki-token-string-expression: #0fb359;
+  --shiki-token-constant: hsl(215deg 32% 26%);
+  --shiki-token-link: #0fb359;
+  --shiki-token-parameter: #ff9800;
+}
+
+pre {
+  --shiki-foreground: #414141;
+  --shiki-background: transparent;
+}
+
+code span {
+  transition: color 0.2s;
+}
+
+blockquote {
+  box-shadow: 1px 0 0 var(--color-rurikon-500) inset;
+}
+@media screen and (max-width: 420px) {
+  blockquote {
+    box-shadow: 2px 0 0 var(--color-rurikon-300) inset;
   }
 }
+blockquote + blockquote {
+  display: flow-root;
+}
+
+article {
+  figure {
+    margin-top: 1.75rem;
+    line-height: 0;
+  }
+  .sidenote-content {
+    img,
+    video,
+    pre {
+      margin: 0;
+    }
+  }
+  .framed > img, .framed > figure > span:first-child {
+    padding: var(--frame-padding, 0.875rem);
+    background: var(--frame-background, #fff);
+    border: 1px solid var(--color-rurikon-border);
+  }
+  iframe {
+    width: 100%;
+    border: 1px solid var(--color-rurikon-border);
+    background-color: #fff;
+  }
+  details {
+    margin-top: 1.75rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--color-rurikon-border);
+    border-bottom: 1px solid var(--color-rurikon-border);
+  }
+  details summary {
+    font-variation-settings: 'wght' 600, var(--sans-variation);
+    margin-bottom: 0.25rem;
+  }
+  details summary::marker {
+    content: '';
+  }
+  details p:first-of-type {
+    margin-top: 0;
+  }
+}
+
