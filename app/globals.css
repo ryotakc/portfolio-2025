@@ -5,25 +5,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* @utility container {
-  width: 100%;
-  max-width: var(--container-max-width);
-  padding-inline: var(--container-padding);
-  margin-inline: auto;
-
-  @variant sm {
-    padding-inline: var(--container-padding-sm);
-  }
-
-  @variant lg {
-    padding-inline: var(--container-padding-lg);
-  }
-
-  @variant xl {
-    padding-inline: var(--container-padding-xl);
-  }
-} */
-
 
 @theme inline {
   --color-background: var(--background);
@@ -64,12 +45,16 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-rurikon-border: #d8dbdfb3;
+  --color-rurikon-border-dark: #403f3f;
 
   --container-padding: 1rem; /* デフォルトのパディングを1remに設定 */
   --container-max-width: 30%; /* デフォルトの最大幅を100%に設定 */
   --container-padding-sm: 2rem; /* smブレークポイントでのパディング */
   --container-padding-lg: 4rem; /* lgブレークポイントでのパディング */
   --container-padding-xl: 5rem; /* xlブレークポイントでのパディング */
+  --breakpoint-text: 800px;
+  --breakpoint-mobile: 420px;
 }
 
 :root {
@@ -152,6 +137,8 @@
 
 /* globals.cssに追加 */
 
+
+
 @layer utilities {
   .mdx-container {
     width: 100%;
@@ -159,24 +146,21 @@
     margin-right: auto;
   }
   
-  /* モバイル向けデフォルト設定 */
   @media (max-width: 768px) {
     .mdx-container {
       width: 95%;
     }
   }
   
-  /* タブレット向け */
   @media (min-width: 769px) and (max-width: 1024px) {
     .mdx-container {
       width: 80%;
     }
   }
   
-  /* デスクトップ向け */
   @media (min-width: 1025px) {
     .mdx-container {
-      width: 66.666%; /* 2/3幅 */
+      width: 66.666%; 
     }
   }
 }
@@ -383,6 +367,34 @@ article {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .font-thin {
+    font-variation-settings: 'wght' 100, var(--sans-variation);
+  }
+  .font-extralight {
+    font-variation-settings: 'wght' 200, var(--sans-variation);
+  }
+  .font-light {
+    font-variation-settings: 'wght' 300, var(--sans-variation);
+  }
+  .font-normal {
+    font-variation-settings: 'wght' 440, var(--sans-variation);
+  }
+  .font-medium {
+    font-variation-settings: 'wght' 500, var(--sans-variation);
+  }
+  .font-semibold {
+    font-variation-settings: 'wght' 600, var(--sans-variation);
+  }
+  .font-bold {
+    font-variation-settings: 'wght' 640, var(--sans-variation);
+  }
+  .font-extrabold {
+    font-variation-settings: 'wght' 700, var(--sans-variation);
+  }
+  .font-black {
+    font-variation-settings: 'wght' 800, var(--sans-variation);
   }
 }
 
