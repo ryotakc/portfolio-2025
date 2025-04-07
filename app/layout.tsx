@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Provider } from "react-wrap-balancer";
+import { unstable_ViewTransition as ViewTransition } from 'react'
+import Navbar from "@/components/Navbar";
+import { Separator } from "@/components/ui/separator";
+import { ModeToggle } from "@/components/mode-toggle";
+import { ThemeProvider } from "@/components/theme-provider";
+import { HistoryTracker } from "@/components/history-tracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +30,44 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >  
+          <div className="container flex font-mono justify-center pt-18 gap-12">
+            <Navbar />
+            <div>
+              <Separator orientation="vertical"/>
+            </div>
+            
+            <Provider>
+              <ViewTransition name="crossfade">
+                <div >
+                  <HistoryTracker />
+                  {children}
+                </div>
+              </ViewTransition>        
+            </Provider> 
+            <div className="fixed bottom-6 right-6 z-50">
+              <ModeToggle /> 
+            </div> 
+                
+          </div>
+
+
+        {/* <Provider>
+          <div className="container font-mono pt-10">
+            {children}
+          </div>     
+        </Provider> */}
+        </ThemeProvider>
+
       </body>
     </html>
   );
