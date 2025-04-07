@@ -22,7 +22,6 @@ interface NavbarProps {
 }
 
 export default function Navbar({ orientation = "vertical" }: NavbarProps) {
-  // ナビゲーション項目
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/work", label: "Work" },
@@ -32,7 +31,7 @@ export default function Navbar({ orientation = "vertical" }: NavbarProps) {
   // 方向に基づいてコンテナとリストのスタイルを設定
   const containerClasses = orientation === "horizontal"
     ? "flex justify-center items-center gap-2"
-    : "flex flex-col gap-4";
+    : "flex flex-col gap-4 ";
 
   const listItemClasses = orientation === "horizontal"
     // ? "mx-2 transition-colors hover:text-primary"

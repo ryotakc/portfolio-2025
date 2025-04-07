@@ -312,9 +312,6 @@ article {
 
 
 
-/* 既存のglobals.cssに追加 */
-
-/* レスポンシブ対応のためのカスタムコンテナ設定 */
 @utility container {
   width: 100%;
   max-width: 100%; /* モバイルではフル幅 */
@@ -322,32 +319,31 @@ article {
   margin-inline: auto;
 
   @media (min-width: 768px) {
-    max-width: 800px; /* デスクトップでは最大1200px */
+    max-width: 800px; 
     padding-inline: 2rem;
   }
 }
 
-/* MDX幅のユーティリティクラスを強化 */
+
 @layer utilities {
   .mdx-width {
     width: 100%;
     max-width: 100%; /* モバイルではフル幅 */
     
     @media (min-width: 768px) {
-      max-width: 500px; /* デスクトップでは最大500px */
+      max-width: 500px;
     }
   }
   
-  /* コンテンツエリアのレスポンシブ設定 */
+
   .content-area {
     width: 100%;
     
     @media (min-width: 768px) {
-      width: 66.666%; /* デスクトップでは2/3幅 */
+      width: 66.666%; 
     }
   }
   
-  /* ナビゲーションのレスポンシブ設定 */
   .nav-horizontal {
     display: flex;
     flex-direction: row;
@@ -362,7 +358,6 @@ article {
   }
 }
 
-/* モバイル調整用のユーティリティ */
 @media (max-width: 767px) {
   .mobile-padding {
     padding-top: 1rem;
