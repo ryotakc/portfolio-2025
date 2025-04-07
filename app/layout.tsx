@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
 import { HistoryTracker } from "@/components/history-tracker";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -62,6 +63,10 @@ export default function RootLayout({
               <ModeToggle /> 
             </div> 
                 
+          </div>
+
+          <div>
+            <Footer />
           </div>
 
         </ThemeProvider>

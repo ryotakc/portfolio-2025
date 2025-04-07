@@ -396,3 +396,29 @@ article {
     width: 100% !important;
   }
 }
+
+/* 既存のglobals.cssファイルに追加するためのカスタムセパレータスタイル */
+
+@layer components {
+  .custom-separator {
+    @apply w-px min-h-full bg-border opacity-90;
+  }
+
+  .custom-separator-horizontal {
+    @apply w-full h-px bg-border opacity-90;
+  }
+
+  /* コンテンツに合わせて高さを調整するセパレータ */
+  .content-height-separator {
+    @apply w-px bg-border opacity-50;
+    height: 100%;
+    position: relative;
+  }
+
+  /* ダークモード対応 */
+  .dark .custom-separator,
+  .dark .custom-separator-horizontal,
+  .dark .content-height-separator {
+    @apply opacity-30;
+  }
+}

@@ -41,15 +41,23 @@ export const components: Record<string, FC<any>> = {
       <Balancer>{props.children}</Balancer>
     </h3>
   ),
+  // ol: (props) => (
+  //   <ol className="mt-7 list-decimal list-inside pl-4 space-y-2" {...props} />
+  // ),
+
+  // ul: (props) => (
+  //   <ul className="mt-7 list-disc list-inside pl-4 space-y-2" {...props} />
+  // ),  
+  
   ul: (props) => (
     <ul
-      className='mt-7 list-disc list-outside marker:text-rurikon-200 pl-5'
+      className='mt-7 list-disc list-inside marker:text-rurikon-200 pl-5'
       {...props}
     />
   ),
   ol: (props) => (
     <ol
-      className='mt-7 list-decimal list-outside marker:text-rurikon-200 pl-5'
+      className='mt-7 list-decimal list-inside marker:text-rurikon-200 pl-5'
       {...props}
     />
   ),
@@ -76,14 +84,24 @@ export const components: Record<string, FC<any>> = {
       <Balancer>{props.children}</Balancer>
     </p>
   ),
-  blockquote: (props) => (
-    <blockquote
-      className='pl-6 -ml-6 sm:pl-10 sm:-ml-10 md:pl-14 md:-ml-14 not-mobile:text-rurikon-400'
-      {...props}
-    >
-      <Balancer>{props.children}</Balancer>
+
+  blockquote: ({ children }) => (
+    <blockquote className="my-5 flex gap-4 text-gray-600 dark:text-gray-400">
+      <div className="w-1 bg-gray-300 dark:bg-gray-600" />
+      <div className="[&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+        {children}
+      </div>
     </blockquote>
   ),
+  
+  // blockquote: (props) => (
+  //   <blockquote
+  //     className="my-5 pl-4 border-l-4 border-gray-300 text-gray-600 dark:border-gray-600 dark:text-gray-400 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 items-center"
+  //   >
+  //     <Balancer>{props.children}</Balancer>
+  //   </blockquote>
+  // ),
+  
   pre: (props) => (
     <pre className='mt-7 whitespace-pre md:whitespace-pre-wrap' {...props} />
   ),
