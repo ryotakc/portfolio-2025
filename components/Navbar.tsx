@@ -24,8 +24,8 @@ function Item(props: React.ComponentProps<typeof Link>) {
     <li
       className={cn(
         isActive
-          ? 'text-rurikon-800'
-          : 'text-rurikon-300 hover:text-rurikon-600',
+          ? 'text-rurikon-800 underline'
+          : 'text-rurikon-300 hover:underline',
         'hover:underline',
         '-mx-2 md:pb-4'
       )}
