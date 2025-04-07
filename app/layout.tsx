@@ -40,7 +40,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >  
-          <div className="md:hidden w-full pt-4 px-4 place-items-end font-mono">
+          <div className="md:hidden w-full pt-4 px-4 flex justify-end font-mono">
             <Navbar orientation="horizontal" />
           </div>
           <div className="container flex font-mono justify-center pt-10 md:pt-18 gap-12">
