@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import { unstable_ViewTransition as ViewTransition } from 'react'
 
 import cn from 'clsx'
-// import localFont from 'next/font/local'
 import 'katex/dist/katex.min.css'
 
 
@@ -13,23 +12,6 @@ import { ModeToggle } from '@/components/mode-toggle'
 import { ThemeProvider } from '@/components/theme-provider'
 import { HistoryTracker } from '@/components/history-tracker'
 
-// const sans = localFont({
-//   src: './_fonts/InterVariable.woff2',
-//   preload: true,
-//   variable: '--sans',
-// })
-
-// const serif = localFont({
-//   src: './_fonts/LoraItalicVariable.woff2',
-//   preload: true,
-//   variable: '--serif',
-// })
-
-// const mono = localFont({
-//   src: './_fonts/IosevkaFixedCurly-ExtendedMedium.woff2',
-//   preload: true,
-//   variable: '--mono',
-// })
 
 export const metadata: Metadata = {
   title: {
