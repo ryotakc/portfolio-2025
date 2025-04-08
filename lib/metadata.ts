@@ -1,12 +1,15 @@
 // lib/metadata.ts
 import type { Metadata } from 'next';
 
+export type MetadataTheme = 'light' | 'dark';
+
 export type MetadataProps = {
   title?: string;
   description?: string;
   image?: string;
   path?: string;
-  theme?: 'light' | 'dark';
+  theme?: MetadataTheme;
+  locale?: string;
 }
 
 // サイトのベースURL（デプロイ環境に合わせて変更）
@@ -16,7 +19,8 @@ export function generateMetadata({
   title = "Leo's Portfolio",
   description = "Software Engineer & Computer Science Student",
   path = '',
-  theme = 'light'
+  theme = 'light',
+  locale = 'ja'
 }: MetadataProps): Metadata {
   // OG画像のURLを生成
   const ogImageUrl = new URL(`${baseUrl}/api/og`);
@@ -25,9 +29,13 @@ export function generateMetadata({
   ogImageUrl.searchParams.set('title', title);
   ogImageUrl.searchParams.set('description', description);
   ogImageUrl.searchParams.set('theme', theme);
+  ogImageUrl.searchParams.set('locale', locale);
   ogImageUrl.searchParams.set('t', Date.now().toString());
   
-  const canonical = path ? `${baseUrl}/${path}` : baseUrl;
+  const canonical = path 
+    ? `${baseUrl}/${locale}/${path}` 
+    : `${baseUrl}/${locale}`;
+    
   const ogImageUrlString = ogImageUrl.toString();
 
   return {
@@ -35,14 +43,18 @@ export function generateMetadata({
     description,
     metadataBase: new URL(baseUrl),
     alternates: {
-      canonical
+      canonical,
+      languages: {
+        'en': `${baseUrl}/en${path ? `/${path}` : ''}`,
+        'ja': `${baseUrl}/ja${path ? `/${path}` : ''}`,
+      },
     },
     openGraph: {
       title,
       description,
       url: canonical,
       siteName: "Leo's Portfolio",
-      locale: 'en_US',
+      locale: locale === 'ja' ? 'ja_JP' : 'en_US',
       type: 'website',
       images: [{
         url: ogImageUrlString,

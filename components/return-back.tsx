@@ -1,25 +1,17 @@
-// "use client"
-
-// import { useRouter } from "next/navigation"
-
-// export default function ReturnButton() {
-//   const router = useRouter()
-
-//   return (
-//     <button onClick={() => router.back()} className="block mr-auto text-left hover:underline">
-//       Return
-//     </button>
-//   )
-// }
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useRouter, useParams } from "next/navigation"
+import { getDictionary } from '@/lib/i18n'
 
 export default function ReturnButton() {
   const router = useRouter()
+  // クライアントコンポーネント内でパラメータを取得
+  const params = useParams<{ locale: string }>()
+  const locale = params?.locale || 'ja'
+  const dictionary = getDictionary(locale)
 
   const handleClick = () => {
-    const prev = sessionStorage.getItem('prevPath') || '/'
+    const prev = sessionStorage.getItem('prevPath') || `/${locale}`
     if (document.startViewTransition) {
       document.startViewTransition(() => router.push(prev))
     } else {
@@ -29,7 +21,7 @@ export default function ReturnButton() {
 
   return (
     <button onClick={handleClick} className="block mr-auto text-left underline">
-      Return
+      {dictionary.returnBack}
     </button>
   )
 }
