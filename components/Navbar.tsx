@@ -68,7 +68,7 @@ export default function Navbar({ initialLocale }: { initialLocale?: string }) {
 
   return (
     <nav className='mobile:mr-6 sm:mr-10 md:mr-14 w-full mobile:w-16'>
-      <ul className='lowercase text-right mobile:sticky top-6 sm:top-10 md:top-14 mb-6 mobile:mb-0 flex gap-2 justify-end mobile:block'>
+      <ul className='lowercase text-right mobile:sticky top-6 sm:top-10 md:top-14 mb-6 mobile:mb-0 flex gap-4 justify-end mobile:block'>
         <NavItem href='/' locale={locale}>
           {navItems.about}
         </NavItem>

@@ -45,7 +45,7 @@ export async function generateMetadata({
   // paramsを非同期で解決
   const { locale, project } = await params;
   
-  // MDXデータを取得
+  // MDXデータを取得 - 配列として渡す
   const post = await getMdxBySlug(locale, ['work', project])
   
   if (!post) {
@@ -77,10 +77,13 @@ export default async function ProjectPage({
   // paramsを非同期で解決
   const { locale, project } = await params;
   
-  // MDXコンテンツを取得
+  console.log(`ProjectPage: locale=${locale}, project=${project}`)
+  
+  // MDXコンテンツを取得 - 明示的に配列として渡す
   const post = await getMdxBySlug(locale, ['work', project])
   
   if (!post) {
+    console.error(`Content not found for locale=${locale}, project=${project}`)
     notFound()
   }
   

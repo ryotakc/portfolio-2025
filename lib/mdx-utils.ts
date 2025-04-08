@@ -10,6 +10,14 @@ const contentDir = path.join(process.cwd(), 'content')
 // 特定のMDXファイルを取得
 export async function getMdxBySlug(locale: string, slug: string[]) {
   try {
+    // localeが未定義の場合はデフォルトを使用
+    if (!locale) {
+      console.warn('Warning: locale is undefined, using default "en"')
+      locale = 'en'
+    }
+    
+    console.log(`Loading MDX for locale: ${locale}, slug:`, slug)
+    
     let filePath: string
     
     // スラッグに基づいてファイルパスを構築
@@ -18,11 +26,20 @@ export async function getMdxBySlug(locale: string, slug: string[]) {
       filePath = path.join(contentDir, locale, 'index.mdx')
     } else {
       // ネストされたパスの場合
+      // slugが配列であることを確認
+      if (!Array.isArray(slug)) {
+        console.error('Error: slug is not an array:', slug)
+        return null
+      }
+      
       filePath = `${path.join(contentDir, locale, ...slug)}.mdx`
     }
     
+    console.log(`Looking for MDX file at: ${filePath}`)
+    
     // ファイルが存在するか確認
     if (!fs.existsSync(filePath)) {
+      console.error(`File not found: ${filePath}`)
       return null
     }
     
@@ -34,6 +51,7 @@ export async function getMdxBySlug(locale: string, slug: string[]) {
       title?: string
       description?: string
       date?: string
+      theme?: string
       [key: string]: string | number | boolean | null | undefined
     }>({
       source,
@@ -59,6 +77,7 @@ export async function getAllContentPaths(locale: string) {
   
   // 言語ディレクトリが存在するか確認
   if (!fs.existsSync(localeDir)) {
+    console.warn(`Locale directory not found: ${localeDir}`)
     return []
   }
   
