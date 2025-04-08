@@ -8,7 +8,7 @@ import { ModeToggle } from '@/components/mode-toggle'
 import { LanguageToggle } from '@/components/language-toggle'
 import { ThemeProvider } from '@/components/theme-provider'
 import NavbarWrapper from '@/components/navbar-wrapper'
-
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata: Metadata = {
   title: {
@@ -52,6 +52,7 @@ export default function RootLayout({
                 <Provider>
                   <ViewTransition name='crossfade'>
                     {children}
+                    <Analytics />
                   </ViewTransition>            
                 </Provider>
               </main>
