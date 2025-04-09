@@ -1,9 +1,11 @@
+
 import type { MDXComponents } from 'mdx/types'
 import type { FC } from 'react'
 import { codeToHtml, createCssVariablesTheme } from 'shiki'
 import Link from 'next/link'
 import Image from 'next/image'
 import Balancer from 'react-wrap-balancer'
+
 
 // @ts-ignore
 import { InlineMath, BlockMath } from 'react-katex'
@@ -12,9 +14,11 @@ import { InlineMath, BlockMath } from 'react-katex'
 import { BlockSideTitle } from '@/components/block-sidetitle'
 import ReturnButton from './components/return-back'
 import { Tweet } from './components/tweet-card'
+import { BalancerWrapper } from './components/mdx/balancer-wrapper'
 // import Note from './components/note'
 
 const cssVariablesTheme = createCssVariablesTheme({})
+
 
 export const components: Record<string, FC<any>> = {
   h1: (props) => (
@@ -22,7 +26,7 @@ export const components: Record<string, FC<any>> = {
       className='font-semibold mb-7 text-rurikon-600 text-2xl'
       {...props}
     >
-      <Balancer>{props.children}</Balancer>
+      <BalancerWrapper>{props.children}</BalancerWrapper>
     </h1>
   ),
   h2: (props) => (
@@ -30,7 +34,7 @@ export const components: Record<string, FC<any>> = {
       className='font-semibold mt-14 mb-7 text-rurikon-600 text-xl'
       {...props}
     >
-      <Balancer>{props.children}</Balancer>
+      <BalancerWrapper>{props.children}</BalancerWrapper>
     </h2>
   ),
   h3: (props) => (
@@ -38,7 +42,7 @@ export const components: Record<string, FC<any>> = {
       className='font-semibold mt-14 mb-7 text-rurikon-600 text-lg'
       {...props}
     >
-      <Balancer>{props.children}</Balancer>
+      <BalancerWrapper>{props.children}</BalancerWrapper>
     </h3>
   ),
   // ol: (props) => (
@@ -81,7 +85,9 @@ export const components: Record<string, FC<any>> = {
   strong: (props) => <strong className='font-bold' {...props} />,
   p: (props) => (
     <p className='mt-7' {...props}>
-      <Balancer>{props.children}</Balancer>
+      {/* {props.children} */}
+      <BalancerWrapper>{props.children}</BalancerWrapper>
+      {/* <Balancer>{props.children}</Balancer> */}
     </p>
   ),
 
