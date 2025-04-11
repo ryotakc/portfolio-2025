@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio 2025
 
-## Getting Started
+This is a portfolio that powers [ryotakc.com](https://www.ryotakc.com/), build on [Next.js](https://nextjs.org) and deployed to the cloud via [Vercel](https://vercel.com).
 
-First, run the development server:
+A modern, responsive portfolio website built with Next.js, TypeScript, MDX, and Tailwind CSS.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Features
+
+- **Responsive Design** : Optimized for all devices from mobile to desktop
+- **Dark Mode** : Toggle between light and dark themes
+- **Internationalization (i18n)** : Fully localized in English and Japanese
+- **MDX Content** : Write content in Markdown with React components
+- **View Transitions** : Smooth page transitions using React View Transitions
+- **Modern Technologies** : Built with Next.js (App Router), TypeScript, and Tailwind CSS
+- **Accessibility** : Focus on creating an accessible user experience
+
+## Tech Stack
+
+- **Framework** : [Next.js 15](https://nextjs.org/)
+- **Language** : [TypeScript](https://www.typescriptlang.org/)
+- **Styling** : [Tailwind CSS 4](https://tailwindcss.com/)
+- **Components** : Custom components + [Shadcn UI](https://ui.shadcn.com/)
+- **Content** : [MDX](https://mdxjs.com/)
+- **Deployment** : [Vercel](https://vercel.com/)
+
+## Internationalization
+
+The site supports multiple languages through a simple directory structure. Content is organized by language code:
+
+```
+content/
+├── en/                # English content
+│   ├── index.mdx
+│   ├── work.mdx
+│   └── contact.mdx
+└── ja/                # Japanese content
+    ├── index.mdx
+    ├── work.mdx
+    └── contact.mdx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Language detection happens automatically based on browser preferences, or users can toggle between languages using the language switcher in the navigation.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Adding New Pages
 
-## Learn More
+1. Create a new MDX file in the `content/{locale}/` directory
+2. Add the corresponding route in `app/[locale]/`
 
-To learn more about Next.js, take a look at the following resources:
+### Modifying Styles
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project uses Tailwind CSS for styling. Global styles are defined in `app/globals.css`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Components
 
-## Deploy on Vercel
+The UI components are based on the Shadcn UI library, customized for this project. You can find them in the `components/ui/` directory.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The easiest way to deploy your Next.js app is to use the [Vercel](https://vercel.com/).
