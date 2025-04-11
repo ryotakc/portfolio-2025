@@ -12,6 +12,7 @@ import { BlockSideTitle } from "@/components/block-sidetitle";
 import ReturnButton from "./components/return-back";
 import { Tweet } from "./components/tweet-card";
 import { BalancerWrapper } from "./components/mdx/balancer-wrapper";
+import { IframeCard } from "./components/mdx/iframe-wrapper";
 // import Note from './components/note'
 
 const cssVariablesTheme = createCssVariablesTheme({});
@@ -182,6 +183,7 @@ export const components: Record<string, FC<any>> = {
   InlineMath,
   BlockMath,
   ReturnButton,
+  IframeCard,
   // Note,
 };
 
