@@ -1,18 +1,18 @@
 // app/layout.tsx などに追加
-'use client'
-import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
+"use client";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export function HistoryTracker() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   useEffect(() => {
-    const prev = sessionStorage.getItem('currentPath')
+    const prev = sessionStorage.getItem("currentPath");
     if (pathname !== prev) {
-      sessionStorage.setItem('prevPath', prev || '/')
-      sessionStorage.setItem('currentPath', pathname)
+      sessionStorage.setItem("prevPath", prev || "/");
+      sessionStorage.setItem("currentPath", pathname);
     }
-  }, [pathname])
+  }, [pathname]);
 
-  return null
+  return null;
 }

@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
+import * as React from "react";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light")
-  }
+    setTheme(theme === "light" ? "dark" : "light");
+  };
 
   return (
     // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
@@ -22,7 +22,12 @@ export function ModeToggle() {
       <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
 
       {/* Corners */}
-      {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map((pos, i) => (
+      {[
+        "top-0 left-0",
+        "top-0 right-0",
+        "bottom-0 left-0",
+        "bottom-0 right-0",
+      ].map((pos, i) => (
         <span
           key={i}
           className={`absolute ${pos} w-2 h-2 border-neutral-400 transition-opacity duration-300 opacity-0 group-hover:opacity-100 pointer-events-none ${
@@ -31,5 +36,5 @@ export function ModeToggle() {
         />
       ))}
     </div>
-  )
+  );
 }

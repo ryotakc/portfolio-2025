@@ -5,12 +5,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
   /* --font-mono: var(--font-geist-mono); */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -137,30 +137,28 @@
 
 /* globals.cssに追加 */
 
-
-
 @layer utilities {
   .mdx-container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   @media (max-width: 768px) {
     .mdx-container {
       width: 95%;
     }
   }
-  
+
   @media (min-width: 769px) and (max-width: 1024px) {
     .mdx-container {
       width: 80%;
     }
   }
-  
+
   @media (min-width: 1025px) {
     .mdx-container {
-      width: 66.666%; 
+      width: 66.666%;
     }
   }
 }
@@ -173,7 +171,7 @@
 
     ::view-transition-new(crossfade) {
       opacity: 0;
-      animation: appear .6s ease 0.2s forwards;
+      animation: appear 0.6s ease 0.2s forwards;
     }
   }
 }
@@ -197,7 +195,7 @@
   100% {
     opacity: 1;
     filter: blur(0);
-  }  
+  }
 }
 
 /* MDX コードブロックスタイリング - ダークモード対応 */
@@ -222,7 +220,7 @@ pre code {
 
 code {
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, 'Liberation Mono', 'Courier New', monospace;
+    Consolas, "Liberation Mono", "Courier New", monospace;
   word-spacing: -0.15em;
   padding: 0.15em 0.2em;
   --shiki-token-comment: hsl(215deg 32% 37% / 45%);
@@ -298,7 +296,8 @@ article {
       margin: 0;
     }
   }
-  .framed > img, .framed > figure > span:first-child {
+  .framed > img,
+  .framed > figure > span:first-child {
     padding: var(--frame-padding, 0.875rem);
     background: var(--frame-background, #fff);
     border: 1px solid var(--color-rurikon-border);
@@ -315,11 +314,11 @@ article {
     border-bottom: 1px solid var(--color-rurikon-border);
   }
   details summary {
-    font-variation-settings: 'wght' 600, var(--sans-variation);
+    font-variation-settings: "wght" 600, var(--sans-variation);
     margin-bottom: 0.25rem;
   }
   details summary::marker {
-    content: '';
+    content: "";
   }
   details p:first-of-type {
     margin-top: 0;
@@ -333,7 +332,7 @@ article {
   margin-inline: auto;
 
   @media (min-width: 768px) {
-    max-width: 800px; 
+    max-width: 800px;
     padding-inline: 2rem;
   }
 }
@@ -342,27 +341,27 @@ article {
   .mdx-width {
     width: 100%;
     max-width: 100%; /* モバイルではフル幅 */
-    
+
     @media (min-width: 768px) {
       max-width: 500px;
     }
   }
-  
+
   .content-area {
     width: 100%;
-    
+
     @media (min-width: 768px) {
-      width: 66.666%; 
+      width: 66.666%;
     }
   }
-  
+
   .nav-horizontal {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 1.5rem;
   }
-  
+
   .nav-vertical {
     display: flex;
     flex-direction: column;
@@ -370,31 +369,31 @@ article {
   }
 
   .font-thin {
-    font-variation-settings: 'wght' 100, var(--sans-variation);
+    font-variation-settings: "wght" 100, var(--sans-variation);
   }
   .font-extralight {
-    font-variation-settings: 'wght' 200, var(--sans-variation);
+    font-variation-settings: "wght" 200, var(--sans-variation);
   }
   .font-light {
-    font-variation-settings: 'wght' 300, var(--sans-variation);
+    font-variation-settings: "wght" 300, var(--sans-variation);
   }
   .font-normal {
-    font-variation-settings: 'wght' 440, var(--sans-variation);
+    font-variation-settings: "wght" 440, var(--sans-variation);
   }
   .font-medium {
-    font-variation-settings: 'wght' 500, var(--sans-variation);
+    font-variation-settings: "wght" 500, var(--sans-variation);
   }
   .font-semibold {
-    font-variation-settings: 'wght' 600, var(--sans-variation);
+    font-variation-settings: "wght" 600, var(--sans-variation);
   }
   .font-bold {
-    font-variation-settings: 'wght' 640, var(--sans-variation);
+    font-variation-settings: "wght" 640, var(--sans-variation);
   }
   .font-extrabold {
-    font-variation-settings: 'wght' 700, var(--sans-variation);
+    font-variation-settings: "wght" 700, var(--sans-variation);
   }
   .font-black {
-    font-variation-settings: 'wght' 800, var(--sans-variation);
+    font-variation-settings: "wght" 800, var(--sans-variation);
   }
 }
 
@@ -403,7 +402,7 @@ article {
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
-  
+
   .mobile-full-width {
     width: 100% !important;
   }
