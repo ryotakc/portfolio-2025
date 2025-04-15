@@ -37,7 +37,7 @@ function NavItem(
       className={cn(
         isActive
           ? "text-rurikon-800 underline"
-          : "text-rurikon-300 hover:underline",
+          : "text-gray-500  hover:underline",
         "hover:underline",
         "-mx-2 md:pb-4"
       )}

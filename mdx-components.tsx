@@ -159,7 +159,7 @@ export const components: Record<string, FC<any>> = {
         />
       );
     } else {
-      const image = await import("./assets/images/" + src);
+      const image = await import(`./assets/images/${src}`);
       img = (
         <Image
           className="mt-7"
