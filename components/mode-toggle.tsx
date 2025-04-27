@@ -1,21 +1,39 @@
 "use client";
 
 import * as React from "react";
+import { useRef } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useThemeTransition } from "./theme-provider";
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
+  const { startTransition } = useThemeTransition();
+  const buttonRef = useRef<HTMLDivElement>(null);
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+  const toggleTheme = (e: React.MouseEvent) => {
+    // ボタン要素の位置を取得
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      // アニメーショントランジションを開始
+      startTransition(x, y);
+
+      // テーマを切り替え (少し遅延させてアニメーションと同期)
+      setTimeout(() => {
+        setTheme(theme === "light" ? "dark" : "light");
+      }, 50);
+    }
   };
 
   return (
     // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <div
+      ref={buttonRef}
       onClick={toggleTheme}
-      className="relative w-12 h-12 cursor-pointer flex items-center justify-center group"
+      className="relative w-12 h-12 cursor-pointer flex items-center justify-center group z-50"
     >
       {/* Icon */}
       <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
