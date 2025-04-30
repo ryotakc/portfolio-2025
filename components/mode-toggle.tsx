@@ -15,8 +15,10 @@ export function ModeToggle() {
     // ボタン要素の位置を取得
     if (buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
+
+      // ボタンの中心ではなく、右下の位置を使用
+      const x = rect.right;
+      const y = rect.bottom;
 
       // アニメーショントランジションを開始
       startTransition(x, y);
