@@ -60,7 +60,7 @@ export async function generateStaticParams({
     languages.map(async (lang) => {
         const slugs = await getAllContentPaths(lang);
         return slugs
-            .filter(slug => slug.length > 0) // Filter out index pages (handled by ../page.tsx)
+            // .filter(slug => slug.length > 0) // Allow index pages now (slug = [])
             .map(slug => ({ locale: lang, slug }));
     })
   );
@@ -73,7 +73,7 @@ export async function generateMetadata({
 }: {
   params: Promise<Params>;
 }): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const { locale, slug = [] } = await params;
   const post = await getMdxBySlug(locale, slug);
 
   if (!post) {
@@ -97,7 +97,7 @@ export default async function Page({
 }: {
   params: Promise<Params>;
 }) {
-  const { locale, slug } = await params;
+  const { locale, slug = [] } = await params;
   const post = await getMdxBySlug(locale, slug);
 
   if (!post) {
