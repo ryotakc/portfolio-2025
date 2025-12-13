@@ -59,7 +59,9 @@ export async function generateStaticParams({
   const pathsByLocale = await Promise.all(
     languages.map(async (lang) => {
         const slugs = await getAllContentPaths(lang);
-        return slugs.map(slug => ({ locale: lang, slug }));
+        return slugs
+            .filter(slug => slug.length > 0) // Filter out index pages (handled by ../page.tsx)
+            .map(slug => ({ locale: lang, slug }));
     })
   );
 
