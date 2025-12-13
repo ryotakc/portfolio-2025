@@ -3,8 +3,11 @@ import { generateMetadata as baseGenerateMetadata } from "@/lib/metadata";
 import { getMdxBySlug, getAllContentPaths } from "@/lib/mdx-utils";
 import { languages, getDictionary } from "@/lib/i18n";
 import { notFound } from "next/navigation";
-import ReturnButton from "@/components/return-back";
 import type { Metadata } from "next";
+import { themeConfig, ContentLayoutType } from "@/config/theme";
+import { DefaultContentLayout } from "@/components/layouts/content/DefaultContentLayout";
+import { BlogContentLayout } from "@/components/layouts/content/BlogContentLayout";
+import { PortfolioContentLayout } from "@/components/layouts/content/PortfolioContentLayout";
 
 type Params = {
   locale: string;
@@ -20,7 +23,7 @@ export async function generateStaticParams(): Promise<Params[]> {
 
     // インデックスページ以外のものを追加
     for (const slug of slugs) {
-      if (slug.length > 0 && slug[0] !== "work" && slug[0] !== "contact") {
+      if (slug.length > 0) {
         paths.push({
           locale,
           slug,
@@ -80,12 +83,19 @@ export default async function DynamicPage({
     notFound();
   }
 
+  const { frontmatter, content } = post;
+  
+  const layoutName = (frontmatter.layout as ContentLayoutType) || themeConfig.defaultContentLayout;
+
+  const Layout = {
+    Default: DefaultContentLayout,
+    Blog: BlogContentLayout,
+    Portfolio: PortfolioContentLayout,
+  }[layoutName] || DefaultContentLayout;
+
   return (
-    <>
-      {post.content}
-      <div className="mt-8">
-        <ReturnButton />
-      </div>
-    </>
+    <Layout>
+      {content}
+    </Layout>
   );
 }

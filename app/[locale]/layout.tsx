@@ -1,5 +1,9 @@
 import { HistoryTracker } from "@/components/history-tracker";
 import { languages } from "@/lib/i18n";
+import { themeConfig } from "@/config/theme";
+import { MinimalSiteLayout } from "@/components/layouts/site/MinimalSiteLayout";
+import { SidebarSiteLayout } from "@/components/layouts/site/SidebarSiteLayout";
+import { MagazineSiteLayout } from "@/components/layouts/site/MagazineSiteLayout";
 
 export async function generateStaticParams() {
   return languages.map((locale) => ({ locale }));
@@ -12,10 +16,11 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  return (
-    <article className="pl-0 pt-6 mobile:pt-0 mobile:pl-6 sm:pl-10 md:pl-14">
-      <HistoryTracker />
-      {children}
-    </article>
-  );
+  const Layout = {
+    Minimal: MinimalSiteLayout,
+    Sidebar: SidebarSiteLayout,
+    Magazine: MagazineSiteLayout,
+  }[themeConfig.siteLayout];
+
+  return <Layout>{children}</Layout>;
 }
