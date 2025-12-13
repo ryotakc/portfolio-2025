@@ -1,5 +1,7 @@
 import { Balancer } from "react-wrap-balancer";
 
+import { Badge } from "@/components/ui/badge";
+
 interface BlogContentLayoutProps {
   children: React.ReactNode;
   frontmatter: {
@@ -29,9 +31,18 @@ export default function BlogContentLayout({
           </h1>
         )}
         {frontmatter.description && (
-          <p className="text-rurikon-500 italic">
+          <p className="text-rurikon-500 italic mb-4">
             <Balancer>{frontmatter.description}</Balancer>
           </p>
+        )}
+        {frontmatter.tags && frontmatter.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+                {frontmatter.tags.map(tag => (
+                    <Badge key={tag} variant="secondary">
+                        {tag}
+                    </Badge>
+                ))}
+            </div>
         )}
         <hr className="mt-8 border-rurikon-border dark:border-rurikon-border-dark opacity-50" />
       </header>
