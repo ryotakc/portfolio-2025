@@ -7,7 +7,7 @@ interface BlogContentLayoutProps {
     date?: string;
     description?: string;
     tags?: string[];
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 

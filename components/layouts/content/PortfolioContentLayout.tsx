@@ -8,7 +8,7 @@ interface PortfolioContentLayoutProps {
     stack?: string[];
     demoUrl?: string;
     repoUrl?: string;
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 
