@@ -1,7 +1,7 @@
 // lib/metadata.ts
 import type { Metadata } from 'next';
 
-export type MetadataTheme = 'light' | 'dark';
+export type MetadataTheme = 'light' | 'dark' | 'system';
 
 export type MetadataProps = {
   title?: string;
