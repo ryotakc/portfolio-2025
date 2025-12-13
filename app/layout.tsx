@@ -37,10 +37,10 @@ export default function RootLayout({
       <body
         className={cn(
           "font-mono",
-          "w-full p-6 sm:p-10 md:p-14",
+          "w-full min-h-screen p-6 sm:p-10 md:p-14",
           "text-sm leading-6 sm:text-[15px] sm:leading-7 md:text-base md:leading-7",
-          "text-rurikon-500",
-          "antialiased"
+          "text-foreground",
+          "antialiased bg-background"
         )}
       >
         <ThemeProvider
@@ -54,7 +54,7 @@ export default function RootLayout({
             <div className="flex flex-col mobile:flex-row justify-center">
               <NavbarWrapper />
               <main className="relative flex-1 max-w-2xl [contain:inline-size]">
-                <div className="absolute w-full h-px opacity-50 bg-rurikon-border dark:bg-rurikon-border-dark right-0 mobile:right-auto mobile:left-0 mobile:w-px mobile:h-full mobile:opacity-100" />
+                <div className="absolute w-full h-px opacity-50 bg-border right-0 mobile:right-auto mobile:left-0 mobile:w-px mobile:h-full mobile:opacity-100" />
                 <Provider>
                   <ViewTransition name="crossfade">
                     {children}

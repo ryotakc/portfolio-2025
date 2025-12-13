@@ -45,8 +45,7 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-rurikon-border: #d8dbdfb3;
-  --color-rurikon-border-dark: #403f3f;
+
 
   --container-padding: 1rem; /* デフォルトのパディングを1remに設定 */
   --container-max-width: 30%; /* デフォルトの最大幅を100%に設定 */

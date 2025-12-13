@@ -36,8 +36,8 @@ function NavItem(
     <li
       className={cn(
         isActive
-          ? "text-rurikon-800 underline"
-          : "text-gray-500  hover:underline",
+          ? "text-foreground underline"
+          : "text-muted-foreground hover:underline",
         "hover:underline",
         "-mx-2 md:pb-4"
       )}
