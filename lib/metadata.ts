@@ -17,7 +17,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   ? process.env.NEXT_PUBLIC_BASE_URL
   : process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : "https://portfolio-2025-leo.vercel.app";
+  : "https://ryotakc.com";
 
 export function generateMetadata({
   title = "Leo's Portfolio",
