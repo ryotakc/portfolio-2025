@@ -39,18 +39,14 @@ export default function RootLayout({
   }[siteConfig.layout];
 
   return (
-    <html
-      lang="en"
-      className="overflow-x-hidden touch-manipulation"
-      suppressHydrationWarning
-    >
+    <html lang="en" className="overflow-x-hidden touch-manipulation" suppressHydrationWarning>
       <body
         className={cn(
           "font-mono",
           "w-full p-6 sm:p-10 md:p-14",
           "text-sm leading-6 sm:text-[15px] sm:leading-7 md:text-base md:leading-7",
           "text-rurikon-500",
-          "antialiased"
+          "antialiased",
         )}
       >
         <ThemeProvider

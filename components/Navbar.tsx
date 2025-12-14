@@ -5,9 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { navigation } from "@/lib/i18n";
 
-function NavItem(
-  props: React.ComponentProps<typeof Link> & { locale: string }
-) {
+function NavItem(props: React.ComponentProps<typeof Link> & { locale: string }) {
   const pathname = usePathname();
   const { href, locale, children, ...rest } = props;
 
@@ -23,8 +21,7 @@ function NavItem(
   // /ja/work と /ja/work が完全一致、または
   // /ja/work/project1 と /ja/work が前方一致（かつproject1の部分がない）
   const isActive =
-    pathname === fullPath ||
-    (pathname.startsWith(fullPath + "/") && fullPath !== `/${locale}`);
+    pathname === fullPath || (pathname.startsWith(fullPath + "/") && fullPath !== `/${locale}`);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === fullPath) {
@@ -35,11 +32,9 @@ function NavItem(
   return (
     <li
       className={cn(
-        isActive
-          ? "text-rurikon-800 underline"
-          : "text-gray-500  hover:underline",
+        isActive ? "text-rurikon-800 underline" : "text-gray-500  hover:underline",
         "hover:underline",
-        "-mx-2 md:pb-4"
+        "-mx-2 md:pb-4",
       )}
     >
       <Link
@@ -63,8 +58,7 @@ export default function Navbar({ initialLocale }: { initialLocale?: string }) {
   const locale = pathnameLocale || initialLocale || "en";
 
   // 現在の言語のナビゲーション項目を取得
-  const navItems =
-    navigation[locale as keyof typeof navigation] || navigation.en;
+  const navItems = navigation[locale as keyof typeof navigation] || navigation.en;
 
   // For debugging
   console.log("Current pathname:", pathname);
