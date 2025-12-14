@@ -19,9 +19,18 @@ A modern, responsive portfolio website built with Next.js, TypeScript, MDX, and 
 - **Framework** : [Next.js 15](https://nextjs.org/)
 - **Language** : [TypeScript](https://www.typescriptlang.org/)
 - **Styling** : [Tailwind CSS 4](https://tailwindcss.com/)
+- **Formatting & Linting** : [Biome](https://biomejs.dev/)
 - **Components** : Custom components + [Shadcn UI](https://ui.shadcn.com/)
 - **Content** : [MDX](https://mdxjs.com/)
 - **Deployment** : [Vercel](https://vercel.com/)
+
+## Development Scripts
+
+- `npm run dev`: Start the development server
+- `npm run build`: Build the application for production
+- `npm run start`: Start the production server
+- `npm run format`: Format code using Biome
+- `npm run check`: Check code quality using Biome
 
 ## Internationalization
 
@@ -45,8 +54,8 @@ Language detection happens automatically based on browser preferences, or users 
 
 ### Adding New Pages
 
-1. Create a new MDX file in the `content/{locale}/` directory
-2. Add the corresponding route in `app/[locale]/`
+1. Create a new MDX file in the `content/{locale}/` directory (e.g., `content/en/about.mdx`).
+2. The page will be automatically generated at `/{locale}/about` (e.g., `/en/about`).
 
 ### Modifying Styles
 
