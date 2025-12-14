@@ -152,7 +152,7 @@ export function TypingAnimation({
   return (
     <MotionComponent
       ref={elementRef}
-      className={cn("leading-[5rem] tracking-[-0.02em]", className)}
+      className={cn(className)}
       {...props}
     >
       {displayedText}
