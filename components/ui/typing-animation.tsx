@@ -150,11 +150,7 @@ export function TypingAnimation({
   };
 
   return (
-    <MotionComponent
-      ref={elementRef}
-      className={cn(className)}
-      {...props}
-    >
+    <MotionComponent ref={elementRef} className={cn(className)} {...props}>
       {displayedText}
       {shouldShowCursor && (
         <span className={cn("inline-block", blinkCursor && "animate-blink-cursor")}>
