@@ -15,11 +15,9 @@ export async function GET(request: NextRequest) {
     // ?description=<description>
     const rawDescription =
       searchParams.get("description") || "Software Engineer & Computer Science Student";
-    
+
     const description =
-      rawDescription.length > 80
-        ? `${rawDescription.slice(0, 80)}...`
-        : rawDescription;
+      rawDescription.length > 80 ? `${rawDescription.slice(0, 80)}...` : rawDescription;
 
     // ?theme=<theme>
     const theme = searchParams.get("theme") || "light";
