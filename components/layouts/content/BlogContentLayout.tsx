@@ -1,6 +1,7 @@
 import { Balancer } from "react-wrap-balancer";
 
 import { Badge } from "@/components/ui/badge";
+import { DynamicBreadcrumb } from "@/components/DynamicBreadcrumb";
 
 interface BlogContentLayoutProps {
   children: React.ReactNode;
@@ -15,7 +16,8 @@ interface BlogContentLayoutProps {
 
 export default function BlogContentLayout({ children, frontmatter }: BlogContentLayoutProps) {
   return (
-    <div className="mt-6">
+    <div className="mt-0">
+      <DynamicBreadcrumb />
       <header className="mb-10">
         {frontmatter.date && (
           <div className="text-rurikon-400 text-sm mb-3 font-mono">

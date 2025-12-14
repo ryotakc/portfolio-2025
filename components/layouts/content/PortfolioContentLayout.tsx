@@ -1,4 +1,5 @@
 import { Balancer } from "react-wrap-balancer";
+import { DynamicBreadcrumb } from "@/components/DynamicBreadcrumb";
 
 interface PortfolioContentLayoutProps {
   children: React.ReactNode;
@@ -17,7 +18,10 @@ export default function PortfolioContentLayout({
   frontmatter,
 }: PortfolioContentLayoutProps) {
   return (
-    <div className="mt-6">
+    <div className="mt-0">
+      <div className="mb-6 flex justify-center">
+        <DynamicBreadcrumb />
+      </div>
       <header className="mb-12 text-center">
         {frontmatter.title && (
           <h1 className="text-3xl sm:text-4xl font-bold text-rurikon-700 dark:text-rurikon-100 mb-4">
