@@ -13,7 +13,11 @@ export type MetadataProps = {
 };
 
 // サイトのベースURL（デプロイ環境に合わせて変更）
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://portfolio-2025-leo.vercel.app";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+  ? process.env.NEXT_PUBLIC_BASE_URL
+  : process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "https://ryotakc.com";
 
 export function generateMetadata({
   title = "Leo's Portfolio",
