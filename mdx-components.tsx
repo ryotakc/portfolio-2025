@@ -15,7 +15,7 @@ import { BalancerWrapper } from "./components/mdx/balancer-wrapper";
 import { IframeCard } from "./components/mdx/iframe-wrapper";
 import { Highlighter } from "./components/ui/highlighter";
 import { TypingAnimation } from "./components/ui/typing-animation";
-// import Note from './components/note'
+import Note from "./components/note";
 
 const cssVariablesTheme = createCssVariablesTheme({});
 
@@ -181,6 +181,7 @@ export const components: Record<string, FC<any>> = {
   IframeCard,
   Highlighter,
   TypingAnimation,
+  Note,
   // Custom Typography Components
   Lead: (props) => <p className="text-muted-foreground text-xl" {...props} />,
   Large: (props) => <div className="text-lg font-semibold" {...props} />,

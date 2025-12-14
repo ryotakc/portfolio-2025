@@ -1,6 +1,4 @@
-# H1 Title (automatic id)
-
-# H1 title with id `custom-id` [#custom-id]
+# H1 Title
 
 ## H2 Title
 
@@ -38,12 +36,6 @@ function hello() {
   }
 /> */}
 
-```
-disabled since it doesn't work
-```
-
-A…
-
 ***
 
 horizontal rule
@@ -66,68 +58,85 @@ A block quote
 >
 > And multiple paragraphs.
 
-# H1 Title (automatic id)
+---
 
-# H1 title with id `custom-id` [#custom-id]
+## Test Callouts
 
-## H2 Title
+:::note
+**Note**
+Aliases: "note"
+:::
 
-### H3 Title
+:::abstract
+**Abstract**
+Aliases: "abstract", "summary", "tldr"
+:::
 
-```
-Some code
-```
+:::info
+**Info**
+Aliases: "info"
+:::
 
-```
-function hello() {
-  await test(); // some code
-  someMoreCode();
-}
-```
+:::todo
+**Todo**
+Aliases: "todo"
+:::
 
-{/* ## A tweet
+:::tip
+**Tip**
+Aliases: "tip", "hint", "important"
+:::
 
-<Tweet
-  id="1374492662061953034"
-  caption={
-    <>
-      Next.js continues to grow organically as developers{" "}
-      <a href="https://twitter.com/vincentchw/status/1392775589094838277">
-        explain it
-      </a>{" "}
-      and{" "}
-      <a href="https://twitter.com/vadim_kravcenko/status/1401937274972037122">
-        recommend it
-      </a>{" "}
-      to one another
-    </>
-  }
-/> */}
+:::success
+**Success**
+Aliases: "success", "check", "done"
+:::
 
-```
-disabled since it doesn't work
-```
+:::question
+**Question**
+Aliases: "question", "help", "faq"
+:::
 
-A…
+:::warning
+**Warning**
+Aliases: "warning", "attention", "caution"
+:::
 
-***
+:::failure
+**Failure**
+Aliases: "failure", "missing", "fail"
+:::
 
-horizontal rule
+:::danger
+**Danger**
+Aliases: "danger", "error"
+:::
 
-1. an
-2. ordered
-3. list
+:::bug
+**Bug**
+Aliases: "bug"
+:::
 
-**combined with**
+:::example
+**Example**
+Aliases: "example"
+:::
 
-- an
-- unordered
-- list
+:::quote
+**Quote**
+Aliases: "quote", "cite"
+:::
 
-A block quote
+## Alias Tests
 
+:::hint
+This is a hint (tip alias).
+:::
 
-> This is a quote. It can be long.  
-> With multiple lines.
->
-> And multiple paragraphs.
+:::caution
+This is a caution (warning alias).
+:::
+
+:::error
+This is an error (danger alias).
+:::
