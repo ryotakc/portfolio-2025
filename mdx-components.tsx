@@ -14,6 +14,7 @@ import { Tweet } from "./components/tweet-card";
 import { BalancerWrapper } from "./components/mdx/balancer-wrapper";
 import { IframeCard } from "./components/mdx/iframe-wrapper";
 import { Highlighter } from "./components/ui/highlighter";
+import { TypingAnimation } from "./components/ui/typing-animation";
 // import Note from './components/note'
 
 const cssVariablesTheme = createCssVariablesTheme({});
@@ -25,12 +26,12 @@ export const components: Record<string, FC<any>> = {
     </h1>
   ),
   h2: (props) => (
-    <h2 className="font-semibold mt-14 mb-7 text-rurikon-600 text-xl" {...props}>
+    <h2 className="font-semibold mb-7 text-rurikon-600 text-xl" {...props}>
       <BalancerWrapper>{props.children}</BalancerWrapper>
     </h2>
   ),
   h3: (props) => (
-    <h3 className="font-semibold mt-14 mb-7 text-rurikon-600 text-lg" {...props}>
+    <h3 className="font-semibold mb-7 text-rurikon-600 text-lg" {...props}>
       <BalancerWrapper>{props.children}</BalancerWrapper>
     </h3>
   ),
@@ -67,7 +68,7 @@ export const components: Record<string, FC<any>> = {
   },
   strong: (props) => <strong className="font-bold" {...props} />,
   p: (props) => (
-    <p className="mt-7" {...props}>
+    <p className="my-7" {...props}>
       {/* {props.children} */}
       <BalancerWrapper>{props.children}</BalancerWrapper>
       {/* <Balancer>{props.children}</Balancer> */}
@@ -171,6 +172,7 @@ export const components: Record<string, FC<any>> = {
   IframeCard,
   // Note,
   Highlighter,
+  TypingAnimation,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
