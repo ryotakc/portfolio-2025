@@ -1,7 +1,9 @@
 import { ImageResponse } from "@vercel/og";
 import type { NextRequest } from "next/server";
+import fs from "fs";
+import path from "path";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export async function GET(request: NextRequest) {
   try {
@@ -11,14 +13,24 @@ export async function GET(request: NextRequest) {
     const title = searchParams.get("title") || "Leo's Portfolio";
 
     // ?description=<description>
-    const description =
+    const rawDescription =
       searchParams.get("description") || "Software Engineer & Computer Science Student";
+    
+    const description =
+      rawDescription.length > 80
+        ? `${rawDescription.slice(0, 80)}...`
+        : rawDescription;
 
     // ?theme=<theme>
     const theme = searchParams.get("theme") || "light";
 
     const backgroundColor = theme === "dark" ? "#141414" : "#FFFFFF";
     const textColor = theme === "dark" ? "#FFFFFF" : "#141414";
+
+    // Load avatar image
+    const avatarPath = path.join(process.cwd(), "assets/images/avatar.jpg");
+    const avatarData = await fs.promises.readFile(avatarPath);
+    const avatarBase64 = `data:image/jpeg;base64,${avatarData.toString("base64")}`;
 
     return new ImageResponse(
       <div
@@ -68,6 +80,7 @@ export async function GET(request: NextRequest) {
             lineHeight: 1.2,
             marginBottom: "20px",
             maxWidth: "800px",
+            whiteSpace: "pre-wrap",
           }}
         >
           {title}
@@ -77,12 +90,14 @@ export async function GET(request: NextRequest) {
           style={{
             fontSize: "32px",
             color: theme === "dark" ? "#AAAAAA" : "#555555",
+            maxWidth: "900px",
+            overflow: "hidden",
           }}
         >
           {description}
         </div>
 
-        {/* Bottom signature - 洗練されたLアイコン */}
+        {/* Bottom signature */}
         <div
           style={{
             position: "absolute",
@@ -93,27 +108,22 @@ export async function GET(request: NextRequest) {
             justifyContent: "center",
           }}
         >
-          <div
+          {/* Avatar Image */}
+          <img
+            src={avatarBase64}
+            alt="Leo"
             style={{
-              borderRadius: "50%",
               width: "48px",
               height: "48px",
-              background: `linear-gradient(135deg, ${theme === "dark" ? "#8B7FFF" : "#7B68EE"}, ${theme === "dark" ? "#6A5ACD" : "#483D8B"})`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              borderRadius: "50%",
               marginRight: "12px",
-              color: "#FFFFFF",
-              fontWeight: "bold",
-              fontSize: "24px",
+              objectFit: "cover",
               boxShadow:
                 theme === "dark"
                   ? "0 2px 8px rgba(255, 255, 255, 0.15)"
                   : "0 2px 8px rgba(0, 0, 0, 0.15)",
             }}
-          >
-            L
-          </div>
+          />
           <div style={{ color: textColor, fontSize: "24px", fontWeight: 600 }}>Leo</div>
         </div>
       </div>,
