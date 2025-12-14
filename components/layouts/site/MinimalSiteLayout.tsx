@@ -26,8 +26,8 @@ export default function MinimalSiteLayout({ children }: { children: React.ReactN
             <LanguageToggle />
           </div>
           <div>
-            {/* <ModeToggle /> */}
-            <AnimatedThemeToggler />
+            <ModeToggle />
+            {/* <AnimatedThemeToggler /> */}
           </div>
         </div>
       </div>
