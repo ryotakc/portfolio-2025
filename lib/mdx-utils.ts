@@ -52,6 +52,7 @@ export async function getMdxBySlug(locale: string, slug: string[]) {
       description?: string;
       date?: string;
       theme?: string;
+      draft?: boolean;
       [key: string]: string | number | boolean | null | undefined;
     }>({
       source,

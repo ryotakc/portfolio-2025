@@ -82,6 +82,12 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
   const { frontmatter } = post;
 
+  if (frontmatter.draft) {
+    return {
+      title: "Not Found",
+    };
+  }
+
   return baseGenerateMetadata({
     title: frontmatter.title || "Leo's Portfolio",
     description: frontmatter.description || "Software Engineer with a passion for building web app",
@@ -99,6 +105,10 @@ export default async function Page({ params }: { params: Promise<Params> }) {
   }
 
   const { content, frontmatter } = post;
+
+  if (frontmatter.draft) {
+    notFound();
+  }
 
   // Select Layout based on frontmatter
   const LayoutComponent = (() => {

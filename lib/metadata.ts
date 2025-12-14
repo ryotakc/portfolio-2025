@@ -16,8 +16,8 @@ export type MetadataProps = {
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   ? process.env.NEXT_PUBLIC_BASE_URL
   : process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "https://ryotakc.com";
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://ryotakc.com";
 
 export function generateMetadata({
   title = "Leo's Portfolio",
