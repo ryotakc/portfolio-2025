@@ -38,6 +38,7 @@
     "react-wrap-balancer": "^1.1.1",
     "react-youtube": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "rough-notation": "^0.5.1",
     "sharp": "^0.33.5",
     "shiki": "^3.20.0",
     "tailwind-merge": "^3.4.0",
