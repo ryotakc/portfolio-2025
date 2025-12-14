@@ -51,8 +51,11 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       lucide-react:
-        specifier: ^0.487.0
-        version: 0.487.0(react@0.0.0-experimental-e1e74071-20250321)
+        specifier: ^0.561.0
+        version: 0.561.0(react@0.0.0-experimental-e1e74071-20250321)
+      motion:
+        specifier: ^12.23.26
+        version: 12.23.26(react-dom@0.0.0-experimental-e1e74071-20250321(react@0.0.0-experimental-e1e74071-20250321))(react@0.0.0-experimental-e1e74071-20250321)
       next:
         specifier: 15.3.8
         version: 15.3.8(react-dom@0.0.0-experimental-e1e74071-20250321(react@0.0.0-experimental-e1e74071-20250321))(react@0.0.0-experimental-e1e74071-20250321)
@@ -86,6 +89,9 @@ importers:
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
+      rough-notation:
+        specifier: ^0.5.1
+        version: 0.5.1
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -1575,6 +1581,20 @@ packages:
     resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
     engines: {node: '>= 0.4'}
 
+  framer-motion@12.23.26:
+    resolution: {integrity: sha512-cPcIhgR42xBn1Uj+PzOyheMtZ73H927+uWPDVhUMqxy8UHt6Okavb6xIz9J/phFUHUj0OncR6UvMfJTXoc/LKA==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   fs@0.0.1-security:
     resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
 
@@ -1978,8 +1998,8 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
 
-  lucide-react@0.487.0:
-    resolution: {integrity: sha512-aKqhOQ+YmFnwq8dWgGjOuLc8V1R9/c/yOd+zDY4+ohsR2Jo05lSGc3WsstYPIzcTpeosN7LoCkLReUUITvaIvw==}
+  lucide-react@0.561.0:
+    resolution: {integrity: sha512-Y59gMY38tl4/i0qewcqohPdEbieBy7SovpBL9IFebhc2mDd8x4PZSOsiFRkpPcOq6bj1r/mjH/Rk73gSlIJP2A==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
@@ -2167,6 +2187,26 @@ packages:
 
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
+
+  motion-dom@12.23.23:
+    resolution: {integrity: sha512-n5yolOs0TQQBRUFImrRfs/+6X4p3Q4n1dUEqt/H58Vx7OW6RF+foWEgmTVDhIWJIMXOuNNL0apKH2S16en9eiA==}
+
+  motion-utils@12.23.6:
+    resolution: {integrity: sha512-eAWoPgr4eFEOFfg2WjIsMoqJTW6Z8MTUCgn/GZ3VRpClWBdnbjryiA3ZSNLyxCTmCQx4RmYX6jX1iWHbenUPNQ==}
+
+  motion@12.23.26:
+    resolution: {integrity: sha512-Ll8XhVxY8LXMVYTCfme27WH2GjBrCIzY4+ndr5QKxsK+YwCtOi2B/oBi5jcIbik5doXuWT/4KKDOVAZJkeY5VQ==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
@@ -2451,6 +2491,9 @@ packages:
   reusify@1.1.0:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
+
+  rough-notation@0.5.1:
+    resolution: {integrity: sha512-ITHofTzm13cWFVfoGsh/4c/k2Mg8geKgBCwex71UZLnNuw403tCRjYPQ68jSAd37DMbZIePXPjDgY0XdZi9HPw==}
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -4287,6 +4330,15 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
+  framer-motion@12.23.26(react-dom@0.0.0-experimental-e1e74071-20250321(react@0.0.0-experimental-e1e74071-20250321))(react@0.0.0-experimental-e1e74071-20250321):
+    dependencies:
+      motion-dom: 12.23.23
+      motion-utils: 12.23.6
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 0.0.0-experimental-e1e74071-20250321
+      react-dom: 0.0.0-experimental-e1e74071-20250321(react@0.0.0-experimental-e1e74071-20250321)
+
   fs@0.0.1-security: {}
 
   function-bind@1.1.2: {}
@@ -4715,7 +4767,7 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  lucide-react@0.487.0(react@0.0.0-experimental-e1e74071-20250321):
+  lucide-react@0.561.0(react@0.0.0-experimental-e1e74071-20250321):
     dependencies:
       react: 0.0.0-experimental-e1e74071-20250321
 
@@ -5173,6 +5225,20 @@ snapshots:
 
   minimist@1.2.8: {}
 
+  motion-dom@12.23.23:
+    dependencies:
+      motion-utils: 12.23.6
+
+  motion-utils@12.23.6: {}
+
+  motion@12.23.26(react-dom@0.0.0-experimental-e1e74071-20250321(react@0.0.0-experimental-e1e74071-20250321))(react@0.0.0-experimental-e1e74071-20250321):
+    dependencies:
+      framer-motion: 12.23.26(react-dom@0.0.0-experimental-e1e74071-20250321(react@0.0.0-experimental-e1e74071-20250321))(react@0.0.0-experimental-e1e74071-20250321)
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 0.0.0-experimental-e1e74071-20250321
+      react-dom: 0.0.0-experimental-e1e74071-20250321(react@0.0.0-experimental-e1e74071-20250321)
+
   ms@2.0.0: {}
 
   ms@2.1.3: {}
@@ -5530,6 +5596,8 @@ snapshots:
       supports-preserve-symlinks-flag: 1.0.0
 
   reusify@1.1.0: {}
+
+  rough-notation@0.5.1: {}
 
   run-parallel@1.2.0:
     dependencies:

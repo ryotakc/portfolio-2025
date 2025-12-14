@@ -11,13 +11,13 @@ export const languageNames: Record<Language, string> = {
 // 各言語のナビゲーション項目
 export const navigation: Record<Language, Record<string, string>> = {
   en: {
+    home: "Home",
     about: "About",
-    work: "Work",
     contact: "Contact",
   },
   ja: {
+    home: "Home",
     about: "About",
-    work: "Work",
     contact: "Contact",
   },
 };

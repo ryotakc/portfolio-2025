@@ -13,23 +13,25 @@ import ReturnButton from "./components/return-back";
 import { Tweet } from "./components/tweet-card";
 import { BalancerWrapper } from "./components/mdx/balancer-wrapper";
 import { IframeCard } from "./components/mdx/iframe-wrapper";
+import { Highlighter } from "./components/ui/highlighter";
+import { TypingAnimation } from "./components/ui/typing-animation";
 // import Note from './components/note'
 
 const cssVariablesTheme = createCssVariablesTheme({});
 
 export const components: Record<string, FC<any>> = {
   h1: (props) => (
-    <h1 className="font-semibold mb-7 text-rurikon-600 text-2xl" {...props}>
+    <h1 className="font-semibold mb-5 text-rurikon-600 text-3xl" {...props}>
       <BalancerWrapper>{props.children}</BalancerWrapper>
     </h1>
   ),
   h2: (props) => (
-    <h2 className="font-semibold mt-14 mb-7 text-rurikon-600 text-xl" {...props}>
+    <h2 className="font-semibold mt-11 text-rurikon-600 text-xl" {...props}>
       <BalancerWrapper>{props.children}</BalancerWrapper>
     </h2>
   ),
   h3: (props) => (
-    <h3 className="font-semibold mt-14 mb-7 text-rurikon-600 text-lg" {...props}>
+    <h3 className="font-semibold mt-11 text-rurikon-600 text-lg" {...props}>
       <BalancerWrapper>{props.children}</BalancerWrapper>
     </h3>
   ),
@@ -42,10 +44,10 @@ export const components: Record<string, FC<any>> = {
   // ),
 
   ul: (props) => (
-    <ul className="mt-7 list-disc list-inside marker:text-rurikon-200 pl-5" {...props} />
+    <ul className="mb-7 list-disc list-inside marker:text-rurikon-200 pl-5" {...props} />
   ),
   ol: (props) => (
-    <ol className="mt-7 list-decimal list-inside marker:text-rurikon-200 pl-5" {...props} />
+    <ol className="mb-7 list-decimal list-inside marker:text-rurikon-200 pl-5" {...props} />
   ),
   li: (props) => <li className="pl-1.5" {...props} />,
   a: ({ href, ...props }) => {
@@ -66,7 +68,7 @@ export const components: Record<string, FC<any>> = {
   },
   strong: (props) => <strong className="font-bold" {...props} />,
   p: (props) => (
-    <p className="mt-7" {...props}>
+    <p className="mb-7 mt-1" {...props}>
       {/* {props.children} */}
       <BalancerWrapper>{props.children}</BalancerWrapper>
       {/* <Balancer>{props.children}</Balancer> */}
@@ -169,6 +171,8 @@ export const components: Record<string, FC<any>> = {
   ReturnButton,
   IframeCard,
   // Note,
+  Highlighter,
+  TypingAnimation,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
