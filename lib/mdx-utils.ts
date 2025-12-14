@@ -3,6 +3,8 @@ import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import type { MDXComponents } from "mdx/types";
 import { components } from "@/mdx-components";
+import remarkDirective from "remark-directive";
+import { remarkNotePlugin } from "./remark-note-plugin.mjs";
 
 // コンテンツディレクトリのパス
 const contentDir = path.join(process.cwd(), "content");
@@ -59,6 +61,9 @@ export async function getMdxBySlug(locale: string, slug: string[]) {
       components: components as MDXComponents,
       options: {
         parseFrontmatter: true,
+        mdxOptions: {
+          remarkPlugins: [remarkDirective, remarkNotePlugin],
+        },
       },
     });
 

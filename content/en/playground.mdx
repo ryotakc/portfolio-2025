@@ -1,6 +1,4 @@
-# H1 Title (automatic id)
-
-# H1 title with id `custom-id` [#custom-id]
+# H1 Title
 
 ## H2 Title
 
@@ -38,12 +36,6 @@ function hello() {
   }
 /> */}
 
-```
-disabled since it doesn't work
-```
-
-A…
-
 ***
 
 horizontal rule
@@ -66,68 +58,29 @@ A block quote
 >
 > And multiple paragraphs.
 
-# H1 Title (automatic id)
 
-# H1 title with id `custom-id` [#custom-id]
+# Test Note Syntax
 
-## H2 Title
+:::note
+This is a default note.
+:::
 
-### H3 Title
+:::note[info]
+This is an info note.
+:::
 
-```
-Some code
-```
+:::note[warn]
+This is a warning note.
+:::
 
-```
-function hello() {
-  await test(); // some code
-  someMoreCode();
-}
-```
+:::note[alert]
+This is an alert note.
+:::
 
-{/* ## A tweet
+:::warn
+This is a warn alias.
+:::
 
-<Tweet
-  id="1374492662061953034"
-  caption={
-    <>
-      Next.js continues to grow organically as developers{" "}
-      <a href="https://twitter.com/vincentchw/status/1392775589094838277">
-        explain it
-      </a>{" "}
-      and{" "}
-      <a href="https://twitter.com/vadim_kravcenko/status/1401937274972037122">
-        recommend it
-      </a>{" "}
-      to one another
-    </>
-  }
-/> */}
-
-```
-disabled since it doesn't work
-```
-
-A…
-
-***
-
-horizontal rule
-
-1. an
-2. ordered
-3. list
-
-**combined with**
-
-- an
-- unordered
-- list
-
-A block quote
-
-
-> This is a quote. It can be long.  
-> With multiple lines.
->
-> And multiple paragraphs.
+:::alert
+This is an alert alias.
+:::

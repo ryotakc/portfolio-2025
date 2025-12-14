@@ -1,7 +1,14 @@
 import withMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
-export default withMDX()({
+import remarkDirective from "remark-directive";
+import { remarkNotePlugin } from "./lib/remark-note-plugin.mjs";
+
+export default withMDX({
+  options: {
+    remarkPlugins: [remarkDirective, remarkNotePlugin],
+  },
+})({
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   // i18n用のミドルウェア設定 (ルート切り替え用)
   // ルートページは言語選択画面にするか、デフォルト言語にリダイレクトする
@@ -16,9 +23,9 @@ export default withMDX()({
   },
   experimental: {
     viewTransition: true,
-    mdxRs: {
-      mdxType: "gfm",
-    },
+    // mdxRs: {
+    //   mdxType: "gfm",
+    // },
   },
   transpilePackages: ["shiki"],
   images: {

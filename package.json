@@ -38,6 +38,8 @@
     "react-tweet": "^3.3.0",
     "react-wrap-balancer": "^1.1.1",
     "react-youtube": "^10.1.0",
+    "remark": "^15.0.1",
+    "remark-directive": "^4.0.0",
     "remark-gfm": "^4.0.1",
     "rough-notation": "^0.5.1",
     "sharp": "^0.33.5",
