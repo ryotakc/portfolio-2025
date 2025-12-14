@@ -33,29 +33,13 @@ export const components: Record<string, FC<any>> = {
     />
   ),
   h3: (props) => (
-    <h3
-      className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight"
-      {...props}
-    />
+    <h3 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight" {...props} />
   ),
-  h4: (props) => (
-    <h4
-      className="scroll-m-20 text-xl font-semibold tracking-tight"
-      {...props}
-    />
-  ),
-  p: (props) => (
-    <p className="leading-7 [&:not(:first-child)]:mt-6" {...props} />
-  ),
-  blockquote: (props) => (
-    <blockquote className="mt-6 border-l-2 pl-6 italic mb-10" {...props} />
-  ),
-  ul: (props) => (
-    <ul className="my-6 ml-6 list-disc [&>li]:mt-2" {...props} />
-  ),
-  ol: (props) => (
-    <ol className="my-6 ml-6 list-decimal [&>li]:mt-2" {...props} />
-  ),
+  h4: (props) => <h4 className="scroll-m-20 text-xl font-semibold tracking-tight" {...props} />,
+  p: (props) => <p className="leading-7 [&:not(:first-child)]:mt-6" {...props} />,
+  blockquote: (props) => <blockquote className="mt-6 border-l-2 pl-6 italic mb-10" {...props} />,
+  ul: (props) => <ul className="my-6 ml-6 list-disc [&>li]:mt-2" {...props} />,
+  ol: (props) => <ol className="my-6 ml-6 list-decimal [&>li]:mt-2" {...props} />,
   li: (props) => <li className="mt-2" {...props} />,
   table: (props) => (
     <div className="my-6 w-full overflow-y-auto">
@@ -96,38 +80,40 @@ export const components: Record<string, FC<any>> = {
   code: async (props) => {
     if (typeof props.children === "string") {
       // Check if it's likely a code block (implied by context or length, or just use the highlight logic)
-      // The previous logic highlighted everything that was a string. 
+      // The previous logic highlighted everything that was a string.
       // However, typically `inline code` in markdown doesn't have newlines or is short.
       // But `shiki` is expensive for every inline code.
       // User's request for inline code styling: <code className="bg-muted ...">
-      
+
       // If props.className exists (e.g. language-js), it's definitely for highlighting (or at least intended).
       // Or if it's a code block from `pre`.
-      // The current implementation is a bit aggressive. 
+      // The current implementation is a bit aggressive.
       // Let's assume if it has className or long content, we highlight?
       // Actually, let's keep the existing logic for highlighting BUT if it fails or returns plain, we wrap it?
-      
+
       // Let's rely on the fact that code blocks usually come inside <pre> but here `code` component handles it.
       // If I look at the previous implementation:
       /*
       const code = await codeToHtml(props.children, { ... })
       return <code ... dangerouslySetInnerHTML ... />
       */
-      
+
       // We will keep the highlight logic for now, but apply the user's inline style for the fallback.
-      
+
       const code = await codeToHtml(props.children, {
         lang: "jsx", // Default lang?
         theme: cssVariablesTheme,
         transformers: [
           {
-             pre: (hast) => {
+            pre: (hast) => {
               if (hast.children.length !== 1) {
-                 // return hast; // Handle error gracefully?
-                  throw new Error("<pre>: Expected a single <code> child");
+                throw new Error("<pre>: Expected a single <code> child");
               }
-               // ...
-              return hast.children[0];
+              const child = hast.children[0];
+              if (child.type !== "element") {
+                throw new Error("<pre>: Expected a <code> child");
+              }
+              return child as any;
             },
             postprocess(html) {
               return html.replace(/^<code>|<\/code>$/g, "");
