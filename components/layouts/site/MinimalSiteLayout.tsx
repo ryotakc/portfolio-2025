@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import NavbarWrapper from "@/components/navbar-wrapper";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LanguageToggle } from "@/components/language-toggle";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 
 export default function MinimalSiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -25,7 +26,8 @@ export default function MinimalSiteLayout({ children }: { children: React.ReactN
             <LanguageToggle />
           </div>
           <div>
-            <ModeToggle />
+            {/* <ModeToggle /> */}
+            <AnimatedThemeToggler />
           </div>
         </div>
       </div>

@@ -75,11 +75,30 @@ export const AnimatedThemeToggler = ({
     <button
       ref={buttonRef}
       onClick={toggleTheme}
-      className={cn(className)}
+      className={cn(
+        "relative w-12 h-12 cursor-pointer flex items-center justify-center group z-50",
+        className
+      )}
       {...props}
     >
-      {isDark ? <Sun /> : <Moon />}
+      {isDark ? (
+        <Sun className="h-[1.2rem] w-[1.2rem]" />
+      ) : (
+        <Moon className="h-[1.2rem] w-[1.2rem]" />
+      )}
       <span className="sr-only">Toggle theme</span>
+      
+      {/* Corners */}
+      {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map(
+        (pos, i) => (
+          <span
+            key={i}
+            className={`absolute ${pos} w-2 h-2 border-neutral-400 transition-opacity duration-300 opacity-0 group-hover:opacity-100 pointer-events-none ${
+              i < 2 ? "border-t" : "border-b"
+            } ${i % 2 === 0 ? "border-l" : "border-r"}`}
+          />
+        )
+      )}
     </button>
   )
 }
