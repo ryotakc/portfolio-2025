@@ -20,9 +20,7 @@ export function LanguageToggle() {
 
     // ビュートランジションAPIが使用可能ならアニメーション付きで遷移
     if (document.startViewTransition) {
-      document.startViewTransition(() =>
-        router.push(`/${newLocale}${pathnameWithoutLocale}`)
-      );
+      document.startViewTransition(() => router.push(`/${newLocale}${pathnameWithoutLocale}`));
     } else {
       router.push(`/${newLocale}${pathnameWithoutLocale}`);
     }
@@ -43,12 +41,7 @@ export function LanguageToggle() {
       </span>
 
       {/* Corners - mode-toggleと同じスタイル */}
-      {[
-        "top-0 left-0",
-        "top-0 right-0",
-        "bottom-0 left-0",
-        "bottom-0 right-0",
-      ].map((pos, i) => (
+      {["top-0 left-0", "top-0 right-0", "bottom-0 left-0", "bottom-0 right-0"].map((pos, i) => (
         <span
           key={i}
           className={`absolute ${pos} w-2 h-2 border-neutral-400 transition-opacity duration-300 opacity-0 group-hover:opacity-100 pointer-events-none ${

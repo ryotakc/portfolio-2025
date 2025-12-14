@@ -20,10 +20,7 @@ export default function ReturnButton() {
   };
 
   return (
-    <button
-      onClick={handleClick}
-      className="block mr-auto text-left underline hover:text-gray-400"
-    >
+    <button onClick={handleClick} className="block mr-auto text-left underline hover:text-gray-400">
       {dictionary.returnBack}
     </button>
   );

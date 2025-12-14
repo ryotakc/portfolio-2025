@@ -13,10 +13,7 @@ interface BlogContentLayoutProps {
   };
 }
 
-export default function BlogContentLayout({
-  children,
-  frontmatter,
-}: BlogContentLayoutProps) {
+export default function BlogContentLayout({ children, frontmatter }: BlogContentLayoutProps) {
   return (
     <div className="mt-6">
       <header className="mb-10">
@@ -36,19 +33,17 @@ export default function BlogContentLayout({
           </p>
         )}
         {frontmatter.tags && frontmatter.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-4">
-                {frontmatter.tags.map(tag => (
-                    <Badge key={tag} variant="secondary">
-                        {tag}
-                    </Badge>
-                ))}
-            </div>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {frontmatter.tags.map((tag) => (
+              <Badge key={tag} variant="secondary">
+                {tag}
+              </Badge>
+            ))}
+          </div>
         )}
         <hr className="mt-8 border-rurikon-border dark:border-rurikon-border-dark opacity-50" />
       </header>
-      <div className="blog-content">
-          {children}
-      </div>
+      <div className="blog-content">{children}</div>
     </div>
   );
 }

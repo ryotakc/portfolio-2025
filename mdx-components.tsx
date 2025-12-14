@@ -24,18 +24,12 @@ export const components: Record<string, FC<any>> = {
     </h1>
   ),
   h2: (props) => (
-    <h2
-      className="font-semibold mt-14 mb-7 text-rurikon-600 text-xl"
-      {...props}
-    >
+    <h2 className="font-semibold mt-14 mb-7 text-rurikon-600 text-xl" {...props}>
       <BalancerWrapper>{props.children}</BalancerWrapper>
     </h2>
   ),
   h3: (props) => (
-    <h3
-      className="font-semibold mt-14 mb-7 text-rurikon-600 text-lg"
-      {...props}
-    >
+    <h3 className="font-semibold mt-14 mb-7 text-rurikon-600 text-lg" {...props}>
       <BalancerWrapper>{props.children}</BalancerWrapper>
     </h3>
   ),
@@ -48,16 +42,10 @@ export const components: Record<string, FC<any>> = {
   // ),
 
   ul: (props) => (
-    <ul
-      className="mt-7 list-disc list-inside marker:text-rurikon-200 pl-5"
-      {...props}
-    />
+    <ul className="mt-7 list-disc list-inside marker:text-rurikon-200 pl-5" {...props} />
   ),
   ol: (props) => (
-    <ol
-      className="mt-7 list-decimal list-inside marker:text-rurikon-200 pl-5"
-      {...props}
-    />
+    <ol className="mt-7 list-decimal list-inside marker:text-rurikon-200 pl-5" {...props} />
   ),
   li: (props) => <li className="pl-1.5" {...props} />,
   a: ({ href, ...props }) => {
@@ -88,9 +76,7 @@ export const components: Record<string, FC<any>> = {
   blockquote: ({ children }) => (
     <blockquote className="my-5 flex gap-4 text-gray-600 dark:text-gray-400">
       <div className="w-1 bg-gray-300 dark:bg-gray-600" />
-      <div className="[&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
-        {children}
-      </div>
+      <div className="[&>*:first-child]:mt-0 [&>*:last-child]:mb-0">{children}</div>
     </blockquote>
   ),
 
@@ -102,9 +88,7 @@ export const components: Record<string, FC<any>> = {
   //   </blockquote>
   // ),
 
-  pre: (props) => (
-    <pre className="mt-7 whitespace-pre md:whitespace-pre-wrap" {...props} />
-  ),
+  pre: (props) => <pre className="mt-7 whitespace-pre md:whitespace-pre-wrap" {...props} />,
   code: async (props) => {
     if (typeof props.children === "string") {
       const code = await codeToHtml(props.children, {

@@ -30,18 +30,19 @@ export default function PortfolioContentLayout({
           </p>
         )}
         {frontmatter.stack && (
-            <div className="flex gap-2 justify-center mt-4">
-                {frontmatter.stack.map(tech => (
-                    <span key={tech} className="px-2 py-1 bg-rurikon-100 dark:bg-rurikon-800 text-xs rounded-full">
-                        {tech}
-                    </span>
-                ))}
-            </div>
+          <div className="flex gap-2 justify-center mt-4">
+            {frontmatter.stack.map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-1 bg-rurikon-100 dark:bg-rurikon-800 text-xs rounded-full"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         )}
       </header>
-      <div className="portfolio-content max-w-none">
-          {children}
-      </div>
+      <div className="portfolio-content max-w-none">{children}</div>
     </div>
   );
 }

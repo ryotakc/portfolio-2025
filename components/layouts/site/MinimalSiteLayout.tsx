@@ -4,11 +4,7 @@ import NavbarWrapper from "@/components/navbar-wrapper";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LanguageToggle } from "@/components/language-toggle";
 
-export default function MinimalSiteLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function MinimalSiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className="fixed sm:hidden h-6 sm:h-10 md:h-14 w-full top-0 left-0 z-30 pointer-events-none content-fade-out" />

@@ -1,5 +1,5 @@
-export type SiteLayoutType = 'minimal' | 'sidebar' | 'magazine';
-export type DefaultColorMode = 'system' | 'dark' | 'light';
+export type SiteLayoutType = "minimal" | "sidebar" | "magazine";
+export type DefaultColorMode = "system" | "dark" | "light";
 
 export interface ThemeConfig {
   layout: SiteLayoutType;
@@ -7,6 +7,6 @@ export interface ThemeConfig {
 }
 
 export const siteConfig: ThemeConfig = {
-  layout: 'minimal', // Current design
-  defaultColor: 'system',
+  layout: "minimal", // Current design
+  defaultColor: "system",
 };

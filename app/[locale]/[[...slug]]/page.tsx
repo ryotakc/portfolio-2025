@@ -43,10 +43,10 @@ export async function generateStaticParams({
   // But for full static export, returning { locale, slug } for all combinations is safest.
 
   // Note: Since this is inside [locale], returning { slug } is usually enough IF [locale] is static.
-    // But let's verify.
-    // If I return [{slug: ['foo']}], it will generate /locale/foo for the current locale context?
-    // Actually, it's safer to generate all combinations or handle it per locale.
-    // Given the structure, let's try to infer if we can loop all languages.
+  // But let's verify.
+  // If I return [{slug: ['foo']}], it will generate /locale/foo for the current locale context?
+  // Actually, it's safer to generate all combinations or handle it per locale.
+  // Given the structure, let's try to infer if we can loop all languages.
 
   const paths: { slug: string[] }[] = [];
 
@@ -58,27 +58,25 @@ export async function generateStaticParams({
 
   const pathsByLocale = await Promise.all(
     languages.map(async (lang) => {
-        const slugs = await getAllContentPaths(lang);
-        return slugs
-            // .filter(slug => slug.length > 0) // Allow index pages now (slug = [])
-            .map(slug => ({ locale: lang, slug }));
-    })
+      const slugs = await getAllContentPaths(lang);
+      return (
+        slugs
+          // .filter(slug => slug.length > 0) // Allow index pages now (slug = [])
+          .map((slug) => ({ locale: lang, slug }))
+      );
+    }),
   );
 
   return pathsByLocale.flat();
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<Params>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { locale, slug = [] } = await params;
   const post = await getMdxBySlug(locale, slug);
 
   if (!post) {
     return {
-       title: 'Not Found'
+      title: "Not Found",
     };
   }
 
@@ -92,11 +90,7 @@ export async function generateMetadata({
   });
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
+export default async function Page({ params }: { params: Promise<Params> }) {
   const { locale, slug = [] } = await params;
   const post = await getMdxBySlug(locale, slug);
 
@@ -108,19 +102,15 @@ export default async function Page({
 
   // Select Layout based on frontmatter
   const LayoutComponent = (() => {
-      switch (frontmatter.layout) {
-          case 'blog':
-              return BlogContentLayout;
-          case 'portfolio':
-              return PortfolioContentLayout;
-          default:
-              return DefaultContentLayout;
-      }
+    switch (frontmatter.layout) {
+      case "blog":
+        return BlogContentLayout;
+      case "portfolio":
+        return PortfolioContentLayout;
+      default:
+        return DefaultContentLayout;
+    }
   })();
 
-  return (
-    <LayoutComponent frontmatter={frontmatter}>
-        {content}
-    </LayoutComponent>
-  );
+  return <LayoutComponent frontmatter={frontmatter}>{content}</LayoutComponent>;
 }
