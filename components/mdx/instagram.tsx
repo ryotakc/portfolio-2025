@@ -6,9 +6,9 @@ export default function Instagram({ url }: { url: string }) {
   const urlObj = new URL(url);
   urlObj.search = "";
   const cleanUrl = urlObj.toString();
-  
+
   // Remove trailing slash if present to avoid double slash
-  const finalUrl = cleanUrl.endsWith('/') ? cleanUrl.slice(0, -1) : cleanUrl;
+  const finalUrl = cleanUrl.endsWith("/") ? cleanUrl.slice(0, -1) : cleanUrl;
   const embedUrl = `${finalUrl}/embed`;
 
   return (

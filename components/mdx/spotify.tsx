@@ -4,14 +4,14 @@ export default function Spotify({ link }: { link: string }) {
   // Ensure it's an embed URL if passed a direct link, though transformer handles most
   // But for safety, we can just pass the link if it's already properly formatted by the transformer
   // or do client-side adjustment if needed. Use 'embed' path for iframe.
-  
-  // Logic: 
+
+  // Logic:
   // https://open.spotify.com/track/ID -> https://open.spotify.com/embed/track/ID
   // https://open.spotify.com/playlist/ID -> https://open.spotify.com/embed/playlist/ID
-  
+
   let embedUrl = link;
-  if (!link.includes('/embed/')) {
-     embedUrl = link.replace('open.spotify.com/', 'open.spotify.com/embed/');
+  if (!link.includes("/embed/")) {
+    embedUrl = link.replace("open.spotify.com/", "open.spotify.com/embed/");
   }
 
   // Clean query params
@@ -19,7 +19,8 @@ export default function Spotify({ link }: { link: string }) {
   urlObj.search = "";
   const cleanEmbedUrl = urlObj.toString();
 
-  const isPlaylistOrAlbum = cleanEmbedUrl.includes("/playlist/") || cleanEmbedUrl.includes("/album/");
+  const isPlaylistOrAlbum =
+    cleanEmbedUrl.includes("/playlist/") || cleanEmbedUrl.includes("/album/");
   const height = isPlaylistOrAlbum ? 380 : 152;
 
   return (
