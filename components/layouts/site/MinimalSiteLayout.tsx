@@ -12,7 +12,7 @@ export default function MinimalSiteLayout({ children }: { children: React.ReactN
       <div className="">
         <div className="flex flex-col mobile:flex-row justify-center">
           <NavbarWrapper />
-          <main className="relative flex-1 max-w-2xl [contain:inline-size]">
+          <main className="relative flex-1 max-w-5xl [contain:inline-size]">
             <div className="absolute w-full h-px opacity-50 bg-rurikon-border dark:bg-rurikon-border-dark right-0 mobile:right-auto mobile:left-0 mobile:w-px mobile:h-full mobile:opacity-100" />
             <ViewTransition name="crossfade">
               {children}
