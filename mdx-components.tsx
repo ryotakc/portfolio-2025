@@ -16,6 +16,7 @@ import { IframeCard } from "./components/mdx/iframe-wrapper";
 import { Highlighter } from "./components/ui/highlighter";
 import { TypingAnimation } from "./components/ui/typing-animation";
 import Note from "./components/note";
+import LinkCard from "./components/mdx/link-card";
 
 const cssVariablesTheme = createCssVariablesTheme({});
 
@@ -187,6 +188,7 @@ export const components: Record<string, FC<any>> = {
   Large: (props) => <div className="text-lg font-semibold" {...props} />,
   Small: (props) => <small className="text-sm leading-none font-medium" {...props} />,
   Muted: (props) => <p className="text-muted-foreground text-sm" {...props} />,
+  LinkCard,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
