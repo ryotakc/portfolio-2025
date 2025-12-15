@@ -28,6 +28,18 @@ export function JsonLd() {
     },
   };
 
+  const profilePageSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    mainEntity: {
+      "@type": "Person",
+      name: siteConfig.name,
+      alternateName: [siteConfig.nameJa, "Leo"],
+      image: siteConfig.ogImage,
+      description: siteConfig.description,
+    },
+  };
+
   return (
     <>
       <script
@@ -39,6 +51,11 @@ export function JsonLd() {
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted JSON-LD content
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted JSON-LD content
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
       />
     </>
   );

@@ -24,41 +24,65 @@ export function DynamicBreadcrumb() {
   // But usually this component is used in subpages.
 
   const homeLabel = locale === "ja" ? "ホーム" : "home";
+  const baseUrl = "https://ryotakc.com"; // hardcoded or imported from siteConfig if it was public/client safe
+
+  // Generate JSON-LD
+  const breadcrumbList = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: homeLabel,
+        item: `${baseUrl}/${locale}`,
+      },
+      ...pathSegments.map((segment, index) => ({
+        "@type": "ListItem",
+        position: index + 2,
+        name: decodeURIComponent(segment),
+        item: `${baseUrl}/${locale}/${pathSegments.slice(0, index + 1).join("/")}`,
+      })),
+    ],
+  };
 
   return (
-    <Breadcrumb className="mb-6">
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink asChild>
-            <Link href={`/${locale}`}>{homeLabel}</Link>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        {pathSegments.length > 0 && <BreadcrumbSeparator />}
+    <>
+      <script
+        type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted JSON-LD content
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbList) }}
+      />
+      <Breadcrumb className="mb-6">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href={`/${locale}`}>{homeLabel}</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          {pathSegments.length > 0 && <BreadcrumbSeparator />}
 
-        {pathSegments.map((segment, index) => {
-          const isLast = index === pathSegments.length - 1;
-          const href = `/${locale}/${pathSegments.slice(0, index + 1).join("/")}`;
+          {pathSegments.map((segment, index) => {
+            const isLast = index === pathSegments.length - 1;
+            const href = `/${locale}/${pathSegments.slice(0, index + 1).join("/")}`;
 
-          // Decode generic URL encoded segments if necessary, though basic slugs are usually safe.
-          // You might want a lookup for mapping "work" -> "Work" etc., but utilizing the segment id is fine for now
-          // as per requirement "home/work/portfolio-2025".
-
-          return (
-            <React.Fragment key={href}>
-              <BreadcrumbItem>
-                {isLast ? (
-                  <BreadcrumbPage>{decodeURIComponent(segment)}</BreadcrumbPage>
-                ) : (
-                  <BreadcrumbLink asChild>
-                    <Link href={href}>{decodeURIComponent(segment)}</Link>
-                  </BreadcrumbLink>
-                )}
-              </BreadcrumbItem>
-              {!isLast && <BreadcrumbSeparator />}
-            </React.Fragment>
-          );
-        })}
-      </BreadcrumbList>
-    </Breadcrumb>
+            return (
+              <React.Fragment key={href}>
+                <BreadcrumbItem>
+                  {isLast ? (
+                    <BreadcrumbPage>{decodeURIComponent(segment)}</BreadcrumbPage>
+                  ) : (
+                    <BreadcrumbLink asChild>
+                      <Link href={href}>{decodeURIComponent(segment)}</Link>
+                    </BreadcrumbLink>
+                  )}
+                </BreadcrumbItem>
+                {!isLast && <BreadcrumbSeparator />}
+              </React.Fragment>
+            );
+          })}
+        </BreadcrumbList>
+      </Breadcrumb>
+    </>
   );
 }
