@@ -1,4 +1,4 @@
-import LinkCard from './link-card';
+import LinkCard from "./link-card";
 
 type OEmbedData = {
   title?: string;
@@ -25,12 +25,12 @@ interface OEmbedProps {
 
 export default function OEmbed({ url, oEmbed }: OEmbedProps) {
   let data: OEmbedData | null = null;
-  
+
   if (oEmbed) {
     try {
       data = JSON.parse(oEmbed);
     } catch (e) {
-      console.error('Failed to parse oEmbed data', e);
+      console.error("Failed to parse oEmbed data", e);
     }
   }
 
@@ -38,9 +38,9 @@ export default function OEmbed({ url, oEmbed }: OEmbedProps) {
   // For now, if we have HTML (like Twitter blockquote or Spotify iframe), use it.
   if (data && data.html) {
     return (
-      <div 
-        className="my-6 w-full flex justify-center" 
-        dangerouslySetInnerHTML={{ __html: data.html }} 
+      <div
+        className="my-6 w-full flex justify-center"
+        dangerouslySetInnerHTML={{ __html: data.html }}
       />
     );
   }

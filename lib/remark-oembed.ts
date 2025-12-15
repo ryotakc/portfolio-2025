@@ -1,8 +1,8 @@
-import { type Plugin } from 'unified';
-import type { Root, Paragraph } from 'mdast';
-import { visit } from 'unist-util-visit';
-import { unfurl } from 'unfurl.js';
-import { isParagraph, isSimpleUrlLink } from './mdast-util';
+import { type Plugin } from "unified";
+import type { Root, Paragraph } from "mdast";
+import { visit } from "unist-util-visit";
+import { unfurl } from "unfurl.js";
+import { isParagraph, isSimpleUrlLink } from "./mdast-util";
 
 export type headingProperties = Record<string, string>;
 
@@ -22,10 +22,10 @@ export const oEmbedTransformer: Readonly<Transformer> = {
   hName: async (url) => {
     try {
       const metadata = await unfurl(url.href);
-      return metadata.oEmbed != null ? 'OEmbed' : 'LinkCard'; // 'OEmbed' and 'LinkCard' component names
+      return metadata.oEmbed != null ? "OEmbed" : "LinkCard"; // 'OEmbed' and 'LinkCard' component names
     } catch (e) {
-      console.error('Failed to unfurl:', e);
-      return 'LinkCard';
+      console.error("Failed to unfurl:", e);
+      return "LinkCard";
     }
   },
   hProperties: async (url) => {
@@ -47,42 +47,46 @@ export const oEmbedTransformer: Readonly<Transformer> = {
 };
 
 export const youTubeTransformer: Readonly<Transformer> = {
-  hName: 'YouTube',
+  hName: "YouTube",
   hProperties: async (url): Promise<headingProperties> => {
     const convertToEmbedUrl = (url: string): string => {
       const match = url.match(/^.*(watch\?v=|embed\/)([^#&?]*).*/);
 
       if (match && match[2]) {
-        return 'https://www.youtube.com/embed/' + match[2];
+        return "https://www.youtube.com/embed/" + match[2];
       } else {
-        throw new Error('Invalid YouTube URL');
+        throw new Error("Invalid YouTube URL");
       }
     };
 
     return {
       src: convertToEmbedUrl(url.href),
-      title: 'YouTube video embed',
+      title: "YouTube video embed",
     };
   },
   match: async (url) => {
-    return url.hostname === 'www.youtube.com' || url.hostname === 'youtube.com' || url.hostname === 'youtu.be';
+    return (
+      url.hostname === "www.youtube.com" ||
+      url.hostname === "youtube.com" ||
+      url.hostname === "youtu.be"
+    );
   },
 };
 
 export const twitterTransformer: Readonly<Transformer> = {
-  hName: 'EmbeddedTweet',
+  hName: "EmbeddedTweet",
   hProperties: async (url) => {
     const match = url.pathname.match(/\/status\/(\d+)/);
-    if (!match) throw new Error('Invalid Tweet URL');
+    if (!match) throw new Error("Invalid Tweet URL");
     return { id: match[1] };
   },
   match: async (url) => {
     return (
-      (url.hostname === 'twitter.com' ||
-        url.hostname === 'www.twitter.com' ||
-        url.hostname === 'x.com' ||
-        url.hostname === 'www.x.com') &&
-      url.pathname.includes('/status/')
+      (url.hostname === "twitter.com" ||
+        url.hostname === "www.twitter.com" ||
+        url.hostname === "x.com" ||
+        url.hostname === "www.x.com") &&
+      url.pathname.includes("/status/")
     );
   },
 };
@@ -92,21 +96,22 @@ const defaultOptions: RemarkOEmbedPluginOptions = {
 };
 
 export const remarkOEmbed: Plugin<[RemarkOEmbedPluginOptions?], Root> = (
-  options = defaultOptions
+  options = defaultOptions,
 ) => {
   return async (tree, file) => {
     const transforms: Promise<void>[] = [];
 
-    visit(tree, 'paragraph', (paragraph: Paragraph) => {
-       if (!isSimpleUrlLink(paragraph)) return;
-    
-       // Check if we should process this link
-       // isSimpleUrlLink checks structure.
-       const link = paragraph.children[0] as any; // We know it's a link from check
-       const url = new URL(link.url);
+    visit(tree, "paragraph", (paragraph: Paragraph) => {
+      if (!isSimpleUrlLink(paragraph)) return;
 
-       const transform = async () => {
-        for (const transformer of options!.transformers) { // options is defaulted above
+      // Check if we should process this link
+      // isSimpleUrlLink checks structure.
+      const link = paragraph.children[0] as any; // We know it's a link from check
+      const url = new URL(link.url);
+
+      const transform = async () => {
+        for (const transformer of options!.transformers) {
+          // options is defaulted above
           if (!(await transformer.match(url))) continue;
 
           const hName = await getHName(transformer, url);
@@ -115,30 +120,30 @@ export const remarkOEmbed: Plugin<[RemarkOEmbedPluginOptions?], Root> = (
           // Replace paragraph with mdxJsxFlowElement
           // We need to construct the node MANUALLY as per remark-link-card example relative to AST
           // modifying "paragraph" to "mdxJsxFlowElement"
-          
+
           Object.assign(paragraph, {
-            type: 'mdxJsxFlowElement',
+            type: "mdxJsxFlowElement",
             name: hName,
             attributes: Object.entries(hProperties).map(([name, value]) => ({
-              type: 'mdxJsxAttribute',
+              type: "mdxJsxAttribute",
               name,
               value,
             })),
-            children: [], 
+            children: [],
           });
-          
+
           return;
         }
       };
-      
+
       transforms.push(
         transform().catch((e) => {
           file.message(
             `[ERROR] Failed to embed ${link.url} in ${file.path} at line ${link.position?.start?.line}; ${String(e)}`,
             link.position,
-            'remarkOEmbed'
+            "remarkOEmbed",
           );
-        })
+        }),
       );
     });
 
@@ -147,11 +152,11 @@ export const remarkOEmbed: Plugin<[RemarkOEmbedPluginOptions?], Root> = (
 };
 
 const getHName = async (transformer: Transformer, url: URL) => {
-  if (typeof transformer.hName === 'function') return transformer.hName(url);
+  if (typeof transformer.hName === "function") return transformer.hName(url);
   return transformer.hName;
 };
 
 const getHProperties = async (transformer: Transformer, url: URL) => {
-  if (typeof transformer.hProperties === 'function') return transformer.hProperties(url);
+  if (typeof transformer.hProperties === "function") return transformer.hProperties(url);
   return transformer.hProperties ?? {};
 };

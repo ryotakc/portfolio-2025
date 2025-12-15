@@ -1,4 +1,4 @@
-import { Tweet } from 'react-tweet';
+import { Tweet } from "react-tweet";
 
 export default function EmbeddedTweet({ id }: { id: string }) {
   return (

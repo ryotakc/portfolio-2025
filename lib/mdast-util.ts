@@ -1,15 +1,15 @@
-import type { Paragraph, Link, PhrasingContent } from 'mdast';
+import type { Paragraph, Link, PhrasingContent } from "mdast";
 
 export function isParagraph(node: any): node is Paragraph {
-  return node.type === 'paragraph';
+  return node.type === "paragraph";
 }
 
 export function isLink(node: any): node is Link {
-  return node.type === 'link';
+  return node.type === "link";
 }
 
-export function isText(node: any): node is { type: 'text'; value: string } {
-  return node.type === 'text';
+export function isText(node: any): node is { type: "text"; value: string } {
+  return node.type === "text";
 }
 
 export function isSimpleUrlLink(paragraph: Paragraph): boolean {

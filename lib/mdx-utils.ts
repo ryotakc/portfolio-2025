@@ -65,7 +65,13 @@ export async function getMdxBySlug(locale: string, slug: string[]) {
       options: {
         parseFrontmatter: true,
         mdxOptions: {
-          remarkPlugins: [remarkGfm, remarkDirective, remarkNotePlugin, remarkOEmbed, remarkLinkCard],
+          remarkPlugins: [
+            remarkGfm,
+            remarkDirective,
+            remarkNotePlugin,
+            remarkOEmbed,
+            remarkLinkCard,
+          ],
         },
       },
     });
