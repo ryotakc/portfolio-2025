@@ -3,10 +3,11 @@ import type { NextConfig } from "next";
 
 import remarkDirective from "remark-directive";
 import { remarkNotePlugin } from "./lib/remark-note-plugin.mjs";
+import { remarkOEmbed } from "./lib/remark-oembed";
 
 export default withMDX({
   options: {
-    remarkPlugins: [remarkDirective, remarkNotePlugin],
+    remarkPlugins: [remarkDirective, remarkOEmbed, remarkNotePlugin],
   },
 })({
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],

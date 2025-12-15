@@ -107,6 +107,7 @@ export async function GET(request: NextRequest) {
           }}
         >
           {/* Avatar Image */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={avatarBase64}
             alt="Leo"

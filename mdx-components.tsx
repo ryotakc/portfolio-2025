@@ -10,13 +10,17 @@ import { InlineMath, BlockMath } from "react-katex";
 
 import { BlockSideTitle } from "@/components/block-sidetitle";
 import ReturnButton from "./components/return-back";
-import { Tweet } from "./components/tweet-card";
 import { BalancerWrapper } from "./components/mdx/balancer-wrapper";
 import { IframeCard } from "./components/mdx/iframe-wrapper";
 import { Highlighter } from "./components/ui/highlighter";
 import { TypingAnimation } from "./components/ui/typing-animation";
 import Note from "./components/note";
 import LinkCard from "./components/mdx/link-card";
+import OEmbed from "./components/mdx/oembed";
+import YouTube from "./components/mdx/youtube";
+import EmbeddedTweet from "./components/mdx/tweet";
+import Spotify from "./components/mdx/spotify";
+import Instagram from "./components/mdx/instagram";
 
 const cssVariablesTheme = createCssVariablesTheme({});
 
@@ -138,7 +142,6 @@ export const components: Record<string, FC<any>> = {
       />
     );
   },
-  Tweet,
   Image,
   img: async ({ src, alt, title }) => {
     let img: React.ReactNode;
@@ -189,6 +192,11 @@ export const components: Record<string, FC<any>> = {
   Small: (props) => <small className="text-sm leading-none font-medium" {...props} />,
   Muted: (props) => <p className="text-muted-foreground text-sm" {...props} />,
   LinkCard,
+  OEmbed,
+  YouTube,
+  EmbeddedTweet,
+  Spotify,
+  Instagram,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
