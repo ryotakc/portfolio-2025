@@ -12,32 +12,32 @@ export default async function LinkCard({ url }: { url: string }) {
     console.error(`Failed to fetch OG data for ${url}`, e);
     // Fallback or return simple link
     return (
-        <div className="my-8">
-            <Link
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-            >
-                {url}
-            </Link>
-        </div>
+      <div className="my-8">
+        <Link
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          {url}
+        </Link>
+      </div>
     );
   }
 
   if (!meta.success) {
-      return (
-        <div className="my-8">
-            <Link
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-            >
-                {url}
-            </Link>
-        </div>
-      );
+    return (
+      <div className="my-8">
+        <Link
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          {url}
+        </Link>
+      </div>
+    );
   }
 
   const title = meta.ogTitle || meta.twitterTitle || url;
@@ -45,7 +45,7 @@ export default async function LinkCard({ url }: { url: string }) {
   const imageUrl =
     (meta.ogImage && meta.ogImage[0] && meta.ogImage[0].url) ||
     (meta.twitterImage && meta.twitterImage[0] && meta.twitterImage[0].url);
-  
+
   const domain = new URL(url).hostname;
   const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;
 
@@ -64,15 +64,15 @@ export default async function LinkCard({ url }: { url: string }) {
             </h3>
             <p className="line-clamp-2 text-sm text-muted-foreground">{description}</p>
           </div>
-          
+
           <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img 
-                src={faviconUrl} 
-                alt={`${domain} icon`} 
-                className="h-4 w-4 rounded-sm"
-                width={16}
-                height={16}
+            <img
+              src={faviconUrl}
+              alt={`${domain} icon`}
+              className="h-4 w-4 rounded-sm"
+              width={16}
+              height={16}
             />
             <span className="truncate">{domain}</span>
           </div>
@@ -82,8 +82,8 @@ export default async function LinkCard({ url }: { url: string }) {
           <div className="relative h-full aspect-[1.91/1] shrink-0 sm:aspect-square sm:w-auto hidden sm:block">
             {/* Using standard img tag if external, or Next Image if configured. 
                 Using img for broader compatibility with external URLs without config */}
-             {/* eslint-disable-next-line @next/next/no-img-element */}
-             <img
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={imageUrl}
               alt={title || "Link preview image"}
               className="h-full w-full object-cover"
