@@ -21,6 +21,7 @@ export default function Instagram({ url }: { url: string }) {
           height="100%"
           frameBorder="0"
           scrolling="yes"
+          // @ts-expect-error: allowtransparency is not in the type definition but required by React
           allowtransparency="true"
         ></iframe>
       </div>
