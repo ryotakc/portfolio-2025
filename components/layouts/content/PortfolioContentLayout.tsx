@@ -23,7 +23,6 @@ export default function PortfolioContentLayout({
         <DynamicBreadcrumb />
       </div>
       <header className="mb-12 text-center">
-
         {frontmatter.description && (
           <p className="text-lg text-rurikon-500 max-w-2xl mx-auto">
             <Balancer>{frontmatter.description}</Balancer>
