@@ -15,20 +15,22 @@ export default function Spotify({ link }: { link: string }) {
   }
 
   const isPlaylistOrAlbum = embedUrl.includes("/playlist/") || embedUrl.includes("/album/");
-  const height = isPlaylistOrAlbum ? "352" : "152";
+  const height = isPlaylistOrAlbum ? 352 : 152;
 
   return (
     <div className="flex justify-center my-6">
-      <iframe 
-        style={{ borderRadius: '12px' }} 
-        src={embedUrl} 
-        width="100%" 
-        height={height}
-        frameBorder="0" 
-        allowFullScreen 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy"
-      ></iframe>
+      <div style={{ width: "100%", maxWidth: "100%", height: `${height}px` }}>
+        <iframe
+          style={{ borderRadius: "12px" }}
+          src={embedUrl}
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          allowFullScreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+        ></iframe>
+      </div>
     </div>
   );
 }
