@@ -58,9 +58,7 @@ export async function getMdxBySlug(locale: string, slug: string[]) {
       date?: string;
       theme?: string;
       draft?: boolean;
-      tags?: string[];
-      categories?: string[];
-      [key: string]: unknown;
+      [key: string]: string | number | boolean | null | undefined;
     }>({
       source,
       components: components as MDXComponents,
@@ -121,94 +119,4 @@ export async function getAllContentPaths(locale: string) {
   };
 
   return getAllFiles(localeDir);
-}
-
-export type MDXPost = {
-  slug: string[];
-  content: React.ReactElement;
-  frontmatter: {
-    title?: string;
-    description?: string;
-    date?: string;
-    theme?: string;
-    draft?: boolean;
-    layout?: string;
-    tags?: string[];
-    categories?: string[];
-    [key: string]: unknown;
-  };
-};
-
-// ヘルパー関数: フロントマターを含むすべての投稿を取得
-export async function getAllPosts(locale: string): Promise<MDXPost[]> {
-  const paths = await getAllContentPaths(locale);
-  const posts = await Promise.all(
-    paths.map(async (slug) => {
-      const post = await getMdxBySlug(locale, slug);
-      if (post) {
-        return {
-          slug,
-          content: post.content,
-          frontmatter: post.frontmatter,
-        };
-      }
-      return null;
-    }),
-  );
-
-  return posts.filter((post): post is MDXPost => post !== null && !post.frontmatter.draft);
-}
-
-// すべてのタグを取得 (カウント付き)
-export async function getAllTags(locale: string): Promise<{ name: string; count: number }[]> {
-  const posts = await getAllPosts(locale);
-  const tagCounts: Record<string, number> = {};
-
-  posts.forEach((post) => {
-    if (Array.isArray(post.frontmatter.tags)) {
-      post.frontmatter.tags.forEach((tag) => {
-        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-      });
-    }
-  });
-
-  return Object.entries(tagCounts)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
-}
-
-// すべてのカテゴリーを取得 (カウント付き)
-export async function getAllCategories(locale: string): Promise<{ name: string; count: number }[]> {
-  const posts = await getAllPosts(locale);
-  const categoryCounts: Record<string, number> = {};
-
-  posts.forEach((post) => {
-    if (Array.isArray(post.frontmatter.categories)) {
-      post.frontmatter.categories.forEach((category) => {
-        categoryCounts[category] = (categoryCounts[category] || 0) + 1;
-      });
-    }
-  });
-
-  return Object.entries(categoryCounts)
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
-}
-
-// 特定のタグを持つ投稿を取得
-export async function getPostsByTag(locale: string, tag: string): Promise<MDXPost[]> {
-  const posts = await getAllPosts(locale);
-  return posts.filter((post) => {
-    return Array.isArray(post.frontmatter.tags) && post.frontmatter.tags.includes(tag);
-  });
-}
-
-// 特定のカテゴリーを持つ投稿を取得
-export async function getPostsByCategory(locale: string, category: string): Promise<MDXPost[]> {
-  const posts = await getAllPosts(locale);
-  return posts.filter((post) => {
-    return (
-      Array.isArray(post.frontmatter.categories) && post.frontmatter.categories.includes(category)
-    );
-  });
 }

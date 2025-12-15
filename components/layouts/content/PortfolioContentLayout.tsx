@@ -11,11 +11,13 @@ interface PortfolioContentLayoutProps {
     repoUrl?: string;
     [key: string]: unknown;
   };
+  locale: string;
 }
 
 export default function PortfolioContentLayout({
   children,
   frontmatter,
+  locale,
 }: PortfolioContentLayoutProps) {
   return (
     <div className="mt-0">
@@ -23,7 +25,6 @@ export default function PortfolioContentLayout({
         <DynamicBreadcrumb />
       </div>
       <header className="mb-12 text-center">
-
         {frontmatter.description && (
           <p className="text-lg text-rurikon-500 max-w-2xl mx-auto">
             <Balancer>{frontmatter.description}</Balancer>

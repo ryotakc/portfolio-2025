@@ -8,9 +8,10 @@ interface DefaultContentLayoutProps {
     description?: string;
     [key: string]: unknown;
   };
+  locale: string;
 }
 
-export default function DefaultContentLayout({ children, frontmatter }: DefaultContentLayoutProps) {
+export default function DefaultContentLayout({ children, frontmatter, locale }: DefaultContentLayoutProps) {
   return (
     <div className="mt-0">
       <DynamicBreadcrumb />
