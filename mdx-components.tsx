@@ -10,7 +10,6 @@ import { InlineMath, BlockMath } from "react-katex";
 
 import { BlockSideTitle } from "@/components/block-sidetitle";
 import ReturnButton from "./components/return-back";
-import { Tweet } from "./components/tweet-card";
 import { BalancerWrapper } from "./components/mdx/balancer-wrapper";
 import { IframeCard } from "./components/mdx/iframe-wrapper";
 import { Highlighter } from "./components/ui/highlighter";
@@ -141,7 +140,6 @@ export const components: Record<string, FC<any>> = {
       />
     );
   },
-  Tweet,
   Image,
   img: async ({ src, alt, title }) => {
     let img: React.ReactNode;

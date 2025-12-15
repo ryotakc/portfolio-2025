@@ -15,7 +15,7 @@ type OEmbedData = {
   thumbnail_url?: string;
   html?: string;
   url?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 interface OEmbedProps {

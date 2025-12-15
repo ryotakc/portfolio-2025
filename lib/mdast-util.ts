@@ -1,15 +1,23 @@
 import type { Paragraph, Link, PhrasingContent } from "mdast";
 
-export function isParagraph(node: any): node is Paragraph {
-  return node.type === "paragraph";
+export function isParagraph(node: unknown): node is Paragraph {
+  return (
+    typeof node === "object" &&
+    node !== null &&
+    (node as Record<string, unknown>).type === "paragraph"
+  );
 }
 
-export function isLink(node: any): node is Link {
-  return node.type === "link";
+export function isLink(node: unknown): node is Link {
+  return (
+    typeof node === "object" && node !== null && (node as Record<string, unknown>).type === "link"
+  );
 }
 
-export function isText(node: any): node is { type: "text"; value: string } {
-  return node.type === "text";
+export function isText(node: unknown): node is { type: "text"; value: string } {
+  return (
+    typeof node === "object" && node !== null && (node as Record<string, unknown>).type === "text"
+  );
 }
 
 export function isSimpleUrlLink(paragraph: Paragraph): boolean {

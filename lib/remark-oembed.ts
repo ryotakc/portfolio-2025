@@ -1,5 +1,5 @@
 import { type Plugin } from "unified";
-import type { Root, Paragraph } from "mdast";
+import type { Root, Paragraph, Link } from "mdast";
 import { visit } from "unist-util-visit";
 import { unfurl } from "unfurl.js";
 import { isParagraph, isSimpleUrlLink } from "./mdast-util";
@@ -106,7 +106,7 @@ export const remarkOEmbed: Plugin<[RemarkOEmbedPluginOptions?], Root> = (
 
       // Check if we should process this link
       // isSimpleUrlLink checks structure.
-      const link = paragraph.children[0] as any; // We know it's a link from check
+      const link = paragraph.children[0] as Link; // We know it's a link from check
       const url = new URL(link.url);
 
       const transform = async () => {
