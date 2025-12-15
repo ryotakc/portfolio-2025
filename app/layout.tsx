@@ -8,23 +8,63 @@ import "./globals.css";
 // import { LanguageToggle } from "@/components/language-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
 // import NavbarWrapper from "@/components/navbar-wrapper";
-import { siteConfig } from "@/config/theme";
+import { siteConfig as themeSiteConfig } from "@/config/theme";
+import { siteConfig } from "@/config/site";
 import MinimalSiteLayout from "@/components/layouts/site/MinimalSiteLayout";
 import SidebarSiteLayout from "@/components/layouts/site/SidebarSiteLayout";
 import MagazineSiteLayout from "@/components/layouts/site/MagazineSiteLayout";
 import { Analytics } from "@vercel/analytics/react";
+import { JsonLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    template: "%s | Leo",
-    default: "Leo",
+    template: "%s | Ryota Kato - Leo",
+    default: siteConfig.title,
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: siteConfig.authors,
+  creator: siteConfig.authors[0].name,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: "@ryotakc",
+  },
+  alternates: {
+    canonical: "./",
+    languages: {
+      "en-US": "/en",
+      "ja-JP": "/ja",
+    },
   },
 };
 
 export const viewport: Viewport = {
   maximumScale: 1,
-  colorScheme: "only light",
-  themeColor: "#fcfcfc",
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fcfcfc" },
+    { media: "(prefers-color-scheme: dark)", color: "#18181b" },
+  ],
 };
 
 export default function RootLayout({
@@ -36,7 +76,7 @@ export default function RootLayout({
     minimal: MinimalSiteLayout,
     sidebar: SidebarSiteLayout,
     magazine: MagazineSiteLayout,
-  }[siteConfig.layout];
+  }[themeSiteConfig.layout];
 
   return (
     <html lang="en" className="overflow-x-hidden touch-manipulation" suppressHydrationWarning>
@@ -51,11 +91,13 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme={siteConfig.defaultColor}
+          defaultTheme={themeSiteConfig.defaultColor}
           enableSystem
           disableTransitionOnChange
         >
           <SiteLayout>{children}</SiteLayout>
+          <Analytics />
+          <JsonLd />
         </ThemeProvider>
       </body>
     </html>
