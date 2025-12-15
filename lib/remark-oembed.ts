@@ -105,8 +105,29 @@ export const spotifyTransformer: Readonly<Transformer> = {
   },
 };
 
+export const instagramTransformer: Readonly<Transformer> = {
+  hName: "Instagram",
+  hProperties: async (url) => {
+    return { url: url.href };
+  },
+  match: async (url) => {
+    return (
+      (url.hostname === "instagram.com" || url.hostname === "www.instagram.com") &&
+      (url.pathname.includes("/p/") ||
+        url.pathname.includes("/reel/") ||
+        url.pathname.includes("/tv/"))
+    );
+  },
+};
+
 const defaultOptions: RemarkOEmbedPluginOptions = {
-  transformers: [twitterTransformer, youTubeTransformer, spotifyTransformer, oEmbedTransformer],
+  transformers: [
+    twitterTransformer,
+    youTubeTransformer,
+    spotifyTransformer,
+    instagramTransformer,
+    oEmbedTransformer,
+  ],
 };
 
 export const remarkOEmbed: Plugin<[RemarkOEmbedPluginOptions?], Root> = (

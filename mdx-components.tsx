@@ -20,6 +20,7 @@ import OEmbed from "./components/mdx/oembed";
 import YouTube from "./components/mdx/youtube";
 import EmbeddedTweet from "./components/mdx/tweet";
 import Spotify from "./components/mdx/spotify";
+import Instagram from "./components/mdx/instagram";
 
 const cssVariablesTheme = createCssVariablesTheme({});
 
@@ -195,6 +196,7 @@ export const components: Record<string, FC<any>> = {
   YouTube,
   EmbeddedTweet,
   Spotify,
+  Instagram,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
