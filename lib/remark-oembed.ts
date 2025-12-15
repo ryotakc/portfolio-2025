@@ -91,8 +91,22 @@ export const twitterTransformer: Readonly<Transformer> = {
   },
 };
 
+export const spotifyTransformer: Readonly<Transformer> = {
+  hName: "Spotify",
+  hProperties: async (url) => {
+    // Just pass the URL, the component handles the embed conversion or we do it here.
+    // Let's do it here to be cleaner.
+    // https://open.spotify.com/track/123 -> https://open.spotify.com/embed/track/123
+    const embedUrl = url.href.replace("open.spotify.com/", "open.spotify.com/embed/");
+    return { link: embedUrl };
+  },
+  match: async (url) => {
+    return url.hostname === "open.spotify.com";
+  },
+};
+
 const defaultOptions: RemarkOEmbedPluginOptions = {
-  transformers: [twitterTransformer, youTubeTransformer, oEmbedTransformer],
+  transformers: [twitterTransformer, youTubeTransformer, spotifyTransformer, oEmbedTransformer],
 };
 
 export const remarkOEmbed: Plugin<[RemarkOEmbedPluginOptions?], Root> = (

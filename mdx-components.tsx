@@ -19,6 +19,7 @@ import LinkCard from "./components/mdx/link-card";
 import OEmbed from "./components/mdx/oembed";
 import YouTube from "./components/mdx/youtube";
 import EmbeddedTweet from "./components/mdx/tweet";
+import Spotify from "./components/mdx/spotify";
 
 const cssVariablesTheme = createCssVariablesTheme({});
 
@@ -193,6 +194,7 @@ export const components: Record<string, FC<any>> = {
   OEmbed,
   YouTube,
   EmbeddedTweet,
+  Spotify,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
