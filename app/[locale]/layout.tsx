@@ -1,5 +1,5 @@
-import { HistoryTracker } from "@/components/history-tracker";
 import { languages } from "@/lib/i18n";
+import LocaleLayoutComponent from "@/components/layouts/LocaleLayout";
 
 export async function generateStaticParams() {
   return languages.map((locale) => ({ locale }));
@@ -12,11 +12,7 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  return (
-    <article className="pl-0 pt-6 mobile:pt-0 mobile:pl-6 sm:pl-10 md:pl-14">
-      <HistoryTracker />
-      {children}
-    </article>
-  );
+  await params; // Ensure params are consumed if necessary, though we don't use locale here explicitly anymore, it might be needed for static generation context.
+
+  return <LocaleLayoutComponent>{children}</LocaleLayoutComponent>;
 }

@@ -3,11 +3,19 @@ import { Analytics } from "@vercel/analytics/react";
 import NavbarWrapper from "@/components/navbar-wrapper";
 import { ModeToggle } from "@/components/mode-toggle";
 import { LanguageToggle } from "@/components/language-toggle";
-import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+// import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import cn from "clsx";
 
 export default function MinimalSiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <div
+      className={cn(
+        "font-mono",
+        "w-full min-h-screen p-6 sm:p-10 md:p-14",
+        "text-sm leading-6 sm:text-[15px] sm:leading-7 md:text-base md:leading-7",
+        "text-rurikon-500",
+      )}
+    >
       <div className="fixed sm:hidden h-6 sm:h-10 md:h-14 w-full top-0 left-0 z-30 pointer-events-none content-fade-out" />
       <div className="">
         <div className="flex flex-col mobile:flex-row justify-center">
@@ -31,6 +39,6 @@ export default function MinimalSiteLayout({ children }: { children: React.ReactN
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

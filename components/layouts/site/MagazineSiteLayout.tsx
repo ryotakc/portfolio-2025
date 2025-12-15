@@ -6,7 +6,7 @@ import { LanguageToggle } from "@/components/language-toggle";
 
 export default function MagazineSiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen font-mono text-rurikon-500">
       {/* Top Header */}
       <header className="border-b border-rurikon-border dark:border-rurikon-border-dark p-4 sticky top-0 bg-background/90 backdrop-blur z-40">
         <div className="max-w-7xl mx-auto flex justify-between items-center">

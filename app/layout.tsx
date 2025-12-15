@@ -1,13 +1,8 @@
 import type { Metadata, Viewport } from "next";
-// import { unstable_ViewTransition as ViewTransition } from "react";
 import cn from "clsx";
 import "katex/dist/katex.min.css";
 import "./globals.css";
-// import { Provider } from "react-wrap-balancer";
-// import { ModeToggle } from "@/components/mode-toggle";
-// import { LanguageToggle } from "@/components/language-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
-// import NavbarWrapper from "@/components/navbar-wrapper";
 import { siteConfig as themeSiteConfig } from "@/config/theme";
 import { siteConfig } from "@/config/site";
 import MinimalSiteLayout from "@/components/layouts/site/MinimalSiteLayout";
@@ -80,15 +75,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="overflow-x-hidden touch-manipulation" suppressHydrationWarning>
-      <body
-        className={cn(
-          "font-mono",
-          "w-full p-6 sm:p-10 md:p-14",
-          "text-sm leading-6 sm:text-[15px] sm:leading-7 md:text-base md:leading-7",
-          "text-rurikon-500",
-          "antialiased",
-        )}
-      >
+      <body className={cn("antialiased", "w-full h-full")}>
         <ThemeProvider
           attribute="class"
           defaultTheme={themeSiteConfig.defaultColor}

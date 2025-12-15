@@ -6,7 +6,7 @@ import { LanguageToggle } from "@/components/language-toggle";
 
 export default function SidebarSiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen font-mono text-rurikon-500">
       {/* Sidebar Area */}
       <aside className="hidden lg:flex flex-col w-64 border-r border-rurikon-border dark:border-rurikon-border-dark p-6 fixed h-full">
         <div className="mb-8">
