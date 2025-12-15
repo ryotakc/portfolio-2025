@@ -14,18 +14,24 @@ export default function Spotify({ link }: { link: string }) {
      embedUrl = link.replace('open.spotify.com/', 'open.spotify.com/embed/');
   }
 
-  const isPlaylistOrAlbum = embedUrl.includes("/playlist/") || embedUrl.includes("/album/");
-  const height = isPlaylistOrAlbum ? 352 : 152;
+  // Clean query params
+  const urlObj = new URL(embedUrl);
+  urlObj.search = "";
+  const cleanEmbedUrl = urlObj.toString();
+
+  const isPlaylistOrAlbum = cleanEmbedUrl.includes("/playlist/") || cleanEmbedUrl.includes("/album/");
+  const height = isPlaylistOrAlbum ? 380 : 152;
 
   return (
     <div className="flex justify-center my-6">
       <div style={{ width: "100%", maxWidth: "100%", height: `${height}px` }}>
         <iframe
           style={{ borderRadius: "12px" }}
-          src={embedUrl}
+          src={cleanEmbedUrl}
           width="100%"
           height="100%"
           frameBorder="0"
+          title="Spotify Embed"
           allowFullScreen
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           loading="lazy"
