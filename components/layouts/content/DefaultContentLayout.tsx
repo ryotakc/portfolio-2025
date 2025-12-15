@@ -10,10 +10,7 @@ interface DefaultContentLayoutProps {
   };
 }
 
-export default function DefaultContentLayout({
-  children,
-  frontmatter,
-}: DefaultContentLayoutProps) {
+export default function DefaultContentLayout({ children, frontmatter }: DefaultContentLayoutProps) {
   return (
     <div className="mt-0">
       <DynamicBreadcrumb />
