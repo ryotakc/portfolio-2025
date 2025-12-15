@@ -1,16 +1,19 @@
 ---
 title: "Playground"
 description: "Playground"
+date: "2025-12-15T12:00:00Z"
+layout: "blog"
+tags: ["Playground", "Next.js"]
 draft: false
 ---
 
-# H1 タイトル (自動ID)
-
-# `custom-id`のIDを持つH1タイトル [#custom-id]
+# H1 タイトル
 
 ## H2 タイトル
 
 ### H3 タイトル
+
+#### H4 タイトル
 
 ```
 コードの例
@@ -41,12 +44,6 @@ function hello() {
   }
 /> */}
 
-```
-動作しないため無効化
-```
-
-ああ…
-
 ***
 
 水平線
@@ -68,66 +65,105 @@ function hello() {
 >
 > そして複数の段落を含むこともあります。
 
-# H1 タイトル (自動ID)
+---
 
-# `custom-id`のIDを持つH1タイトル [#custom-id]
+## Test Callouts
 
-## H2 タイトル
+:::note
+**Note**
+Aliases: "note"
+:::
 
-### H3 タイトル
+:::abstract
+**Abstract**
+Aliases: "abstract", "summary", "tldr"
+:::
 
-```
-コードの例
-```
+:::info
+**Info**
+Aliases: "info"
+:::
 
-```
-function hello() {
-  await test(); // コードの例
-  someMoreCode();
-}
-```
+:::todo
+**Todo**
+Aliases: "todo"
+:::
 
-{/* ## ツイート
-<Tweet
-  id="1374492662061953034"
-  caption={
-    <>
-      Next.jsは開発者が{" "}
-      <a href="https://twitter.com/vincentchw/status/1392775589094838277">
-        説明
-      </a>{" "}
-      したり{" "}
-      <a href="https://twitter.com/vadim_kravcenko/status/1401937274972037122">
-        推奨
-      </a>{" "}
-      し合うことで有機的に成長し続けています
-    </>
-  }
-/> */}
+:::tip
+**Tip**
+Aliases: "tip", "hint", "important"
+:::
 
-```
-動作しないため無効化
-```
+:::success
+**Success**
+Aliases: "success", "check", "done"
+:::
 
-ああ…
+:::question
+**Question**
+Aliases: "question", "help", "faq"
+:::
 
-***
+:::warning
+**Warning**
+Aliases: "warning", "attention", "caution"
+:::
 
-水平線
+:::failure
+**Failure**
+Aliases: "failure", "missing", "fail"
+:::
 
-1. 順序付き
-2. リストの
-3. 例
+:::danger
+**Danger**
+Aliases: "danger", "error"
+:::
 
-**以下と組み合わせ**
+:::bug
+**Bug**
+Aliases: "bug"
+:::
 
-- 順序なし
-- リストの
-- 例
+:::example
+**Example**
+Aliases: "example"
+:::
 
-引用ブロック
+:::quote
+**Quote**
+Aliases: "quote", "cite"
+:::
 
-> これは引用です。長くなることもあります。  
-> 複数行にわたることもあります。
->
-> そして複数の段落を含むこともあります。
+## Alias Tests
+
+:::hint
+This is a hint (tip alias).
+:::
+
+:::caution
+This is a caution (warning alias).
+:::
+
+:::error
+This is an error (danger alias).
+:::
+
+## Link Card Test
+
+Here is a standard inline link: [Example](https://example.com).
+
+Here is a bare URL in text: https://example.com is a website.
+
+Here is a Link Card (surrounded by empty lines):
+
+https://github.com
+
+Another one:
+
+https://nextjs.org
+
+And a complex one (Qiita):
+
+https://qiita.com/Qiita/items/c686397e4a0f4f11683d
+
+End of test.
