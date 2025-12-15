@@ -11,11 +11,13 @@ interface PortfolioContentLayoutProps {
     repoUrl?: string;
     [key: string]: unknown;
   };
+  locale: string;
 }
 
 export default function PortfolioContentLayout({
   children,
   frontmatter,
+  locale,
 }: PortfolioContentLayoutProps) {
   return (
     <div className="mt-0">

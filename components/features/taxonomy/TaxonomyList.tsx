@@ -32,7 +32,7 @@ export function TaxonomyList({ items, type, className, activeItem }: TaxonomyLis
                 type === "tag" && !isActive && "bg-secondary/50",
               )}
             >
-              {type === "tag" ? "#" : ""}
+              {type === "tag" && item.label !== "All" ? "#" : ""}
               {item.label}
               {item.count !== undefined && (
                 <span className={cn("ml-2 text-xs", isActive ? "opacity-100" : "opacity-60")}>

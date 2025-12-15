@@ -122,5 +122,5 @@ export default async function Page({ params }: { params: Promise<Params> }) {
     }
   })();
 
-  return <LayoutComponent frontmatter={frontmatter}>{content}</LayoutComponent>;
+  return <LayoutComponent frontmatter={frontmatter} locale={locale}>{content}</LayoutComponent>;
 }

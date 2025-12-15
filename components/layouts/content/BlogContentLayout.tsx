@@ -10,11 +10,13 @@ interface BlogContentLayoutProps {
     date?: string;
     description?: string;
     tags?: string[];
+    categories?: string[];
     [key: string]: unknown;
   };
+  locale: string;
 }
 
-export default function BlogContentLayout({ children, frontmatter }: BlogContentLayoutProps) {
+export default function BlogContentLayout({ children, frontmatter, locale }: BlogContentLayoutProps) {
   return (
     <div className="mt-0">
       <DynamicBreadcrumb />
@@ -34,12 +36,33 @@ export default function BlogContentLayout({ children, frontmatter }: BlogContent
             <Balancer>{frontmatter.description}</Balancer>
           </p>
         )}
+        {frontmatter.categories && frontmatter.categories.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-2">
+            {frontmatter.categories.map((category) => (
+              <a 
+                key={category} 
+                href={`/${locale}/categories?c=${category}`}
+                className="no-underline"
+              >
+                <Badge variant="default" className="hover:opacity-80 transition-opacity">
+                  {category}
+                </Badge>
+              </a>
+            ))}
+          </div>
+        )}
         {frontmatter.tags && frontmatter.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
             {frontmatter.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
-                {tag}
-              </Badge>
+              <a 
+                key={tag} 
+                href={`/${locale}/tags?t=${tag}`}
+                className="no-underline"
+              >
+                <Badge variant="secondary" className="hover:opacity-80 transition-opacity">
+                  #{tag}
+                </Badge>
+              </a>
             ))}
           </div>
         )}
