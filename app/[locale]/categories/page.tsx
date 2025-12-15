@@ -10,6 +10,10 @@ export default async function CategoriesPage({ params }: { params: Promise<Param
   const { locale } = await params;
   const categories = await getAllCategories(locale);
   const posts = await getAllPosts(locale);
+  const postsWithCategories = posts.filter(
+    (post) =>
+      Array.isArray(post.frontmatter.categories) && post.frontmatter.categories.length > 0,
+  );
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -17,7 +21,7 @@ export default async function CategoriesPage({ params }: { params: Promise<Param
         title="Categories"
         description="Browse articles by category."
         items={categories}
-        posts={posts}
+        posts={postsWithCategories}
         type="category"
         locale={locale}
       />

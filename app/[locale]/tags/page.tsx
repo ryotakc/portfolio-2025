@@ -14,6 +14,9 @@ export default async function TagsPage({ params }: { params: Promise<Params> }) 
   const { locale } = await params;
   const tags = await getAllTags(locale);
   const posts = await getAllPosts(locale);
+  const postsWithTags = posts.filter(
+    (post) => Array.isArray(post.frontmatter.tags) && post.frontmatter.tags.length > 0,
+  );
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -21,7 +24,7 @@ export default async function TagsPage({ params }: { params: Promise<Params> }) 
         title="Tags"
         description="Browse all tags used in the articles."
         items={tags}
-        posts={posts}
+        posts={postsWithTags}
         type="tag"
         locale={locale}
       />
