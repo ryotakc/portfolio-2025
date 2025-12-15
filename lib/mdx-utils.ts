@@ -7,6 +7,7 @@ import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
 import { remarkNotePlugin } from "./remark-note-plugin.mjs";
 import { remarkLinkCard } from "./remark-link-card.mjs";
+import { remarkOEmbed } from "./remark-oembed";
 
 // コンテンツディレクトリのパス
 const contentDir = path.join(process.cwd(), "content");
@@ -64,7 +65,7 @@ export async function getMdxBySlug(locale: string, slug: string[]) {
       options: {
         parseFrontmatter: true,
         mdxOptions: {
-          remarkPlugins: [remarkGfm, remarkDirective, remarkNotePlugin, remarkLinkCard],
+          remarkPlugins: [remarkGfm, remarkDirective, remarkNotePlugin, remarkOEmbed, remarkLinkCard],
         },
       },
     });

@@ -17,6 +17,9 @@ import { Highlighter } from "./components/ui/highlighter";
 import { TypingAnimation } from "./components/ui/typing-animation";
 import Note from "./components/note";
 import LinkCard from "./components/mdx/link-card";
+import OEmbed from "./components/mdx/oembed";
+import YouTube from "./components/mdx/youtube";
+import EmbeddedTweet from "./components/mdx/tweet";
 
 const cssVariablesTheme = createCssVariablesTheme({});
 
@@ -189,6 +192,9 @@ export const components: Record<string, FC<any>> = {
   Small: (props) => <small className="text-sm leading-none font-medium" {...props} />,
   Muted: (props) => <p className="text-muted-foreground text-sm" {...props} />,
   LinkCard,
+  OEmbed,
+  YouTube,
+  EmbeddedTweet,
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
