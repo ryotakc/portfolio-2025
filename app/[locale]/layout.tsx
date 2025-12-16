@@ -1,5 +1,5 @@
-import { languages } from "@/lib/i18n";
 import LocaleLayoutComponent from "@/components/layouts/LocaleLayout";
+import { languages } from "@/lib/i18n";
 
 export async function generateStaticParams() {
   return languages.map((locale) => ({ locale }));

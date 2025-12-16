@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { TaxonomyList } from "./TaxonomyList";
-import { FilteredPostList } from "./FilteredPostList";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import type { MDXPost } from "@/lib/mdx-utils";
+import { FilteredPostList } from "./FilteredPostList";
+import { TaxonomyList } from "./TaxonomyList";
 
 interface TaxonomyExplorerProps {
   title: string;

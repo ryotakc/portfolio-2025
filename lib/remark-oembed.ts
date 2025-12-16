@@ -1,7 +1,7 @@
-import { type Plugin } from "unified";
-import type { Root, Paragraph, Link } from "mdast";
-import { visit } from "unist-util-visit";
+import type { Link, Paragraph, Root } from "mdast";
 import { unfurl } from "unfurl.js";
+import type { Plugin } from "unified";
+import { visit } from "unist-util-visit";
 import { isParagraph, isSimpleUrlLink } from "./mdast-util";
 
 export type headingProperties = Record<string, string>;

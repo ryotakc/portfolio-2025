@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { getDictionary } from "@/lib/i18n";
 import { usePathname } from "next/navigation";
+import { getDictionary } from "@/lib/i18n";
 
 export default function NotFound({ params }: { params: { locale: string } }) {
   const pathname = usePathname();

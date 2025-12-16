@@ -1,8 +1,8 @@
-import { unstable_ViewTransition as ViewTransition } from "react";
 import { Analytics } from "@vercel/analytics/react";
-import NavbarWrapper from "@/components/navbar-wrapper";
-import { ModeToggle } from "@/components/mode-toggle";
+import { unstable_ViewTransition as ViewTransition } from "react";
 import { LanguageToggle } from "@/components/language-toggle";
+import { ModeToggle } from "@/components/mode-toggle";
+import NavbarWrapper from "@/components/navbar-wrapper";
 
 export default function MagazineSiteLayout({ children }: { children: React.ReactNode }) {
   return (

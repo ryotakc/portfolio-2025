@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { TaxonomyList } from "@/components/features/taxonomy/TaxonomyList";
 import { FilteredPostList } from "@/components/features/taxonomy/FilteredPostList";
+import { TaxonomyList } from "@/components/features/taxonomy/TaxonomyList";
 import type { MDXPost } from "@/lib/mdx-utils";
 
 interface TaxonomyExplorerLayoutProps {

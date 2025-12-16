@@ -1,12 +1,11 @@
-import { generateMetadata as baseGenerateMetadata } from "@/lib/metadata";
-import { getPublicPost, generateStaticRoutes } from "@/lib/post-service";
-import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-
+import { notFound } from "next/navigation";
+import BlogContentLayout from "@/components/layouts/content/BlogContentLayout";
 // Content Layouts
 import DefaultContentLayout from "@/components/layouts/content/DefaultContentLayout";
-import BlogContentLayout from "@/components/layouts/content/BlogContentLayout";
 import PortfolioContentLayout from "@/components/layouts/content/PortfolioContentLayout";
+import { generateMetadata as baseGenerateMetadata } from "@/lib/metadata";
+import { generateStaticRoutes, getPublicPost } from "@/lib/post-service";
 
 type Params = {
   locale: string;

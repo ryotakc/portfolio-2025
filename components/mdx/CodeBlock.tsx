@@ -1,5 +1,5 @@
-import { codeToHtml, createCssVariablesTheme } from "shiki";
 import type { HTMLAttributes } from "react";
+import { codeToHtml, createCssVariablesTheme } from "shiki";
 
 const cssVariablesTheme = createCssVariablesTheme({});
 
@@ -20,6 +20,7 @@ export async function CodeBlock(
             if (child.type !== "element") {
               throw new Error("<pre>: Expected a <code> child");
             }
+            // biome-ignore lint/suspicious/noExplicitAny: HAST node casting
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             return child as any;
           },

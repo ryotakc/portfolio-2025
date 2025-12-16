@@ -1,8 +1,8 @@
 "use client";
 
 import cn from "clsx";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navigation } from "@/lib/i18n";
 
 function NavItem(props: React.ComponentProps<typeof Link> & { locale: string }) {

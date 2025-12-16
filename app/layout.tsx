@@ -1,13 +1,13 @@
-import type { Metadata, Viewport } from "next";
 import cn from "clsx";
+import type { Metadata, Viewport } from "next";
 import "katex/dist/katex.min.css";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { siteConfig as themeSiteConfig } from "@/config/theme";
-import { siteConfig } from "@/config/site";
-import { getSiteLayout } from "@/lib/layout-registry";
 import { Analytics } from "@vercel/analytics/react";
 import { JsonLd } from "@/components/json-ld";
+import { ThemeProvider } from "@/components/theme-provider";
+import { siteConfig } from "@/config/site";
+import { siteConfig as themeSiteConfig } from "@/config/theme";
+import { getSiteLayout } from "@/lib/layout-registry";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

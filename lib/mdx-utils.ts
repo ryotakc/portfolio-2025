@@ -1,12 +1,12 @@
 import fs from "fs";
-import path from "path";
-import { compileMDX } from "next-mdx-remote/rsc";
 import type { MDXComponents } from "mdx/types";
-import { components } from "@/mdx-components";
+import { compileMDX } from "next-mdx-remote/rsc";
+import path from "path";
 import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
-import { remarkNotePlugin } from "./remark-note-plugin.mjs";
+import { components } from "@/mdx-components";
 import { remarkLinkCard } from "./remark-link-card.mjs";
+import { remarkNotePlugin } from "./remark-note-plugin.mjs";
 import { remarkOEmbed } from "./remark-oembed";
 
 // コンテンツディレクトリのパス

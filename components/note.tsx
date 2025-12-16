@@ -1,19 +1,19 @@
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
-  Pencil,
-  ClipboardList,
-  Info,
-  CircleCheck,
-  Flame,
+  Bug,
   Check,
+  CircleCheck,
   CircleHelp,
+  ClipboardList,
+  Flame,
+  Info,
+  List,
+  Pencil,
+  Quote,
   TriangleAlert,
   X,
   Zap,
-  Bug,
-  List,
-  Quote,
 } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { cn } from "@/lib/utils";
 
 type NoteProps = {

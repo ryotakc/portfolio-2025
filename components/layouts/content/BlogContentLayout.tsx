@@ -1,7 +1,6 @@
 import { Balancer } from "react-wrap-balancer";
-
-import { Badge } from "@/components/ui/badge";
 import { DynamicBreadcrumb } from "@/components/DynamicBreadcrumb";
+import { Badge } from "@/components/ui/badge";
 
 interface BlogContentLayoutProps {
   children: React.ReactNode;

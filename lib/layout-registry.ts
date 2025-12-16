@@ -1,7 +1,7 @@
 import type { ComponentType, ReactNode } from "react";
+import MagazineSiteLayout from "@/components/layouts/site/MagazineSiteLayout";
 import MinimalSiteLayout from "@/components/layouts/site/MinimalSiteLayout";
 import SidebarSiteLayout from "@/components/layouts/site/SidebarSiteLayout";
-import MagazineSiteLayout from "@/components/layouts/site/MagazineSiteLayout";
 
 export type SiteLayoutType = "minimal" | "sidebar" | "magazine";
 

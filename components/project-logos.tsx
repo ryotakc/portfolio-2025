@@ -14,6 +14,8 @@ export function Nextjs({ height = 24 }) {
       height={height}
       xlinkTitle="Next.js"
       className="inline"
+      role="img"
+      aria-label="Next.js"
     >
       <path d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0zM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7l-9-11-27.1 33.7h17.8l18.3-22.7z" />
       <path fillRule="evenodd" d="M81 79.3L17 0H0v79.3h13.6V17l50.2 62.3H81z" clipRule="evenodd" />
@@ -30,6 +32,8 @@ export function V0({ height = 24 }) {
       height={height}
       xlinkTitle="Vercel v0"
       className="inline"
+      role="img"
+      aria-label="Vercel v0"
     >
       <path d="M23.4 0h9.5a7 7 0 017 7v9H36V6.8l-9.5 9.4H36v3.7h-9.4a7 7 0 01-7.1-7V3.7h3.9v9.6l9.8-9.6h-9.8V0zm-9.6 19.1L0 3.7h5.5l8.1 9v-9h4.2v13.9c0 2-2.6 3-4 1.5z"></path>
     </svg>
@@ -44,6 +48,8 @@ export function Nextra({ height = 24 }) {
       height={height}
       xlinkTitle="Nextra"
       className="inline"
+      role="img"
+      aria-label="Nextra"
     >
       <path
         fill="currentColor"
@@ -68,6 +74,8 @@ export function SWR({ height = 24 }) {
       height={height}
       xlinkTitle="SWR"
       className="inline"
+      role="img"
+      aria-label="SWR"
     >
       <path
         fill="currentColor"
