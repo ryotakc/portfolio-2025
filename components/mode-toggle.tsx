@@ -11,7 +11,7 @@ export function ModeToggle() {
   const { startTransition } = useThemeTransition();
   const buttonRef = useRef<HTMLDivElement>(null);
 
-  const toggleTheme = (e: React.MouseEvent) => {
+  const toggleTheme = (_e: React.MouseEvent) => {
     // ボタン要素の位置を取得
     if (buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
@@ -33,8 +33,8 @@ export function ModeToggle() {
   return (
     <button
       type="button"
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={buttonRef as any}
+      // biome-ignore lint/suspicious/noExplicitAny: Ref casting
+      ref={buttonRef as any} // eslint-disable-line @typescript-eslint/no-explicit-any
       onClick={toggleTheme}
       className="relative w-12 h-12 cursor-pointer flex items-center justify-center group z-50 bg-transparent border-none p-0"
     >

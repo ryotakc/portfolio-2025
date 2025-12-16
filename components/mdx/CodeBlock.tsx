@@ -21,8 +21,7 @@ export async function CodeBlock(
               throw new Error("<pre>: Expected a <code> child");
             }
             // biome-ignore lint/suspicious/noExplicitAny: HAST node casting
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            return child as any;
+            return child as any; // eslint-disable-line @typescript-eslint/no-explicit-any
           },
           postprocess(html) {
             return html.replace(/^<code>|<\/code>$/g, "");

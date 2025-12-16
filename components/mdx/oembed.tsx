@@ -36,7 +36,7 @@ export default function OEmbed({ url, oEmbed }: OEmbedProps) {
 
   // Fallback to LinkCard if no valid OEmbed data or if it's not a rich/video type we handle specifically
   // For now, if we have HTML (like Twitter blockquote or Spotify iframe), use it.
-  if (data && data.html) {
+  if (data?.html) {
     return (
       <div
         className="my-6 w-full flex justify-center"

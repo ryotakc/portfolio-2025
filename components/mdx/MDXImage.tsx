@@ -26,7 +26,6 @@ export async function MDXImage({
       />
     );
   } else {
-
     try {
       // Assuming assets is at root /assets
       const image = await import(`@/assets/images/${src}`);

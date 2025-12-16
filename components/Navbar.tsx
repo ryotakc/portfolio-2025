@@ -21,7 +21,7 @@ function NavItem(props: React.ComponentProps<typeof Link> & { locale: string }) 
   // /ja/work と /ja/work が完全一致、または
   // /ja/work/project1 と /ja/work が前方一致（かつproject1の部分がない）
   const isActive =
-    pathname === fullPath || (pathname.startsWith(fullPath + "/") && fullPath !== `/${locale}`);
+    pathname === fullPath || (pathname.startsWith(`${fullPath}/`) && fullPath !== `/${locale}`);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === fullPath) {

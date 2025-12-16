@@ -2,8 +2,10 @@ import Link from "next/link";
 import type { AnchorHTMLAttributes, FC, HTMLAttributes } from "react";
 
 // biome-ignore lint/suspicious/noExplicitAny: Generic component map
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const Typography: Record<string, FC<any>> = {
+export const Typography: Record<
+  string,
+  FC<any /* eslint-disable-line @typescript-eslint/no-explicit-any */>
+> = {
   h1: (props: HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance mb-5"

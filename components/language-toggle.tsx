@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { languageNames, languages } from "@/lib/i18n";
 
 export function LanguageToggle() {
   const pathname = usePathname();

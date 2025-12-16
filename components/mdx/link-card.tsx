@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import ogs from "open-graph-scraper";
 
@@ -42,9 +41,7 @@ export default async function LinkCard({ url }: { url: string }) {
 
   const title = meta.ogTitle || meta.twitterTitle || url;
   const description = meta.ogDescription || meta.twitterDescription || "";
-  const imageUrl =
-    (meta.ogImage && meta.ogImage[0] && meta.ogImage[0].url) ||
-    (meta.twitterImage && meta.twitterImage[0] && meta.twitterImage[0].url);
+  const imageUrl = meta.ogImage?.[0]?.url || meta.twitterImage?.[0]?.url;
 
   const domain = new URL(url).hostname;
   const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=32`;

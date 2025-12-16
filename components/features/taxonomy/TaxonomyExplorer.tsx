@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import type { MDXPost } from "@/lib/mdx-utils";
 import { FilteredPostList } from "./FilteredPostList";
 import { TaxonomyList } from "./TaxonomyList";
@@ -32,7 +32,7 @@ export function TaxonomyExplorer({
   const activeParam = searchParams.get(paramKey);
   const activeFilter = activeParam || "All";
 
-  const handleSelect = (selectedLabel: string) => {
+  const _handleSelect = (selectedLabel: string) => {
     const params = new URLSearchParams(searchParams);
 
     // Logic:

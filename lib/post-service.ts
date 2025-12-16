@@ -1,6 +1,5 @@
-import { notFound } from "next/navigation";
 import { languages } from "./i18n";
-import { getAllContentPaths, getMdxBySlug, MDXPost } from "./mdx-utils";
+import { getAllContentPaths, getMdxBySlug } from "./mdx-utils";
 
 // Returns the post if it exists and is not a draft.
 // Returns null otherwise.

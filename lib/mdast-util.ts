@@ -1,4 +1,4 @@
-import type { Link, Paragraph, PhrasingContent } from "mdast";
+import type { Link, Paragraph } from "mdast";
 
 export function isParagraph(node: unknown): node is Paragraph {
   return (

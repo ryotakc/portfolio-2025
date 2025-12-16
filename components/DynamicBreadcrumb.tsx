@@ -50,7 +50,6 @@ export function DynamicBreadcrumb() {
     <>
       <script
         type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted JSON-LD content
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbList) }}
       />
       <Breadcrumb className="mb-6">

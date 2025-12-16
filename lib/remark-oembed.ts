@@ -2,7 +2,7 @@ import type { Link, Paragraph, Root } from "mdast";
 import { unfurl } from "unfurl.js";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
-import { isParagraph, isSimpleUrlLink } from "./mdast-util";
+import { isSimpleUrlLink } from "./mdast-util";
 
 export type headingProperties = Record<string, string>;
 
@@ -39,7 +39,7 @@ export const oEmbedTransformer: Readonly<Transformer> = {
         return { url: url.href, oEmbed: JSON.stringify(metadata.oEmbed) };
       }
       return { url: url.href } as headingProperties;
-    } catch (e) {
+    } catch (_e) {
       return { url: url.href } as headingProperties;
     }
   },
@@ -52,8 +52,8 @@ export const youTubeTransformer: Readonly<Transformer> = {
     const convertToEmbedUrl = (url: string): string => {
       const match = url.match(/^.*(watch\?v=|embed\/)([^#&?]*).*/);
 
-      if (match && match[2]) {
-        return "https://www.youtube.com/embed/" + match[2];
+      if (match?.[2]) {
+        return `https://www.youtube.com/embed/${match[2]}`;
       } else {
         throw new Error("Invalid YouTube URL");
       }
@@ -145,7 +145,8 @@ export const remarkOEmbed: Plugin<[RemarkOEmbedPluginOptions?], Root> = (
       const url = new URL(link.url);
 
       const transform = async () => {
-        for (const transformer of options!.transformers) {
+        if (!options?.transformers) return;
+        for (const transformer of options.transformers) {
           // options is defaulted above
           if (!(await transformer.match(url))) continue;
 
