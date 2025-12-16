@@ -40,25 +40,20 @@ export default function TaxonomyExplorerLayout({
             FilteredPostList handles the display. We can reuse it. 
         */}
         {activeItem ? (
-             <FilteredPostList 
-                posts={posts} 
-                filterType={type} 
-                filterValue={activeItem} 
-                locale={locale} 
-             />
+          <FilteredPostList
+            posts={posts}
+            filterType={type}
+            filterValue={activeItem}
+            locale={locale}
+          />
         ) : (
-            <div>
-                {/* Fallback for "All" view. We can reuse FilteredPostList with a generic title or just map posts. 
+          <div>
+            {/* Fallback for "All" view. We can reuse FilteredPostList with a generic title or just map posts. 
                     Let's reuse FilteredPostList but maybe tweak the title logic if needed.
                     For now, I'll pass "All" as filterValue if none selected.
                 */}
-                 <FilteredPostList 
-                    posts={posts} 
-                    filterType={type} 
-                    filterValue="All" 
-                    locale={locale} 
-                 />
-            </div>
+            <FilteredPostList posts={posts} filterType={type} filterValue="All" locale={locale} />
+          </div>
         )}
       </div>
     </div>

@@ -5,9 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig as themeSiteConfig } from "@/config/theme";
 import { siteConfig } from "@/config/site";
-import MinimalSiteLayout from "@/components/layouts/site/MinimalSiteLayout";
-import SidebarSiteLayout from "@/components/layouts/site/SidebarSiteLayout";
-import MagazineSiteLayout from "@/components/layouts/site/MagazineSiteLayout";
+import { getSiteLayout } from "@/lib/layout-registry";
 import { Analytics } from "@vercel/analytics/react";
 import { JsonLd } from "@/components/json-ld";
 
@@ -67,11 +65,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const SiteLayout = {
-    minimal: MinimalSiteLayout,
-    sidebar: SidebarSiteLayout,
-    magazine: MagazineSiteLayout,
-  }[themeSiteConfig.layout];
+  const SiteLayout = getSiteLayout(themeSiteConfig.layout);
 
   return (
     <html lang="en" className="overflow-x-hidden touch-manipulation" suppressHydrationWarning>

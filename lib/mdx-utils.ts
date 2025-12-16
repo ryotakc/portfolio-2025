@@ -13,6 +13,18 @@ import { remarkOEmbed } from "./remark-oembed";
 const contentDir = path.join(process.cwd(), "content");
 
 // 特定のMDXファイルを取得
+export interface MDXFrontmatter {
+  title?: string;
+  description?: string;
+  date?: string;
+  theme?: "system" | "dark" | "light";
+  draft?: boolean;
+  layout?: "blog" | "portfolio" | "default";
+  tags?: string[];
+  categories?: string[];
+  [key: string]: unknown;
+}
+
 export async function getMdxBySlug(locale: string, slug: string[]) {
   try {
     // localeが未定義の場合はデフォルトを使用
@@ -52,16 +64,7 @@ export async function getMdxBySlug(locale: string, slug: string[]) {
     const source = fs.readFileSync(filePath, "utf8");
 
     // MDXをコンパイル
-    const { content, frontmatter } = await compileMDX<{
-      title?: string;
-      description?: string;
-      date?: string;
-      theme?: string;
-      draft?: boolean;
-      tags?: string[];
-      categories?: string[];
-      [key: string]: unknown;
-    }>({
+    const { content, frontmatter } = await compileMDX<MDXFrontmatter>({
       source,
       components: components as MDXComponents,
       options: {
@@ -126,17 +129,7 @@ export async function getAllContentPaths(locale: string) {
 export type MDXPost = {
   slug: string[];
   content: React.ReactElement;
-  frontmatter: {
-    title?: string;
-    description?: string;
-    date?: string;
-    theme?: string;
-    draft?: boolean;
-    layout?: string;
-    tags?: string[];
-    categories?: string[];
-    [key: string]: unknown;
-  };
+  frontmatter: MDXFrontmatter;
 };
 
 // ヘルパー関数: フロントマターを含むすべての投稿を取得

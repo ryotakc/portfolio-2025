@@ -11,8 +11,7 @@ export default async function CategoriesPage({ params }: { params: Promise<Param
   const categories = await getAllCategories(locale);
   const posts = await getAllPosts(locale);
   const postsWithCategories = posts.filter(
-    (post) =>
-      Array.isArray(post.frontmatter.categories) && post.frontmatter.categories.length > 0,
+    (post) => Array.isArray(post.frontmatter.categories) && post.frontmatter.categories.length > 0,
   );
 
   return (

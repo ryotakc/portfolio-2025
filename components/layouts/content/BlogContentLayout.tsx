@@ -16,7 +16,11 @@ interface BlogContentLayoutProps {
   locale: string;
 }
 
-export default function BlogContentLayout({ children, frontmatter, locale }: BlogContentLayoutProps) {
+export default function BlogContentLayout({
+  children,
+  frontmatter,
+  locale,
+}: BlogContentLayoutProps) {
   return (
     <div className="mt-0">
       <DynamicBreadcrumb />
@@ -39,8 +43,8 @@ export default function BlogContentLayout({ children, frontmatter, locale }: Blo
         {frontmatter.categories && frontmatter.categories.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-2">
             {frontmatter.categories.map((category) => (
-              <a 
-                key={category} 
+              <a
+                key={category}
                 href={`/${locale}/categories?c=${category}`}
                 className="no-underline"
               >
@@ -54,11 +58,7 @@ export default function BlogContentLayout({ children, frontmatter, locale }: Blo
         {frontmatter.tags && frontmatter.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
             {frontmatter.tags.map((tag) => (
-              <a 
-                key={tag} 
-                href={`/${locale}/tags?t=${tag}`}
-                className="no-underline"
-              >
+              <a key={tag} href={`/${locale}/tags?t=${tag}`} className="no-underline">
                 <Badge variant="secondary" className="hover:opacity-80 transition-opacity">
                   #{tag}
                 </Badge>
