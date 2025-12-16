@@ -17,11 +17,15 @@ export function LanguageToggle() {
     // 現在の言語に基づいて次の言語を決定
     const newLocale = currentLocale === "ja" ? "en" : "ja";
 
+    // クッキーを更新
+    // biome-ignore lint/suspicious/noDocumentCookie: Cookie Store API is not supported in all browsers
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+
     // ビュートランジションAPIが使用可能ならアニメーション付きで遷移
     if (document.startViewTransition) {
-      document.startViewTransition(() => router.push(`/${newLocale}${pathnameWithoutLocale}`));
+      document.startViewTransition(() => router.replace(`/${newLocale}${pathnameWithoutLocale}`));
     } else {
-      router.push(`/${newLocale}${pathnameWithoutLocale}`);
+      router.replace(`/${newLocale}${pathnameWithoutLocale}`);
     }
   };
 

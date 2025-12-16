@@ -29,14 +29,12 @@ function getLocale(request: NextRequest) {
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // 言語プレフィックスがすでにある場合はパススルー
-  const pathnameHasLocale = locales.some(
+  // Check if there is any supported locale in the pathname
+  const pathnameIsOneOfLocales = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
-  if (pathnameHasLocale) return;
-
-  // 一部のファイルや特殊なパスは無視する
+  // Filter specific paths
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
@@ -46,16 +44,46 @@ export function middleware(request: NextRequest) {
     return;
   }
 
-  // ルートパス / へのアクセスはすでにnext.config.mjsのリダイレクトで処理されるため、
-  // ここでは他のすべてのパスに対処
+  // Get locale from cookie
+  const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
 
-  // ブラウザの設定からユーザーの言語を取得
-  const locale = getLocale(request);
+  // 1. If path has locale
+  if (pathnameIsOneOfLocales) {
+    const localeInPath = pathname.split("/")[1];
 
-  // 現在のパスに言語プレフィックスを追加してリダイレクト
-  return NextResponse.redirect(
-    new URL(`/${locale}${pathname === "/" ? "" : pathname}`, request.url),
+    // If cookie exists and is different from path locale -> Redirect to cookie locale
+    // effectively "sticky locale" preventing history traversal across languages
+    if (cookieLocale && locales.includes(cookieLocale) && localeInPath !== cookieLocale) {
+      const newPath = pathname.replace(`/${localeInPath}`, `/${cookieLocale}`);
+      const response = NextResponse.redirect(new URL(newPath, request.url));
+      return response;
+    }
+
+    // If matches or no cookie, allow but ensure cookie is set for future
+    const response = NextResponse.next();
+    if (localeInPath !== cookieLocale) {
+      response.cookies.set("NEXT_LOCALE", localeInPath);
+    }
+    return response;
+  }
+
+  // 2. If path MISSING locale (e.g. root "/")
+
+  // Use cookie preference if available, otherwise negotiate
+  const targetLocale =
+    cookieLocale && locales.includes(cookieLocale) ? cookieLocale : getLocale(request);
+
+  // Redirect to target locale
+  const response = NextResponse.redirect(
+    new URL(`/${targetLocale}${pathname === "/" ? "" : pathname}`, request.url),
   );
+
+  // Set cookie if missing
+  if (cookieLocale !== targetLocale) {
+    response.cookies.set("NEXT_LOCALE", targetLocale);
+  }
+
+  return response;
 }
 
 export const config = {
