@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import {
   Breadcrumb,
@@ -50,7 +50,6 @@ export function DynamicBreadcrumb() {
     <>
       <script
         type="application/ld+json"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: Trusted JSON-LD content
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbList) }}
       />
       <Breadcrumb className="mb-6">

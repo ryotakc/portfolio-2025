@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { getAllCategories, getAllPosts } from "@/lib/mdx-utils";
 import { TaxonomyExplorer } from "@/components/features/taxonomy/TaxonomyExplorer";
+import { getAllCategories, getAllPosts } from "@/lib/mdx-utils";
 
 type Params = {
   locale: string;
@@ -11,8 +11,7 @@ export default async function CategoriesPage({ params }: { params: Promise<Param
   const categories = await getAllCategories(locale);
   const posts = await getAllPosts(locale);
   const postsWithCategories = posts.filter(
-    (post) =>
-      Array.isArray(post.frontmatter.categories) && post.frontmatter.categories.length > 0,
+    (post) => Array.isArray(post.frontmatter.categories) && post.frontmatter.categories.length > 0,
   );
 
   return (

@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { getDictionary } from "@/lib/i18n";
 import { usePathname } from "next/navigation";
+import { getDictionary } from "@/lib/i18n";
 
-export default function NotFound({ params }: { params: { locale: string } }) {
+export default function NotFound({ params: _params }: { params: { locale: string } }) {
   const pathname = usePathname();
   const locale = pathname.split("/")[1] === "en" ? "en" : "ja";
   const dictionary = getDictionary(locale);

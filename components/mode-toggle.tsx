@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
-import { useRef } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import type * as React from "react";
+import { useRef } from "react";
 import { useThemeTransition } from "./theme-provider";
 
 export function ModeToggle() {
@@ -11,7 +11,7 @@ export function ModeToggle() {
   const { startTransition } = useThemeTransition();
   const buttonRef = useRef<HTMLDivElement>(null);
 
-  const toggleTheme = (e: React.MouseEvent) => {
+  const toggleTheme = (_e: React.MouseEvent) => {
     // ボタン要素の位置を取得
     if (buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
@@ -31,11 +31,12 @@ export function ModeToggle() {
   };
 
   return (
-    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-    <div
-      ref={buttonRef}
+    <button
+      type="button"
+      // biome-ignore lint/suspicious/noExplicitAny: Ref casting
+      ref={buttonRef as any} // eslint-disable-line @typescript-eslint/no-explicit-any
       onClick={toggleTheme}
-      className="relative w-12 h-12 cursor-pointer flex items-center justify-center group z-50"
+      className="relative w-12 h-12 cursor-pointer flex items-center justify-center group z-50 bg-transparent border-none p-0"
     >
       {/* Icon */}
       <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -50,6 +51,6 @@ export function ModeToggle() {
           } ${i % 2 === 0 ? "border-l" : "border-r"}`}
         />
       ))}
-    </div>
+    </button>
   );
 }

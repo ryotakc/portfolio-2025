@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { languages, languageNames } from "@/lib/i18n";
 
 export function LanguageToggle() {
   const pathname = usePathname();
@@ -27,10 +26,10 @@ export function LanguageToggle() {
   };
 
   return (
-    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
-    <div
+    <button
+      type="button"
       onClick={toggleLanguage}
-      className="relative w-12 h-12 cursor-pointer flex items-center justify-center group"
+      className="relative w-12 h-12 cursor-pointer flex items-center justify-center group bg-transparent border-none p-0"
     >
       {/* アイコン - Menloフォントで2言語を表示 */}
       <span
@@ -49,6 +48,6 @@ export function LanguageToggle() {
           } ${i % 2 === 0 ? "border-l" : "border-r"}`}
         />
       ))}
-    </div>
+    </button>
   );
 }

@@ -1,17 +1,9 @@
 "use client";
 
-import * as React from "react";
+import { ExternalLink, Maximize2, Minimize2 } from "lucide-react";
 import { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardFooter,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Maximize2, Minimize2, ExternalLink } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface IframeCardProps {
   src: string;
@@ -28,7 +20,7 @@ export function IframeCard({
   description,
   scale = 0.8,
   height = "500px",
-  width = "100%",
+  width: _width = "100%",
 }: IframeCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 

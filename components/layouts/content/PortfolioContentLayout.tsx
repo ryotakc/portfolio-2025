@@ -17,7 +17,7 @@ interface PortfolioContentLayoutProps {
 export default function PortfolioContentLayout({
   children,
   frontmatter,
-  locale,
+  locale: _locale,
 }: PortfolioContentLayoutProps) {
   return (
     <div className="mt-0">

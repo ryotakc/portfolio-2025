@@ -1,5 +1,5 @@
-import ReturnButton from "@/components/return-back";
 import { DynamicBreadcrumb } from "@/components/DynamicBreadcrumb";
+import ReturnButton from "@/components/return-back";
 
 interface DefaultContentLayoutProps {
   children: React.ReactNode;
@@ -11,7 +11,11 @@ interface DefaultContentLayoutProps {
   locale: string;
 }
 
-export default function DefaultContentLayout({ children, frontmatter, locale }: DefaultContentLayoutProps) {
+export default function DefaultContentLayout({
+  children,
+  frontmatter: _frontmatter,
+  locale: _locale,
+}: DefaultContentLayoutProps) {
   return (
     <div className="mt-0">
       <DynamicBreadcrumb />

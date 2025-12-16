@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { getDictionary } from "@/lib/i18n";
 
 export default function ReturnButton() {
@@ -10,17 +10,12 @@ export default function ReturnButton() {
   const locale = params?.locale || "ja";
   const dictionary = getDictionary(locale);
 
-  const handleClick = () => {
-    const prev = sessionStorage.getItem("prevPath") || `/${locale}`;
-    if (document.startViewTransition) {
-      document.startViewTransition(() => router.push(prev));
-    } else {
-      router.push(prev);
-    }
-  };
-
   return (
-    <button onClick={handleClick} className="block mr-auto text-left underline hover:text-gray-400">
+    <button
+      type="button"
+      onClick={() => router.back()}
+      className="inline-flex items-center text-sm text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors mb-8 group"
+    >
       {dictionary.returnBack}
     </button>
   );

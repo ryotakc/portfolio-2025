@@ -26,9 +26,7 @@ export function TaxonomyList({ items, type, className, activeItem }: TaxonomyLis
               variant={isActive ? "default" : "secondary"}
               className={cn(
                 "text-sm py-1 px-3 transition-all",
-                isActive
-                  ? "hover:opacity-90"
-                  : "hover:opacity-80 opacity-70 hover:opacity-100",
+                isActive ? "hover:opacity-90" : "hover:opacity-80 opacity-70 hover:opacity-100",
                 type === "tag" && !isActive && "bg-secondary/50",
               )}
             >

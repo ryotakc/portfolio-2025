@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { format } from "date-fns";
-import type { MDXPost } from "@/lib/mdx-utils";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import type { MDXPost } from "@/lib/mdx-utils";
 
 type FilteredPostListProps = {
   posts: MDXPost[];

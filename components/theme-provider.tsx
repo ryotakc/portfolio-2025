@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { createContext, useContext, useState, useEffect } from "react";
+import type * as React from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 // テーマトランジションのためのコンテキスト
 type ThemeTransitionContextType = {

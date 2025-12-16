@@ -1,6 +1,6 @@
+import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { getAllContentPaths } from "@/lib/mdx-utils";
-import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;

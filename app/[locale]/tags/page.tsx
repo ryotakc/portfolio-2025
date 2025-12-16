@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { getAllTags, getAllPosts } from "@/lib/mdx-utils";
 import { TaxonomyExplorer } from "@/components/features/taxonomy/TaxonomyExplorer";
+import { getAllPosts, getAllTags } from "@/lib/mdx-utils";
 
 type Params = {
   locale: string;

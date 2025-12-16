@@ -1,7 +1,7 @@
 "use client";
 
+import { type MotionProps, motion, useInView } from "motion/react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion, MotionProps, useInView } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
@@ -143,7 +143,6 @@ export function TypingAnimation({
         return "▌";
       case "underscore":
         return "_";
-      case "line":
       default:
         return "|";
     }

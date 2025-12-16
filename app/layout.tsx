@@ -1,15 +1,13 @@
-import type { Metadata, Viewport } from "next";
 import cn from "clsx";
+import type { Metadata, Viewport } from "next";
 import "katex/dist/katex.min.css";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { siteConfig as themeSiteConfig } from "@/config/theme";
-import { siteConfig } from "@/config/site";
-import MinimalSiteLayout from "@/components/layouts/site/MinimalSiteLayout";
-import SidebarSiteLayout from "@/components/layouts/site/SidebarSiteLayout";
-import MagazineSiteLayout from "@/components/layouts/site/MagazineSiteLayout";
 import { Analytics } from "@vercel/analytics/react";
 import { JsonLd } from "@/components/json-ld";
+import { ThemeProvider } from "@/components/theme-provider";
+import { siteConfig } from "@/config/site";
+import { siteConfig as themeSiteConfig } from "@/config/theme";
+import { getSiteLayout } from "@/lib/layout-registry";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -67,11 +65,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const SiteLayout = {
-    minimal: MinimalSiteLayout,
-    sidebar: SidebarSiteLayout,
-    magazine: MagazineSiteLayout,
-  }[themeSiteConfig.layout];
+  const SiteLayout = getSiteLayout(themeSiteConfig.layout);
 
   return (
     <html lang="en" className="overflow-x-hidden touch-manipulation" suppressHydrationWarning>

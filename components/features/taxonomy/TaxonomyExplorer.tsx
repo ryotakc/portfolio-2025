@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { TaxonomyList } from "./TaxonomyList";
-import { FilteredPostList } from "./FilteredPostList";
+import { usePathname, useSearchParams } from "next/navigation";
+
+import { useMemo } from "react";
 import type { MDXPost } from "@/lib/mdx-utils";
+import { FilteredPostList } from "./FilteredPostList";
+import { TaxonomyList } from "./TaxonomyList";
 
 interface TaxonomyExplorerProps {
   title: string;
@@ -23,7 +24,7 @@ export function TaxonomyExplorer({
   type,
   locale,
 }: TaxonomyExplorerProps) {
-  const router = useRouter();
+  // const router = useRouter(); removed unused
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
@@ -32,27 +33,7 @@ export function TaxonomyExplorer({
   const activeParam = searchParams.get(paramKey);
   const activeFilter = activeParam || "All";
 
-  const handleSelect = (selectedLabel: string) => {
-    const params = new URLSearchParams(searchParams);
-    
-    // Logic: 
-    // If clicking "All", remove param.
-    // If clicking same active item (toggle off), remove param.
-    // Else, set param.
-    
-    if (selectedLabel === "All") {
-       params.delete(paramKey);
-    } else if (selectedLabel === activeParam) {
-       params.delete(paramKey);
-    } else {
-       params.set(paramKey, selectedLabel);
-    }
-
-    // Replace URL without full reload
-    // scroll: false prevents jumping to top if desired, but user might want to see top of results.
-    // standard behavior is ok.
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  };
+  // _handleSelect removed
 
   // Filter posts logic
   const filteredPosts = useMemo(() => {
@@ -70,7 +51,7 @@ export function TaxonomyExplorer({
     // "All" item
     const allItem = {
       label: "All",
-      href: "#", // Handled by onClick mostly, but href is good for SEO/Link. 
+      href: "#", // Handled by onClick mostly, but href is good for SEO/Link.
       // Actually TaxonomyList uses Link. We intercept or modify TaxonomyList?
       // Wait, TaxonomyList renders `Link`.
       // We should probably MODIFY TaxonomyList to accept `onClick` and optionally disable real navigation if we want pure client side.
@@ -81,7 +62,7 @@ export function TaxonomyExplorer({
 
     const mappedItems = items.map((item) => {
       const isSelected = item.name === activeParam;
-      
+
       // Determine target href for Link
       const params = new URLSearchParams(searchParams);
       if (isSelected) {
@@ -97,7 +78,7 @@ export function TaxonomyExplorer({
         href,
       };
     });
-    
+
     // Special href for All
     const allParams = new URLSearchParams(searchParams);
     allParams.delete(paramKey);
@@ -105,11 +86,11 @@ export function TaxonomyExplorer({
 
     return [allItem, ...mappedItems];
   }, [items, posts.length, activeParam, searchParams, pathname, paramKey]);
-  
+
   // Note: TaxonomyList uses Link, which is fine. Next.js Link performs client-side transition.
   // We don't necessarily strictly need `onClick` handler if we construct correct `href`s.
   // The state `activeFilter` will update via `useSearchParams`.
-  
+
   return (
     <div className="container py-10 max-w-4xl mx-auto">
       <div className="mb-8 space-y-4">
@@ -120,21 +101,17 @@ export function TaxonomyExplorer({
       <div className="mb-12">
         {/* We reuse TaxonomyList. It expects items with { label, count?, href }. 
             It also expects activeItem to style it. */}
-        <TaxonomyList 
-          items={taxonomyItems} 
-          type={type} 
-          activeItem={activeFilter} 
-        />
+        <TaxonomyList items={taxonomyItems} type={type} activeItem={activeFilter} />
       </div>
 
       <div className="mt-8">
-         <FilteredPostList 
-            posts={filteredPosts} 
-            filterType={type} 
-            // Display "All" if no filter, otherwise the filter name
-            filterValue={activeFilter === "All" ? "All" : activeFilter} 
-            locale={locale} 
-         />
+        <FilteredPostList
+          posts={filteredPosts}
+          filterType={type}
+          // Display "All" if no filter, otherwise the filter name
+          filterValue={activeFilter === "All" ? "All" : activeFilter}
+          locale={locale}
+        />
       </div>
     </div>
   );

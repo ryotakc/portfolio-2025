@@ -1,7 +1,7 @@
 import RSS from "rss";
 import { siteConfig } from "@/config/site";
-import { getAllContentPaths, getMdxBySlug } from "@/lib/mdx-utils";
 import { languages } from "@/lib/i18n";
+import { getAllContentPaths, getMdxBySlug } from "@/lib/mdx-utils";
 
 export const runtime = "nodejs";
 

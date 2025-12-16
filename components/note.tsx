@@ -1,18 +1,17 @@
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
-  Pencil,
-  ClipboardList,
-  Info,
-  CircleCheck,
-  Flame,
+  Bug,
   Check,
+  CircleCheck,
   CircleHelp,
+  ClipboardList,
+  Flame,
+  Info,
+  List,
+  Pencil,
+  Quote,
   TriangleAlert,
   X,
   Zap,
-  Bug,
-  List,
-  Quote,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +21,7 @@ type NoteProps = {
 };
 
 export default function Note({ type = "note", children }: NoteProps) {
-  let variant: "default" | "destructive" = "default";
+  let _variant: "default" | "destructive" = "default";
   let Icon = Pencil;
 
   // Base classes with static strings
@@ -93,7 +92,7 @@ export default function Note({ type = "note", children }: NoteProps) {
       iconColor = "text-red-500";
       bgColor = "bg-red-50 dark:bg-red-950/20";
       borderColor = "border-red-200 dark:border-red-900";
-      variant = "destructive";
+      _variant = "destructive";
       title = "Failure";
       break;
 
@@ -102,7 +101,7 @@ export default function Note({ type = "note", children }: NoteProps) {
       iconColor = "text-rose-500";
       bgColor = "bg-rose-50 dark:bg-rose-950/20";
       borderColor = "border-rose-200 dark:border-rose-900";
-      variant = "destructive";
+      _variant = "destructive";
       title = "Danger";
       break;
 
@@ -111,7 +110,7 @@ export default function Note({ type = "note", children }: NoteProps) {
       iconColor = "text-pink-500";
       bgColor = "bg-pink-50 dark:bg-pink-950/20";
       borderColor = "border-pink-200 dark:border-pink-900";
-      variant = "destructive";
+      _variant = "destructive";
       title = "Bug";
       break;
 
@@ -130,8 +129,6 @@ export default function Note({ type = "note", children }: NoteProps) {
       borderColor = "border-slate-200 dark:border-slate-900";
       title = "Quote";
       break;
-
-    case "note":
     default:
       // Keep default
       break;
