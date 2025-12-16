@@ -13,8 +13,8 @@ interface DefaultContentLayoutProps {
 
 export default function DefaultContentLayout({
   children,
-  frontmatter,
-  locale,
+  frontmatter: _frontmatter,
+  locale: _locale,
 }: DefaultContentLayoutProps) {
   return (
     <div className="mt-0">

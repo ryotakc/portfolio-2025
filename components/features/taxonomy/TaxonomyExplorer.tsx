@@ -1,6 +1,7 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+
 import { useMemo } from "react";
 import type { MDXPost } from "@/lib/mdx-utils";
 import { FilteredPostList } from "./FilteredPostList";
@@ -23,7 +24,7 @@ export function TaxonomyExplorer({
   type,
   locale,
 }: TaxonomyExplorerProps) {
-  const router = useRouter();
+  // const router = useRouter(); removed unused
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
@@ -32,27 +33,7 @@ export function TaxonomyExplorer({
   const activeParam = searchParams.get(paramKey);
   const activeFilter = activeParam || "All";
 
-  const _handleSelect = (selectedLabel: string) => {
-    const params = new URLSearchParams(searchParams);
-
-    // Logic:
-    // If clicking "All", remove param.
-    // If clicking same active item (toggle off), remove param.
-    // Else, set param.
-
-    if (selectedLabel === "All") {
-      params.delete(paramKey);
-    } else if (selectedLabel === activeParam) {
-      params.delete(paramKey);
-    } else {
-      params.set(paramKey, selectedLabel);
-    }
-
-    // Replace URL without full reload
-    // scroll: false prevents jumping to top if desired, but user might want to see top of results.
-    // standard behavior is ok.
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
-  };
+  // _handleSelect removed
 
   // Filter posts logic
   const filteredPosts = useMemo(() => {

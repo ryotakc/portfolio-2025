@@ -2,8 +2,8 @@ import Link from "next/link";
 import ogs from "open-graph-scraper";
 
 export default async function LinkCard({ url }: { url: string }) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let meta: any = {};
+  // biome-ignore lint/suspicious/noExplicitAny: OGS result is untyped
+  let meta: any = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
   try {
     const { result } = await ogs({ url });
     meta = result;
@@ -63,8 +63,8 @@ export default async function LinkCard({ url }: { url: string }) {
           </div>
 
           <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            {/* biome-ignore lint/performance/noImgElement: Favicon */}
+            <img // eslint-disable-line @next/next/no-img-element
               src={faviconUrl}
               alt={`${domain} icon`}
               className="h-4 w-4 rounded-sm"
@@ -79,8 +79,8 @@ export default async function LinkCard({ url }: { url: string }) {
           <div className="relative h-full aspect-[1.91/1] shrink-0 sm:aspect-square sm:w-auto hidden sm:block">
             {/* Using standard img tag if external, or Next Image if configured. 
                 Using img for broader compatibility with external URLs without config */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            {/* biome-ignore lint/performance/noImgElement: External images */}
+            <img // eslint-disable-line @next/next/no-img-element
               src={imageUrl}
               alt={title || "Link preview image"}
               className="h-full w-full object-cover"

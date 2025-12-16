@@ -1,9 +1,9 @@
 import Link from "next/link";
 import type { AnchorHTMLAttributes, FC, HTMLAttributes } from "react";
 
-// biome-ignore lint/suspicious/noExplicitAny: Generic component map
 export const Typography: Record<
   string,
+  // biome-ignore lint/suspicious/noExplicitAny: Generic component map
   FC<any /* eslint-disable-line @typescript-eslint/no-explicit-any */>
 > = {
   h1: (props: HTMLAttributes<HTMLHeadingElement>) => (

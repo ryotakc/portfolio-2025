@@ -20,7 +20,7 @@ export function IframeCard({
   description,
   scale = 0.8,
   height = "500px",
-  width = "100%",
+  width: _width = "100%",
 }: IframeCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
