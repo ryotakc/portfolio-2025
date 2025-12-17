@@ -1,0 +1,588 @@
+---
+title: 【ブラウザ】Arcについて力説＆使い方
+description: Arcブラウザについての説明と使い方を解説！
+date: "2025-12-15T12:00:00Z"
+layout: "blog"
+category: ["blog"]
+tags: ["ブラウザ", "Arc", "Mac"]
+---
+# はじめに
+こんにちは、カナダにコンピューターサイエンス留学中の大学1年生です。
+今回は先日良すぎるブラウザ「[**Arc**]((https://arc.net/gift/463415aa))」を見つけたので力説していきたいと思います。触れば触るほど楽しめる、クセになる、新感覚のブラウザって感じでした。（巷では話題になってるみたいですね）
+長くなりますが読んでいただけると嬉しいです！
+
+たまにArcのアプデに合わせて記事のアプデもしていくのでストックして見返してみてください！(後述しますがArcは毎週アプデがあります)
+
+:::info
+第二弾である[【ブラウザ】Arc ＆ Arc Searchの新機能と使い方を徹底解説！〜第二弾〜](https://qiita.com/leo_canada/items/81a89f39f2b7fb7af20e)という記事を書きましたので是非ご覧ください！
+Mobile版であるArc searchやArc(desktop版)に追加された新機能について書いてあります。
+
+Desktop版Arcに追加された機能はこの記事にも追記しました。
+
+リンク↓
+[**【ブラウザ】Arc ＆ Arc Searchの新機能と使い方を徹底解説！〜第二弾〜**](https://qiita.com/leo_canada/items/81a89f39f2b7fb7af20e)
+
+:::
+
+<br />
+## 概要
+今回ご紹介するブラウザは[The Browser Company](https://thebrowser.company/)という会社が開発した[**Arc**](https://arc.net/gift/463415aa)というブラウザです。比較的最近発表されたばかりのブラウザっぽいのですが、Chromiumベースの非常に使いやすいブラウザとなっています。
+僕は以前[Sidekick](https://www.meetsidekick.com/)というブラウザを使用していたのですが、こちらは期間限定で無制限使用、それを超えると基本的には機能制限がかかるというブラウザでした。非常に使いやすかったのですが機能制限あっては使いにくかったので結局Chromeに戻ってきました。（課金しろって話なんですがいかんせん学生で自由にお金を使えるわけでもないですし、課金してまで使いたいか？と言われると否でした😅）
+
+今回のArcは簡単にいうとSidekickの無駄を省いて便利な機能を追加したって感じの印象でした。（Sidekick使ったことない方、分かりにくくてすみません🙇‍♂️ Sidekickの方が使い勝手はChromeに近いです）
+
+:::tip 
+※追記(7/25 2023)
+*__ついにArcのWaitlistが撤廃され、誰でもいつでもダウンロードできるようになりました！！！
+この機会に皆さんも是非使ってみてください！(現在はMac版のみです)__*
+[リンク↗️](https://arc.net/gift/463415aa)
+:::
+
+
+:::info
+学生の方は、学校のメール(@ edu..など)でのEarly accessが可能です。（恐らく5~10分くらいの間にメールが届くと思います。多分😇）→ <INS>**[Arc for Students](https://students.arc.net/)**</INS>
+> **Arc for Student**: Invites should typically arrive within 5-10 minutes. If you’ve signed up for Arc but haven’t received your invite within an hour, please do send us a note in the mail
+
+学生メールで登録すると開発中の新機能などを試すことができるようになるようです。
+
+※追記
+Homebrewからのダウンロードでも大丈夫そうです。
+アカウントの登録はダウンロード、アプリ上で可能です。
+
+```terminal
+$ brew install --cask arc
+```
+[**Homebrew Link**](https://formulae.brew.sh/cask/arc)
+:::
+
+
+https://arc.net/gift/463415aa
+
+
+<br />
+## [The Browser Company](https://thebrowser.company/)について
+機能などを紹介する前にこのArcというブラウザを開発した会社について簡単にご紹介します。
+2019年創業の比較的新しいスタートアップ企業です。
+
+> We’re a team of founders who sold their last company, ex-Instagram engineers, former Heads of Design at Tesla and Medium, multiple Google Chrome alums, a founding engineer of Amazon S3, alumni from Snap, Slack and Pinterest, and so many other people who have done it before. (From [The Browser Company](https://thebrowser.company/))
+
+元InstagramエンジニアやAWS S3創業エンジニア、元TeslaやMediumのデザイン部長などにより創業された会社のようです。とりあえず凄い方々の集団ですね😂
+
+> We’ve raised over $17 million dollars from a diverse group that includes the founders of Instagram, Stripe, Twitter, Zoom, Figma, and LinkedIn. We’re always grateful for new perspectives and shared learnings from experience. (From [The Browser Company](https://thebrowser.company/))
+
+また、InstagramやTwitter、LinkedInなど様々な有名企業から合計1700万ドル以上もの出資を受けているそうです。
+↓の動画でマネタイズなどのQ＆AにCEOのJosh Miller氏が答えていますが会社の雰囲気も良さそうで社員の方々も楽しそうですね（最近こういう会社に憧れてます🤤）
+
+https://youtu.be/eVda3zFLlhc
+
+![IMG_6610 (1).png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/6462e39a-9e48-5b0b-64aa-7d6f8175d12a.png)
+
+
+
+
+以下、[The Browser Company](https://thebrowser.company/)の公式Webサイトです。[<INS>**Twitter Link**</INS>](https://twitter.com/@browsercompany)
+
+https://thebrowser.company/
+
+<br />
+<br />
+
+### 機能紹介
+さて、前置きが長くなりましたが**Arc**の機能紹介をしていきましょう！
+便利な機能が多くて全てを見つけられているわけではないのですがメインの便利機能をご紹介します。
+
+今回紹介する機能以外にも多くの機能があり、また現在開発中の機能も沢山あるようです。
+
+更に、Discordコミュニティもあります。
+フィードバックやバグ報告などはArcから直接送ることができます。(スクショ添付可能)
+
+以下、公式よりメールにて送られてきたGifなどやスクショ使用してできるだけわかりやすく解説します。（説明わかりにくかったらすみません）
+
+<br />
+<br />
+
+**※追記**
+<INS>公式が出しているドキュメントの方がわかりやすいと思います😇</INS>
+<INS>Arcの公式アカウントではアプデ事前情報や開発中の機能などが見ることができます。</INS> 
+[@arcinternet](https://twitter.com/arcinternet)
+
+https://browserinc.notion.site/Arc-Resources-e5dfd3226b2544b0816f6778b32fc6a4
+
+https://resources.arc.net/en/
+
+
+<br />
+<br />
+
+#### 1. お気に入り(Favorite)タブ
+これがやっぱり便利。
+Sidekick使ったことのある人はわかると思いますが、ここにおいたWebサイトはアプリのように使用することが可能です（説明むずい）
+ここに表示されているアプリはスペースを切り替えても固定されたままなので使用頻度が高いアプリを置くことをおすすめします。
+`⌘＋クリック`で新規タブとして開くことができます。外部リンクはそのままクリックするとプレビューとして表示されます。
+![Frame_5.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/e7f4354e-df85-3b83-1ecf-0c2cb3cc75ca.png)
+
+
+
+#### 2. Chromeのタブ、ウィンドウ増えすぎ問題を解決
+こちらはスペースという機能。
+ChromeでいうWindowと、タブを融合したような機能でスペースごとに役割を割り当てたり開いているタブを整理できたりするのでChromeユーザーの永遠の課題、タブ、ウィンドウ増えすぎて目当てのタブがどこにあるのかわからなくなる問題の解決につながるかもしれません。もちろんウィンドウを増やすことも可能です。
+スペースごとにテーマを変えることも可能です。
+また、一定時間経つとTodayで開いているタブがアーカイブに移動されます。(設定でアーカイブされる時間を変更可能です。デフォルトでは24hになっているので短いと言うかたは変更しましょう)
+
+![IMG_6604.GIF](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/1cbc81b8-02ad-5828-9760-a8a3a4c9550b.gif)
+
+今後はもしかしたらスペースにBGM（雨の音やカエルの鳴き声など）が追加されるかもしれないとのことですよ…！
+(ないかも笑)
+
+<br />
+<br />
+
+#### 3. Split View
+Split Viewってなんだかんだ使用頻度高いですよね。かといってChromeでやろうとするとMacデフォルトの画面分割機能を使用するしかないですがこれやっぱ面倒です。
+
+しかし、ArcのSplit Viewはご覧の通り一緒に開きたいタブをドラッグするだけ！2つだけでなく3つ4つとより多く分割することも可能です！
+また、横に並べるだけでなく、上下に分割することも可能です。
+
+![IMG_6605.GIF](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/a1718c2e-df78-d76e-8d45-10c759cee52c.gif)
+
+:::note
+##### Split Viewがより簡単に！
+Previewで開いたタブをより簡単にSplit Viewに展開することができるようになりました。また、タブを並べたいタブにドラッグ&ドロップすることで以前よりも簡単にSplit Viewにすることができるようになりました。
+
+![af873f97-71b5-4744-d8e8-0808a5617c2b.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/3497fee7-0044-8980-6ec1-dbd4609587df.gif)
+:::
+
+<br />
+<br />
+
+#### 4. タブ切り替えを素早く
+`Control + Tabキー`で開いているタブを素早く切り替えられます！
+
+![IMG_6606.GIF](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/fc462f26-1b29-3b95-b825-e9151a7c67b0.gif)
+
+<br />
+<br />
+
+#### 5. 無駄なタブを一掃
+どんどん溜まっていく無駄なタブを一括で消すことができます！
+お気に入りに入っているタブやピン留めされているタブは削除されません。あくまでそれらに登録されていないタブのみを一括削除できます。
+
+![IMG_6607.GIF](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/a4d8edcb-d116-93b4-091f-2d313b0fe503.gif)
+
+<br />
+<br />
+
+#### 6. 再生中の動画を自動でPIPに変更
+タイトルのまんまです。
+YouTubeなどの動画を再生している時に別のタブに移動すると自動でPicture in Picture機能が作動して、動画のタブに戻ると元に戻ります！
+
+![IMG_6608 (1).gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/f1fcd779-b8a4-6666-413b-d340d6f9ea65.gif)
+
+
+![mini_player.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/64243160-1533-afd0-d543-c1219df2233d.gif) 
+このようにリンク横のセキュアマークからPIPのOnOff設定などを変更することができます。
+（これはアプデによりコントロールセンターに統合されました。同じ場所の右側から拡張機能などにもアクセスすることが可能です）
+
+<br />
+<br />
+
+#### 7. 複数のプロフィールを追加
+これはChromeにもありますね！
+プロフィールを追加することで様々な用途で使い分けることができます。ただし、ArcがChromeと違うのはスペースごとにプロフィールを割り当てられるんです！
+
+![Untitled.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/65491283-b982-47b3-d29e-df858394da3d.gif)
+
+<br />
+<br /> 
+
+#### 8. Notes, Easels機能搭載
+これもなかなか使いやすそう。
+Notionとapple appのFreeFormを合わせたような機能って印象でした。（freeFormに近い）
+Notesはマークダウン形式で書けます。
+
+![IMG_6609.GIF](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/69f15407-6f7b-a113-541e-47c599cf69d6.gif)
+
+ちなみにArcのアップデートリリースノートはこの機能を使って共有されています！自分専用、誰でも見れる、誰でも編集できる、の三つから選択できます。
+NotionのようにWebページっぽく使えて良さそう。
+
+<br />
+<br />
+
+#### ~~9. Arc for iPhoneとの連携も非常に良い~~
+~~iPhone用のArcもあるんです！Macと同じメールアドレスでサインインし、共有の設定でArcを表示、Macで開きたいサイトで共有ボタンからArcのアイコンを押すだけでMacと同期します。~~
+~~MacのHandoff機能の方が便利かなとも思いますが、Macを開いていない時にも使えるので後でまとめてMacで見たいなと思った時など便利です！また、ブラウザに限らずTwitterやInstagram等も同じ手順でArc for Macで開くことが可能です。~~
+
+![IMG_04CEF600F121-1.jpeg](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/46cb9a3a-0250-730b-5491-3f490e893e6f.jpeg)
+
+:::warning
+Arc mobile Gen1はダウンロード可能ですが、バグが多数あり使用できるような状態ではないのでArc Searchに移行することをお勧めします。Arc Searchは上記のような機能はまだありませんが、今後のアップデートで同じようなことができるようになるとのことですのでゆっくり待ちましょう笑
+また、こちらはデフォルトのブラウザに設定することができません。
+:::
+
+<br />
+<br />
+
+#### 10. 画面を広く使える（個人的かなり推しポイント）
+サイドバーは表示非表示の切り替えが可能です。（サイドにカーソルをホバーすることで表示させられます）
+非表示にすることにより、ノードPCを使っていても画面を広く使えてめっちゃ気に入ってます。Chromeのように上のブックマークバーや検索バーがなく、iPadっぽく広く使えて最高！
+サイドバーを隠せるため、フルスクリーンにしなくてもデスクトップでスッキリ使えます。ウィンドウを増やしてもChromeほどはごちゃごちゃしませんよ。
+![Screenshot 2023-05-11 at 3.54.40 PM.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/a9ab11b4-8fac-4894-9771-5a587c711e44.png)
+
+
+<br />
+<br />
+
+
+#### 11. コマンドパレットが非常に使いやすい
+`⌘(Command)　+ Tキー`でコマンドパレットを開けるわけですが、ここから検索（New Tab）できたり、ブックマークのタブを開けたり、開いている別のタブに移動できたり、拡張機能の設定ページなどに遷移できるなど機能豊富です。
+現在の画面から検索できるのでSpotlight見たいな感じで使えます。
+![Screenshot 2023-05-11 at 5.42.56 AM.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/9ed06907-2b4a-e39a-00c1-58983561c997.png)
+
+また、YoutubeやTwitterなどでの直接検索も可能です。これはChromeのデフォ機能みたいですね。(最近気づきました)
+以下、設定の仕方です。Chromeでも同じように設定可能ですがArcのコマンドパレットでより活かされると思ってます！w
+
+https://resources.arc.net/hc/en-us/articles/20855018192791-Site-Search-Directly-Search-any-Website
+
+（設定したショートカットを打ってTabキー）
+![CleanShot 2023-04-01 at 12.54.03.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/a43ce869-c0eb-6687-a208-e89123e16bbc.gif)
+
+<br />
+
+<br />
+
+#### 12. ミニウィンドウ機能
+僕自身は今のところはあまり使っていませんが、こちらも便利な機能だなぁと思ったので紹介させていただきます。
+`⌘(Command) + ⌥(Option) + Nキー`で小さいウィンドウをメインウィンドウの上に表示させることができます。`⌘ + O`でメインウィンドウに表示させることも可能です！
+~~僕は[Raycast](https://www.raycast.com/)からミニウィンドウを開いてEditorなどと一緒に使ったりしてます。~~
+上に書いたショートカットキーで別のアプリ上でもミニウィンドウ開けることに気づきました
+
+
+![Screenshot 2023-05-11 at 4.14.49 PM.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/1a3111ab-8b96-526b-8966-ddde82684ca4.png)
+
+また、少し似ていますがクイックルック的なブラウジングも可能みたいです。(おそらく別タブで開くように設定されているページをクリックするとこの機能で見ることができます)
+
+<br />
+<br />
+
+#### 13. Boost機能
+Boostという機能により、様々なWebサイト（YoutubeやGithubなど）のテーマや追加機能のカスタマイズができます。Google拡張機能のArc版だと思っていただいて大丈夫ですが、html, css, jsの知識があればGoogle拡張機能よりも簡単に自分専用のカスタマイズができます。
+
+専用のWebサイトもあり、こちらから適用する場合は自分でコードを貼り付けなければなりません。
+
+詳細は以下のWebページのそれぞれのBoost詳細をご覧いただければと思いますが、例えばYouTubeのテーマを変更すると、Arcのテーマに沿ったテーマに変更（スペースを変更するとそのテーマに変更される）できたりなどより楽しくArcを使用することができます。
+
+https://arcboosts.com/boosts?page=1
+
+<br />
+<br />
+
+#### 13-1. Boost機能が進化！
+※追記(6/11 2023)
+今までの↑Boost ver1(？)は拡張機能的役割だったのですが先日少し話題になったBoost2.0で、Webサイトをカスタマイズできるようになりました。
+サイトのテーマやカラー、フォントを変えたりいらない項目を削除したり(Zap)など使用していてとても楽しい機能となっています。
+![Screenshot 2023-06-11 at 3.33.19 AM.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/0bb14c1d-897c-65b6-044f-762e8c5b6027.png)
+
+
+<br />
+<br />
+
+#### 14. フォルダー内のプレビュー＆検索
+※追記(6/11 2023)
+コマンドパレットから検索はできるのですが、今までフォルダを遡って開きまくっていたところ、先日のアプデでこの機能が追加されそのデメリットも無くなりました。
+
+![Screenshot 2023-06-11 at 3.21.52 AM.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/fd8abc0b-f90c-28fd-7248-270b34ed9ca7.png)
+
+また、アプデ前はフォルダ内のタブを開くとそのタブを開きっぱなしにするか、フォルダを閉じてそのタブが見えないようにしてしまうかしかできませんでしたが、アプデにより以下の写真のように開いているフォルダ内のタブのみを表示させることができるようになりました。
+
+![Screenshot 2023-06-11 at 3.29.33 AM.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/8b8322f6-75c9-c5de-be67-742ab0b89167.png)
+
+<br />
+<br />
+
+#### 15. ページのプレビュー機能(一推し！)
+`Shift リンククリック`でページのプレビューを見ることができます！もちろんそのままブラウジングも可能ですし、プレビューしているページの中で再度 `Shift リンククリック`をすることで新しいWindowでページを開くことが可能です。
+`⌘ ＋ W`で新しいタブでフル表示させることも可能です。
+![Screenshot 2023-08-05 at 5.28.51 PM.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/1b1779a4-a8ad-e8f2-6550-0af1beeb32a6.png)
+(↑本記事で`Shift リンククリック`で記事内のリンクをプレビューによって開いています)
+
+<br />
+<br />
+
+#### 16. Arc Max追加！！
+新たにArc Maxが90日間のリミット付きでリリースされました！
+Arc Maxには主に5つの機能があり、`Ask on Page`、 `5-Second Previews`、 `Tidy Tab Titles`、 `Tidy Downloads`、 そして`ChatGPT in the Command Bar`です。
+> **Ask on Page**
+開いているWebページ上で`⌘F`を押してページ検索をすることができますが、そこにAI機能が追加されてページ内でAIに質問したり要約してもらったりすることができるようになりました！これめっちゃ便利！
+
+> **5-Second Previews**
+`Shift`を押しながらマウスをリンクの上にホバーすることでそのリンク先のページの要約や情報を簡潔にまとめてプレビューしてくれるようになりました！Shiftを押したままクリックすると先に書いたようにプレビューでブラウズすることができます。
+
+> **Tidy Tab Titles**
+Today Tabで開いているWebページをPin Tabに持っていくとAIにより自動的に最適化したページ名に名前を変更してくれます！これは僕はちょっと鬱陶しかったのでOffにしてしまいました笑
+
+> **Tidy Downloads**
+ダウンロードしたファイルをAIが自動的に最適化した名前に変更してくれます！例えば、ab67616d0000b273a2719e88575363b5fd61f994.jpgといったファイル名をArc Net.jpgといった名前に変更してくれます。
+
+> **ChatGPT in the Command Bar**
+`⌘T`でコマンドバーを開き`gpt`とタイプしてTabキー、または`⌥⌘G`でコマンドバーからChatGPTに直接文章を打ち込むことができます！クイックアクセス的な感じです。
+
+> **Instant Links**　 <font color="##78C841"> "New!"</font>
+`Setting` → `Max` → `Instant Links`をOnにし、`⌘ + Tab`で検索したいものを検索ボックスに入力します。その後`⇧ + Enter`を入力することでArcがAIを利用して最適なWebサイトを自動的に開いてくれます。
+>
+>ブラウジングの時間が短縮され、非常に快適になりました！
+>
+>![Screenshot 2024-02-01 at 12.04.00 PM.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/588927d6-3613-b427-3da1-7bb4805dba6c.png)
+
+> **Tidy Tabs** 　<font color="##78C841"> "New!"</font>
+>Instant Linksと同じ手順で`Tidy Tabs`をOnにします。Today Tabにタブが6つ以上ある場合は、Pin TabとToday Tabの境目にあるClearの横の箒マークをクリックすることでAIが自動的にタブを分類してくれます！分類されたグループからフォルダを作成することも可能ですし、一気に削除することも可能です。
+>
+>正直これ、ついタブを開きすぎてしまう自分にとってはめっちゃ便利でした笑
+>
+>![768b06b3-1849-90ef-207f-0356568f1605.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/7a64e379-ca92-3376-ff07-8b41e9859077.gif)
+
+<br />
+<br />
+![Screenshot 2023-10-06 at 6.13.10 PM.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/e08c4fe1-4a1f-9152-ae30-e0889b93d7c2.png)
+
+AIを使用したプロダクトにはコストが非常にかかるということで、一旦90日間の試用期間を設けるとのことです。今後は有料機能になる可能性もありそうですね…😇
+以下、Arc Maxが紹介されたThe Browser CompanyのYouTube Liveのアーカイブ動画です。
+
+https://www.youtube.com/live/y7koAGLf0EE?si=N_w332-rnxSl5drg
+
+
+Instant Linksについて、詳しくは以下の動画をご覧ください。
+
+X↓
+
+https://x.com/i/status/1753129075487478157
+
+YouTube↓
+
+https://youtu.be/WIeJF3kL5ng?si=ydssTm_SphTepAfe
+
+
+<br />
+<br />
+
+#### 17. Share Quate
+Share QuateはWebサイト上で自分の共有したい部分をハイライトして専用の共有ボタンを押すことでハイライトした部分をダイレクトに開くことができるリンクを生成できます。
+
+生成例は以下の通りです。
+
+https://arc.net/l/quote/lztpzsao
+
+![ba08d755-9f2b-61a4-2468-34ed15017d72.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/5ef46436-1731-74bb-1bb7-fa4e61e08e49.gif)
+
+<br />
+<br />
+#### 18. Space, Folderの共有
+スペース、そしてフォルダーをそのまま共有することが可能です！
+共有したフォルダはArcで開くとフォルダやスペースを直接自分のArcに追加することが可能です。Chrome等ではArcと同じデザインのオリジナルサイトを開くことが可能です。
+
+以下はフォルダの共有例です！
+
+
+https://arc.net/folder/2A667E36-9008-4F49-ABE0-924DC14FC62B
+
+
+![4c0eea9d-d8d9-de17-c684-3c8f70664e9f.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/35d6539b-1fff-6b17-0929-9bec8ab7dffc.png)
+
+<br />
+<br />
+
+ 
+
+#### 19. Perplexity検索
+`Setting (⌘ + ,)` → `Profile` → `Search Engine`より、Perplexityを選択することでデフォルトの検索エンジンをPerplexity AIに設定することが可能です。
+
+スペースごとにProfileを設定することができるので特定のスペースで検索エンジンをPerplexity AIに設定できます。
+
+![Twitter Down (1) (1) (1) copy.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/28d7f923-bef2-7f2e-ad03-cf3414446638.gif)
+
+https://www.perplexity.ai/
+
+<br />
+<br />
+
+#### 20. 全Tabの同期
+以前はFavoriteに固定されているタブのみ他のウィンドウとタブが同期されていましたが、アップデートによりその他のタブも同期されるようになりました。
+（自分はどちらかというと前の方が良かったです笑）
+
+
+![48fa44ff-78a7-bbc2-82ba-4afaf4916c17.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/3f6376fc-689a-5a27-b1c5-d87e6ad3e39d.gif)
+
+<br />
+<br />
+
+#### 21. 拡張機能がわかりやすい場所に！
+拡張機能をFavorite Tabの上部またはリンク横に設定することができるようになりました。
+
+![0a72b554-19af-f586-d3c7-5c09a381a5bd.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/df8af3a0-b6da-d033-1bde-bb043802fff7.png)
+
+<br />
+<br />
+
+#### 22. iCloudからArc Anywhereへ！
+Arcのサイドバー同期がiCloudからArc独自の同期システム、Arc SyncことArc Anywhereへ生まれ変わりました！end-to-endの暗号化を使用しているため安全です！
+また、リカバリーキーも用意されているので`Setting`→`Sync Sidebar`→`Recover Card`からバックアップをとっておきましょう。
+
+![a9de6ded-35d6-f8b1-8058-9ab42609a8f7.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/eacbd6bc-217f-e6ae-a3fc-aec71c7cba27.png)
+
+<br />
+<br />
+
+#### 23. アイコンのバリエーションが増えました！
+Arcを他の人にシェアすることで使用できるアイコンのバリエーションが増えます！
+最大50人にシェアすることで全てのアイコンを使用することができます。
+
+
+![Twitter Downloader GIF.gif](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/1998455/0bf7df15-dfe2-78fc-5427-d9f55a3e3076.gif)
+
+
+:::tip
+裏技ですが、ターミナルで以下のコマンドを入力することでシェア数が足りていなくてもアンロックされていないアイコンを使用することが可能です笑
+```terminal:terminal
+$ defaults write company.thebrowser.Browser currentAppIconName -string アイコンの名前
+```
+
+また、以下のショートカットをMacに追加することでもアイコンの変更が可能です。
+
+[ショートカットリンク](https://www.icloud.com/shortcuts/5d546417333e4556a9c1cf2af6ecafba)
+
+:::
+
+
+<br />
+<br />
+
+### その他メリット
+- 使っていて楽しい
+- どうやらリリースノートは毎週木曜日に出るようなので毎週楽しめる(Appleイベント待ってる感覚😂)　以下のリリースノートは毎週更新されます
+
+https://arc.net/e/D25B2EEA-7506-4850-A169-3B2A00802889
+
+- タブ整理がしやすい
+- デフォルトでAdブロック機能つき
+- 拡張機能も全てChromeと同じように使える(`⌘T → add extension`)
+- テーマを自由に設定できる
+- Webサイトのアイコンを変更できる
+- ~~招待制なのでなんとなく特別感ある~~ (Public版がリリースされたので招待制ではなくなりましたがメンバーシップカードは常時発行可能です)
+- アニメーションが美しい
+- ショートカットが豊富（カスタマイズも可能。`⌘ ,`, `⌘ T → Edit shortcut`で設定や閲覧が可能です）
+- PC内のメディアをArc上でプレビュー可能(左下よりLibraryを開いてプレビューできます)。プレギューから右上の'Open in Preview'でそのままMacのPreviewアプリで開くことも可能です。
+- ページ全体のスクショのショートカットを設定可能(僕は`⇧ ⌘ 7`に設定しています)
+- Arc専用のスクショは`⇧ ⌘ 2`です(めっちゃ使いやすいです)。撮影したものをEaselsやNoteにインポートすることが可能です。
+- パスワードを保存可能
+- <font color = "#00CCFF">**良いところ、機能を挙げるとキリがない**</font>
+
+<br />
+<br />
+
+### デメリット
+- 割とメモリを食う（Chromeと同じくらいかそれ以上食います。さっき見たらトータル2〜3GBほどでした）
+- キャッシュ結構溜まる（~~一ヶ月使って1GBほど溜まってました。`Finder → Go → ⌥押しながらLibrary → Cashes`~~)
+※追記
+これはやめた方がいいかもしれません。色々バグりました(治りましたが)。キャッシュを消したい場合は次の手順で消しましょう`Arc > Settings > General > Clear Browsing Data`
+- 万人向けではないかも？（どのブラウザにも言えることだとは思いますが、使いにくいと感じる人は一定数いるかもしれません）
+- ~~階層のあるブックマークはアクセスしづらい~~（頻繁にアクセスするならPin留めするかお気に入りに登録すれば良いですし、そこまでアクセスしなくてもコマンドパレット(⌘ + t)から簡単に飛ぶことはできます）
+※追記　
+上の方にも書きましたが、アプデによりフォルダのプレビュー、検索ができるようになったのでこのデメリットは解消されました！
+- お気に入り(Favorite)を増やしすぎると普通に使いづらい（Max12、3〜9が使いやすいと思います。僕は９で使ってます。どうやらMax12っぽい？）
+- お気に入り、ピン留めされているタブが多いと他のタブが下にいってしまい、開くときにスクロールして探さなければならないのでそこは少し面倒（コマンドパレットでどうにかなるとは思います）。
+※追記
+これも書きましたがフォルダを閉じていても開いているタブのみの表示が可能になったので階層のあるフォルダを開いているときに気になっていたこのデメリットはそこまで気にならなくなりました。開きすぎるとスクロール必要になるのは変わってません
+- 今の所日本語未対応。英語のみです。(アプリ自体の言語は英語のみですが検索エンジンや翻訳設定は日本語にすることも可能です。)
+
+<br />
+<br />
+
+### 今後Windowsへの対応は？
+まず、基本的にブラウザはC++を使用したChromiumベースのものが大部分を占めています。一方でArcはChromiumベースではありますが言語はSwiftを使用して開発されています。
+
+しかしながら、Swiftが2020年にWindowsでも実行可能になったとはいえ今のMacのアプリをそのままWindowsアプリとして使用できるかは非常に難しい問題でありArcの魅力であるUI、アニメーション、使い勝手を維持することは非常に重要です。（僕もこの使用感のままWindowsでも使用できたら最高だなとは思います。）ただし、Windowsアプリケーションのために全てのコードを書き直すことは非常に大きな負担となるためしないそうです。
+また、The Browser Companyがビジョンとして掲げる"Internet Computer"(ICP)(WebのOS的なもの)をより現実化するためにWindowsアプリケーションを作ることは重要な課題の一つであるが先に述べたように様々な課題がありWindows対応のArcの実現の可能性は以下のYouTube撮影時だいたい60%ほどだそうです。（絶賛凄腕Windowsエンジニア募集中だそうですよ）
+
+※追記
+どうやら今年くらいにリリースされるかも？
+
+
+<br />
+<br />
+
+以下、今後のArcのWindowsへの対応についての動画です。適当に聞き流した程度に聞いてたため上の記述が<INS>完全に合っているかはわかりません</INS>のでそこはご了承ください🙇‍♂️🥺
+
+https://youtu.be/bOMQiMxh5Bc
+
+
+※追記2
+先日公式から発表があり、Windows版のBeta版が配布されました！Windows版Arcが使えるようになるのももう間も無くですね！Beta版はまだ数名にしか配布されていないため、以下のリンクからWindows版ArcへのWaitlistへ登録することができます！
+
+https://isarconwindowsyet.com
+
+Youtube
+
+https://youtu.be/IjsP9DOCYy0?si=gGsaC_YnbBr6kAat
+
+https://youtu.be/u2-d5Sty-K0?si=frWvm9mWyW8kEepb
+
+<br />
+
+:::note
+#### Windows版Arc、ついに登場！(追記 Feb 1, 2024)
+ついに、、、ついにWindows版のArcがリリースされました！！！
+Arcファンにとっては待望の発表でしたね！！
+
+Beta版も撤廃され、Windows11を使用している方であればどなたでもダウンロードすることが可能です。
+<br />
+同期はiCloudを使用していたためBeta版の状態ではWindowsでは同期ができませんでしたが、Arc Searchと同様、Arc AnywhereがリリースされたためWindowsでもタブ・フォルダの同期が可能になりました！これでArcを使わない手はないですね！！笑
+（残念ながらLinux, AndroidはまだですがAndroid版は現在開発中のようです。）
+:::
+
+https://twitter.com/i/status/1785344439281402049
+
+https://twitter.com/i/status/1785309803201405116
+
+
+※上記にも追記しましたがiCloud Syncが撤廃され、Arc Syncがリリースされました！そのうちWindowsにも追加されそうですね！
+
+Arc for Windows Betaの開発進捗状況については以下のリンクからご覧いただけます！
+
+https://arc.net/l/quote/pzmpnlml
+
+<br />
+
+# 終わりに
+
+今回も長くなりましたが最後まで読んでいただきありがとうございました！
+最近技術系記事を書いていないのですが趣味程度に書いてるので見逃してやってください😂
+画像容量の関係でふんだんに画像を使うというわけにもいかなかったのですがGifのおかげで少しはわかりやすかったのではないでしょうか？（最近日本語変なのでそう願いたい😇）
+どなたかの参考になれば幸いです。
+
+
+正直最初は絶妙に使いにくいなと思ったのですが、使っていくうちにこんなに使いやすいブラウザってあるのか？！と思うほどになり、ついにデフォルトブラウザをChromeからArcに変更しました。
+
+何より使っていて楽しいブラウザですね。機能も本当に豊富で無料でいいの？と思うくらい便利さが追求されています。（有料になっても課金すると思います）
+開発したThe Browser Companyも雰囲気良さそうな会社で応援したくなりました。
+
+**Macユーザーはチャンスがあれば一度は試してみてほしいブラウザ**です。最初の方に書きましたが、現在は招待のみのメンバーシップなのでギフトリンクを持っている方を探してお願いしてみてください！学生でMacユーザーの方は試さない手はないです。
+
+Arcはコマンドパレットやショートカットを活用してこそ良さが活かされるブラウザです。僕もまだショートカットキーなど全然覚えられていませんが、どんどん覚えてArc Lifeを満喫しましょう！！
+
+何かわからないことがあればコメントにお願いします！（答えられる範囲でお答えします）
+<br />
+
+では、今回はここらで退散したいと思います🫡
+
+<font color="##78C841">**ありがとうございました！**</font>
+
+
+### 追記
+Arcの開発、少し前に中止になりましたね...
+ただ、Arcが使えなくなる・セキュリティが悪くなるというわけではなく、新機能開発が中止→新ブラウザDiaの開発に注力するとのことで、Chromiumのアップデートに合わせてArcの更新は続くようです！
+Diaはまだ発展途上ではありますし、ブラウジング体験はArcに勝るアプリはないので自分はまだまだArcを使い続けるつもりです！
+ArcやDiaの今後に期待です！
+
+
+
+
+

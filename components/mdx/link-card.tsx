@@ -7,8 +7,15 @@ export default async function LinkCard({ url }: { url: string }) {
   try {
     const { result } = await ogs({ url });
     meta = result;
-  } catch (e) {
-    console.error(`Failed to fetch OG data for ${url}`, e);
+    // biome-ignore lint/suspicious/noExplicitAny: Error type is unknown in catch block
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (e: any) {
+    // Suppress verbose logging for expected errors
+    const errorMsg = e?.result?.error || e?.message || "";
+    if (!errorMsg.includes("403") && !errorMsg.includes("404") && !errorMsg.includes("503")) {
+      console.error(`Failed to fetch OG data for ${url}`, errorMsg);
+    }
+
     // Fallback or return simple link
     return (
       <div className="my-8">
