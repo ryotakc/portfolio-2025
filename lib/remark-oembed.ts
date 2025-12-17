@@ -23,8 +23,12 @@ export const oEmbedTransformer: Readonly<Transformer> = {
     try {
       const metadata = await unfurl(url.href);
       return metadata.oEmbed != null ? "OEmbed" : "LinkCard"; // 'OEmbed' and 'LinkCard' component names
-    } catch (e) {
-      console.error("Failed to unfurl:", e);
+      // biome-ignore lint/suspicious/noExplicitAny: Error type is unknown in catch block
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (e: any) {
+      if (e?.message !== "BAD_HTTP_STATUS" && !e?.message?.includes("http status not OK")) {
+        console.error("Failed to unfurl:", e);
+      }
       return "LinkCard";
     }
   },

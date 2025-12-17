@@ -39,6 +39,7 @@ export const components: MDXComponents = {
   EmbeddedTweet,
   Spotify,
   Instagram,
+  INS: "ins",
 };
 
 export function useMDXComponents(inherited: MDXComponents): MDXComponents {
