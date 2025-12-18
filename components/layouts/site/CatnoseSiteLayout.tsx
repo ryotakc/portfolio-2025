@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { FloatingMenu } from "@/components/FloatingMenu";
 import Footer from "@/components/footer";
 import type { SiteLayoutProps } from "@/lib/layout-registry";
+import { LanguageToggle } from "@/components/language-toggle";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function CatnoseSiteLayout({ children }: SiteLayoutProps) {
   const pathname = usePathname();
@@ -33,6 +35,15 @@ export default function CatnoseSiteLayout({ children }: SiteLayoutProps) {
       {/* <div className="pb-8">
         <Footer />
       </div> */}
+      <div className="fixed bottom-2 md:bottom-6 right-2 md:right-6 z-50 flex flex-col gap-1 md:gap-3">
+        <div>
+          <LanguageToggle />
+        </div>
+        <div>
+          <ModeToggle />
+          {/* <AnimatedThemeToggler /> */}
+        </div>
+      </div>
     </div>
   );
 }
