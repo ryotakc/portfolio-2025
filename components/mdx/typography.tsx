@@ -8,59 +8,79 @@ export const Typography: Record<
 > = {
   h1: (props: HTMLAttributes<HTMLHeadingElement>) => (
     <h1
-      className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance mb-5"
+      className="scroll-m-20 text-[1.3rem] md:text-[1.5rem] font-medium tracking-tight text-[#0F1420] dark:text-zinc-100 mt-20 mb-8"
       {...props}
     />
   ),
   h2: (props: HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0"
+      className="mt-16 mb-6 scroll-m-20 pb-2 text-[1.25rem] font-medium tracking-tight transition-colors text-[#0F1420] dark:text-zinc-100 first:mt-0"
       {...props}
     />
   ),
   h3: (props: HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight" {...props} />
+    <h3
+      className="mt-12 mb-4 scroll-m-20 text-[1.1rem] font-medium tracking-tight text-[#0F1420] dark:text-zinc-100"
+      {...props}
+    />
   ),
   h4: (props: HTMLAttributes<HTMLHeadingElement>) => (
-    <h4 className="scroll-m-20 text-xl font-semibold tracking-tight" {...props} />
+    <h4
+      className="mt-8 mb-4 scroll-m-20 text-lg font-medium tracking-tight text-[#0F1420] dark:text-zinc-100"
+      {...props}
+    />
   ),
   p: (props: HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="leading-7 [&:not(:first-child)]:mt-6" {...props} />
+    <p
+      className="leading-[1.8] text-[1.03rem] text-[#0F1420] dark:text-zinc-300 [&:not(:first-child)]:mt-8"
+      {...props}
+    />
   ),
   blockquote: (props: HTMLAttributes<HTMLQuoteElement>) => (
-    <blockquote className="mt-6 border-l-2 pl-6 italic mb-10" {...props} />
+    <blockquote
+      className="mt-10 mb-10 border-l-[3px] border-[#C2C9CD] dark:border-zinc-700 pl-4 py-1 text-[#798185] dark:text-zinc-400"
+      {...props}
+    />
   ),
   ul: (props: HTMLAttributes<HTMLUListElement>) => (
-    <ul className="my-6 ml-6 list-disc [&>li]:mt-2" {...props} />
+    <ul
+      className="my-6 ml-[1.8rem] list-disc [&>li]:mt-3 marker:text-zinc-400 dark:marker:text-zinc-600"
+      {...props}
+    />
   ),
   ol: (props: HTMLAttributes<HTMLOListElement>) => (
-    <ol className="my-6 ml-6 list-decimal [&>li]:mt-2" {...props} />
+    <ol
+      className="my-6 ml-[1.8rem] list-decimal [&>li]:mt-3 marker:text-zinc-500 dark:marker:text-zinc-500"
+      {...props}
+    />
   ),
-  li: (props: HTMLAttributes<HTMLLIElement>) => <li className="mt-2" {...props} />,
+  li: (props: HTMLAttributes<HTMLLIElement>) => (
+    <li className="leading-[1.7] text-[1.03rem] text-[#0F1420] dark:text-zinc-300" {...props} />
+  ),
   table: (props: HTMLAttributes<HTMLTableElement>) => (
     <div className="my-6 w-full overflow-y-auto">
-      <table className="w-full" {...props} />
+      <table className="w-full text-sm" {...props} />
     </div>
   ),
   tr: (props: HTMLAttributes<HTMLTableRowElement>) => (
-    <tr className="even:bg-muted m-0 border-t p-0" {...props} />
+    <tr className="m-0 border-t p-0 even:bg-muted" {...props} />
   ),
   th: (props: HTMLAttributes<HTMLTableCellElement>) => (
     <th
-      className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right"
+      className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right text-[#0F1420] dark:text-zinc-100"
       {...props}
     />
   ),
   td: (props: HTMLAttributes<HTMLTableCellElement>) => (
     <td
-      className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right"
+      className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right text-[#0F1420] dark:text-zinc-300"
       {...props}
     />
   ),
   a: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => {
     return (
       <Link
-        className="font-medium underline underline-offset-4 decoration-rurikon-300 hover:decoration-rurikon-600 focus:outline-none focus-visible:rounded-xs focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-opacity-50 focus-visible:ring-offset-2"
+        className="font-normal underline underline-offset-4 decoration-zinc-300 hover:decoration-zinc-600 dark:decoration-zinc-600 dark:hover:decoration-zinc-400 text-[#0F1420] dark:text-zinc-100 transition-colors"
         href={href || "#"}
         draggable={false}
         {...(href?.startsWith("https://")
@@ -73,21 +93,29 @@ export const Typography: Record<
       />
     );
   },
-  strong: (props: HTMLAttributes<HTMLElement>) => <strong className="font-bold" {...props} />,
+  strong: (props: HTMLAttributes<HTMLElement>) => (
+    <strong className="font-bold text-[#0F1420] dark:text-white" {...props} />
+  ),
   pre: (props: HTMLAttributes<HTMLPreElement>) => (
-    <pre className="mt-7 whitespace-pre md:whitespace-pre-wrap" {...props} />
+    <pre
+      className="mt-8 mb-8 rounded-2xl bg-[#F5F9FB] dark:bg-zinc-900 border border-[#EBF2F5] dark:border-zinc-800 p-5 overflow-x-auto"
+      {...props}
+    />
   ),
   hr: (props: HTMLAttributes<HTMLHRElement>) => (
-    <hr className="my-14 w-24 border-rurikon-border" {...props} />
+    <hr className="my-16 border-zinc-200 dark:border-zinc-800" {...props} />
   ),
   Lead: (props: HTMLAttributes<HTMLParagraphElement>) => (
     <p className="text-muted-foreground text-xl" {...props} />
   ),
   Large: (props: HTMLAttributes<HTMLDivElement>) => (
-    <div className="text-lg font-semibold" {...props} />
+    <div className="text-lg font-semibold text-[#0F1420] dark:text-zinc-100" {...props} />
   ),
   Small: (props: HTMLAttributes<HTMLElement>) => (
-    <small className="text-sm leading-none font-medium" {...props} />
+    <small
+      className="text-sm leading-none font-medium text-[#0F1420] dark:text-zinc-300"
+      {...props}
+    />
   ),
   Muted: (props: HTMLAttributes<HTMLParagraphElement>) => (
     <p className="text-muted-foreground text-sm" {...props} />
