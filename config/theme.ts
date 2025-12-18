@@ -1,4 +1,4 @@
-export type SiteLayoutType = "minimal" | "sidebar" | "magazine";
+export type SiteLayoutType = "minimal" | "sidebar" | "magazine" | "catnose";
 export type DefaultColorMode = "system" | "dark" | "light";
 
 export interface ThemeConfig {
@@ -7,6 +7,6 @@ export interface ThemeConfig {
 }
 
 export const siteConfig: ThemeConfig = {
-  layout: "minimal", // Current design
+  layout: "catnose", // Updated to new catnose layout
   defaultColor: "system",
 };
