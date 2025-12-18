@@ -138,8 +138,20 @@ export type MDXPostMeta = {
   frontmatter: MDXFrontmatter;
 };
 
+import { cache } from "react";
+
+// In-memory cache for development mode to avoid frequent disk I/O
+const globalPostsCache: Record<string, MDXPostMeta[]> = {};
+const isDev = process.env.NODE_ENV === "development";
+
 // ヘルパー関数: フロントマターのみを含むすべての投稿を取得 (高速)
-export async function getAllPostsMeta(locale: string): Promise<MDXPostMeta[]> {
+export const getAllPostsMeta = cache(async (locale: string): Promise<MDXPostMeta[]> => {
+  // Return cached data in development if available
+  if (isDev && globalPostsCache[locale]) {
+    console.log(`[Cache] Returning in-memory cached posts for ${locale}`);
+    return globalPostsCache[locale];
+  }
+
   const paths = await getAllContentPaths(locale);
   const posts = paths.map((slug) => {
     try {
@@ -167,8 +179,18 @@ export async function getAllPostsMeta(locale: string): Promise<MDXPostMeta[]> {
     }
   });
 
-  return posts.filter((post): post is MDXPostMeta => post !== null && !post.frontmatter.draft);
-}
+  const filteredPosts = posts.filter(
+    (post): post is MDXPostMeta => post !== null && !post.frontmatter.draft,
+  );
+
+  // Store in cache for development
+  if (isDev) {
+    globalPostsCache[locale] = filteredPosts;
+    console.log(`[Cache] Stored posts in memory for ${locale}`);
+  }
+
+  return filteredPosts;
+});
 
 // ヘルパー関数: フロントマターを含むすべての投稿を取得
 export async function getAllPosts(locale: string): Promise<MDXPost[]> {
