@@ -77,7 +77,7 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
               animate="visible"
               exit="exit"
               variants={menuVariants}
-              className="absolute bottom-16 left-1/2 -translate-x-1/2 min-w-[280px] bg-white dark:bg-zinc-900 rounded-2xl shadow-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden"
+              className="absolute bottom-16 left-1/2 -translate-x-1/2 min-w-[280px] bg-white/80 dark:bg-[#111111]/80 backdrop-blur-md rounded-[20px] shadow-xl border border-zinc-200/50 dark:border-white/10 overflow-hidden"
             >
               <div className="p-2 flex flex-col gap-1">
                 <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
@@ -87,7 +87,7 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                 <MenuLink href="/about" label={navItems.about} locale={currentLocale} />
                 <MenuLink href="/contact" label={navItems.contact} locale={currentLocale} />
 
-                <div className="my-1 border-t border-zinc-100 dark:border-zinc-800" />
+                <div className="my-1 border-t border-zinc-100/50 dark:border-white/5" />
 
                 <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                   Links
@@ -96,7 +96,7 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                   href="https://github.com/ryotakc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center px-4 py-2.5 mx-1 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+                  className="flex items-center px-4 py-2.5 mx-1 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
                 >
                   GitHub
                 </a>
@@ -104,7 +104,7 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                   href="https://x.com/ryotakc"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center px-4 py-2.5 mx-1 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+                  className="flex items-center px-4 py-2.5 mx-1 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
                 >
                   X (Twitter)
                 </a>
@@ -117,9 +117,9 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
           type="button"
           onClick={toggleMenu}
           className={cn(
-            "flex items-center gap-2 px-5 py-3 rounded-full shadow-lg transition-all active:scale-95",
-            "bg-zinc-900 text-white hover:bg-zinc-800",
-            "dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100",
+            "flex items-center gap-2 px-5 py-3 rounded-full shadow-lg transition-all active:scale-95 backdrop-blur-md",
+            "bg-white/70 text-zinc-900 border border-zinc-200 hover:bg-white/80",
+            "dark:bg-[#111111]/50 dark:text-white dark:border-white/10 dark:hover:bg-[#111111]/60",
             isOpen &&
               "ring-2 ring-offset-2 ring-zinc-900 dark:ring-white dark:ring-offset-zinc-950",
           )}
@@ -158,8 +158,8 @@ function MenuLink({ href, label, locale }: { href: string; label: string; locale
       className={cn(
         "block px-4 py-2.5 mx-1 rounded-lg text-sm transition-colors",
         isActive
-          ? "bg-zinc-100/80 dark:bg-zinc-800 text-zinc-900 dark:text-white font-medium"
-          : "text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800",
+          ? "bg-zinc-100/80 dark:bg-white/10 text-zinc-900 dark:text-white font-medium"
+          : "text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5",
       )}
     >
       {label}

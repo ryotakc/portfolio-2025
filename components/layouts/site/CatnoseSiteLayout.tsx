@@ -4,9 +4,9 @@ import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { FloatingMenu } from "@/components/FloatingMenu";
 import Footer from "@/components/footer";
-import type { SiteLayoutProps } from "@/lib/layout-registry";
 import { LanguageToggle } from "@/components/language-toggle";
 import { ModeToggle } from "@/components/mode-toggle";
+import type { SiteLayoutProps } from "@/lib/layout-registry";
 
 export default function CatnoseSiteLayout({ children }: SiteLayoutProps) {
   const pathname = usePathname();

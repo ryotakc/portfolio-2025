@@ -23,7 +23,7 @@ export function DynamicBreadcrumb() {
   // If we are at the root (just /locale), we might want to show just home?
   // But usually this component is used in subpages.
 
-  const homeLabel = locale === "ja" ? "ホーム" : "home";
+  const homeLabel = locale === "ja" ? "home" : "home";
   const baseUrl = "https://ryotakc.com"; // hardcoded or imported from siteConfig if it was public/client safe
 
   // Generate JSON-LD
