@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { navigation } from "@/lib/i18n";
+import { FloatingLanguageToggle } from "./floating-language-toggle";
+import { FloatingModeToggle } from "./floating-mode-toggle";
 
 interface FloatingMenuProps {
   currentLocale?: string;
@@ -77,11 +79,11 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
               animate="visible"
               exit="exit"
               variants={menuVariants}
-              className="absolute bottom-16 left-1/2 -translate-x-1/2 min-w-[280px] bg-white/80 dark:bg-[#111111]/80 backdrop-blur-md rounded-[20px] shadow-xl border border-zinc-200/50 dark:border-white/10 overflow-hidden"
+              className="absolute bottom-16 left-1/2 -translate-x-1/2 min-w-[280px] bg-white/80 dark:bg-[#111111]/80 backdrop-blur-md rounded-[20px] shadow-2xl border border-zinc-200/80 dark:border-white/15 overflow-hidden"
             >
               <div className="p-2 flex flex-col gap-1">
                 <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
-                  Navigation
+                  Pages
                 </div>
                 <MenuLink href="/" label={navItems.home} locale={currentLocale} />
                 <MenuLink href="/about" label={navItems.about} locale={currentLocale} />
@@ -89,6 +91,17 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
 
                 <div className="my-1 border-t border-zinc-100/50 dark:border-white/5" />
 
+                <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
+                  Settings
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <FloatingModeToggle />
+                  <FloatingLanguageToggle />
+                </div>
+
+                {/* Links Section (Hidden for now) */}
+                {/* 
+                <div className="my-1 border-t border-zinc-100/50 dark:border-white/5" />
                 <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                   Links
                 </div>
@@ -107,7 +120,8 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                   className="flex items-center px-4 py-2.5 mx-1 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
                 >
                   X (Twitter)
-                </a>
+                </a> 
+                */}
               </div>
             </motion.div>
           )}

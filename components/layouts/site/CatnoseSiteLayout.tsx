@@ -35,15 +35,14 @@ export default function CatnoseSiteLayout({ children }: SiteLayoutProps) {
       {/* <div className="pb-8">
         <Footer />
       </div> */}
-      <div className="fixed bottom-2 md:bottom-6 right-2 md:right-6 z-50 flex flex-col gap-1 md:gap-3">
+      {/* <div className="fixed bottom-2 md:bottom-6 right-2 md:right-6 z-50 flex flex-col gap-1 md:gap-3">
         <div>
           <LanguageToggle />
         </div>
         <div>
           <ModeToggle />
-          {/* <AnimatedThemeToggler /> */}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
