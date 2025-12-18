@@ -1,4 +1,5 @@
 import fs from "fs";
+import matter from "gray-matter";
 import type { MDXComponents } from "mdx/types";
 import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
@@ -132,6 +133,65 @@ export type MDXPost = {
   frontmatter: MDXFrontmatter;
 };
 
+export type MDXPostMeta = {
+  slug: string[];
+  frontmatter: MDXFrontmatter;
+};
+
+import { cache } from "react";
+
+// In-memory cache for development mode to avoid frequent disk I/O
+const globalPostsCache: Record<string, MDXPostMeta[]> = {};
+const isDev = process.env.NODE_ENV === "development";
+
+// ヘルパー関数: フロントマターのみを含むすべての投稿を取得 (高速)
+export const getAllPostsMeta = cache(async (locale: string): Promise<MDXPostMeta[]> => {
+  // Return cached data in development if available
+  if (isDev && globalPostsCache[locale]) {
+    console.log(`[Cache] Returning in-memory cached posts for ${locale}`);
+    return globalPostsCache[locale];
+  }
+
+  const paths = await getAllContentPaths(locale);
+  const posts = paths.map((slug) => {
+    try {
+      let filePath: string;
+      if (slug.length === 0) {
+        filePath = path.join(contentDir, locale, "index.mdx");
+      } else {
+        filePath = `${path.join(contentDir, locale, ...slug)}.mdx`;
+      }
+
+      if (!fs.existsSync(filePath)) {
+        return null;
+      }
+
+      const source = fs.readFileSync(filePath, "utf8");
+      const { data } = matter(source);
+
+      return {
+        slug,
+        frontmatter: data as MDXFrontmatter,
+      };
+    } catch (error) {
+      console.error(`Error loading MDX meta for ${slug}:`, error);
+      return null;
+    }
+  });
+
+  const filteredPosts = posts.filter(
+    (post): post is MDXPostMeta => post !== null && !post.frontmatter.draft,
+  );
+
+  // Store in cache for development
+  if (isDev) {
+    globalPostsCache[locale] = filteredPosts;
+    console.log(`[Cache] Stored posts in memory for ${locale}`);
+  }
+
+  return filteredPosts;
+});
+
 // ヘルパー関数: フロントマターを含むすべての投稿を取得
 export async function getAllPosts(locale: string): Promise<MDXPost[]> {
   const paths = await getAllContentPaths(locale);
@@ -154,7 +214,7 @@ export async function getAllPosts(locale: string): Promise<MDXPost[]> {
 
 // すべてのタグを取得 (カウント付き)
 export async function getAllTags(locale: string): Promise<{ name: string; count: number }[]> {
-  const posts = await getAllPosts(locale);
+  const posts = await getAllPostsMeta(locale);
   const tagCounts: Record<string, number> = {};
 
   posts.forEach((post) => {
@@ -172,7 +232,7 @@ export async function getAllTags(locale: string): Promise<{ name: string; count:
 
 // すべてのカテゴリーを取得 (カウント付き)
 export async function getAllCategories(locale: string): Promise<{ name: string; count: number }[]> {
-  const posts = await getAllPosts(locale);
+  const posts = await getAllPostsMeta(locale);
   const categoryCounts: Record<string, number> = {};
 
   posts.forEach((post) => {

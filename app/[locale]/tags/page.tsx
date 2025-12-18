@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { TaxonomyExplorer } from "@/components/features/taxonomy/TaxonomyExplorer";
-import { getAllPosts, getAllTags } from "@/lib/mdx-utils";
+import { getAllPostsMeta, getAllTags } from "@/lib/mdx-utils";
 
 type Params = {
   locale: string;
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export default async function TagsPage({ params }: { params: Promise<Params> }) {
   const { locale } = await params;
   const tags = await getAllTags(locale);
-  const posts = await getAllPosts(locale);
+  const posts = await getAllPostsMeta(locale);
   const postsWithTags = posts.filter(
     (post) => Array.isArray(post.frontmatter.tags) && post.frontmatter.tags.length > 0,
   );

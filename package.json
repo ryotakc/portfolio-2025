@@ -27,6 +27,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "fs": "0.0.1-security",
+    "gray-matter": "^4.0.3",
     "image-size": "^2.0.2",
     "lucide-react": "^0.561.0",
     "motion": "^12.23.26",

@@ -3,7 +3,7 @@
 import { usePathname, useSearchParams } from "next/navigation";
 
 import { useMemo } from "react";
-import type { MDXPost } from "@/lib/mdx-utils";
+import type { MDXPostMeta } from "@/lib/mdx-utils";
 import { FilteredPostList } from "./FilteredPostList";
 import { TaxonomyList } from "./TaxonomyList";
 
@@ -11,7 +11,7 @@ interface TaxonomyExplorerProps {
   title: string;
   description: string;
   items: { name: string; count: number }[];
-  posts: MDXPost[];
+  posts: MDXPostMeta[];
   type: "tag" | "category";
   locale: string;
 }
