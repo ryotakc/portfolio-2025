@@ -1,10 +1,11 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
 import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useThemeTransition } from "./theme-provider";
+import { MoonIcon } from "./ui/moon";
+import { SunIcon } from "./ui/sun";
 
 export function FloatingModeToggle() {
   const { theme, setTheme } = useTheme();
@@ -56,7 +57,7 @@ export function FloatingModeToggle() {
           transition={{ duration: 0.2, ease: "easeInOut" }}
           className="absolute"
         >
-          <Moon className="w-4 h-4 group-hover:text-sky-400 transition-colors" />
+          <MoonIcon size={16} className="w-4 h-4 group-hover:text-sky-400 transition-colors" />
         </motion.div>
         <motion.div
           initial={false}
@@ -67,7 +68,7 @@ export function FloatingModeToggle() {
           }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
         >
-          <Sun className="w-4 h-4 group-hover:text-orange-500 transition-colors" />
+          <SunIcon size={16} className="w-4 h-4 group-hover:text-orange-500 transition-colors" />
         </motion.div>
       </div>
     </motion.button>
