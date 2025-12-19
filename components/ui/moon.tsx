@@ -1,9 +1,9 @@
 "use client";
 
 import type { Transition, Variants } from "motion/react";
+import { motion, useAnimation } from "motion/react";
 import type { HTMLAttributes } from "react";
 import { forwardRef, useCallback, useImperativeHandle, useRef } from "react";
-import { motion, useAnimation } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
@@ -66,6 +66,7 @@ const MoonIcon = forwardRef<MoonIconHandle, MoonIconProps>(
       [controls, onMouseLeave],
     );
     return (
+      // biome-ignore lint/a11y/noStaticElementInteractions: Animation trigger only
       <div
         className={cn(className)}
         onMouseEnter={handleMouseEnter}
@@ -73,6 +74,8 @@ const MoonIcon = forwardRef<MoonIconHandle, MoonIconProps>(
         {...props}
       >
         <motion.svg
+          role="img"
+          aria-label="Moon"
           xmlns="http://www.w3.org/2000/svg"
           width={size}
           height={size}
