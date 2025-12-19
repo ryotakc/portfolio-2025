@@ -67,7 +67,11 @@ export function FloatingModeToggle() {
           transition={{ duration: 0.2, ease: "easeInOut" }}
           className="absolute"
         >
-          <MoonIcon ref={moonRef} size={16} className="w-4 h-4 group-hover:text-sky-400 transition-colors" />
+          <MoonIcon
+            ref={moonRef}
+            size={16}
+            className="w-4 h-4 group-hover:text-sky-400 transition-colors"
+          />
         </motion.div>
         <motion.div
           initial={false}
@@ -78,7 +82,11 @@ export function FloatingModeToggle() {
           }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
         >
-          <SunIcon ref={sunRef} size={16} className="w-4 h-4 group-hover:text-orange-500 transition-colors" />
+          <SunIcon
+            ref={sunRef}
+            size={16}
+            className="w-4 h-4 group-hover:text-orange-500 transition-colors"
+          />
         </motion.div>
       </div>
     </motion.button>
