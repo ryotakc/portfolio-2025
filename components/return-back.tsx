@@ -1,14 +1,19 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { getDictionary } from "@/lib/i18n";
 
 export default function ReturnButton() {
   const router = useRouter();
+  const pathname = usePathname();
   // クライアントコンポーネント内でパラメータを取得
   const params = useParams<{ locale: string }>();
   const locale = params?.locale || "ja";
   const dictionary = getDictionary(locale);
+
+  if (pathname === `/${locale}` || pathname === `/${locale}/`) {
+    return null;
+  }
 
   return (
     <button
