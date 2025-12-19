@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import type { MDXPostMeta } from "@/lib/mdx-utils";
 
 type FilteredPostListProps = {
@@ -32,7 +32,7 @@ export function FilteredPostList({
       {posts.length === 0 ? (
         <p className="text-muted-foreground text-lg">No posts found.</p>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-col gap-4">
           {posts.map((post) => {
             return <PostCard key={post.slug.join("-")} post={post} locale={locale} />;
           })}
@@ -64,11 +64,9 @@ function PostCard({ post, locale }: { post: MDXPostMeta; locale: string }) {
               {post.frontmatter.description}
             </CardDescription>
           )}
-        </CardHeader>
-        <CardContent>
           {/* Tags preview */}
           {Array.isArray(post.frontmatter.tags) && post.frontmatter.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-2">
+            <div className="flex flex-wrap gap-1 mt-4">
               {post.frontmatter.tags.slice(0, 3).map((tag) => (
                 <Badge key={tag} variant="secondary" className="text-xs px-1.5 py-0 h-5">
                   #{tag}
@@ -81,7 +79,7 @@ function PostCard({ post, locale }: { post: MDXPostMeta; locale: string }) {
               )}
             </div>
           )}
-        </CardContent>
+        </CardHeader>
       </Card>
     </Link>
   );

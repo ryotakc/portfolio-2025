@@ -1,8 +1,9 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-
 import { useMemo } from "react";
+
+import { DynamicBreadcrumb } from "@/components/DynamicBreadcrumb";
 import type { MDXPostMeta } from "@/lib/mdx-utils";
 import { FilteredPostList } from "./FilteredPostList";
 import { TaxonomyList } from "./TaxonomyList";
@@ -93,6 +94,7 @@ export function TaxonomyExplorer({
 
   return (
     <div className="container py-10 max-w-4xl mx-auto">
+      <DynamicBreadcrumb />
       <div className="mb-8 space-y-4">
         <h1 className="text-4xl font-bold tracking-tight lg:text-5xl">{title}</h1>
         <p className="text-muted-foreground text-xl">{description}</p>
