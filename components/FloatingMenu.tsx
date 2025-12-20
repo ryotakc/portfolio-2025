@@ -98,7 +98,7 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                   <div className="flex-1 flex justify-center">
                     <FloatingModeToggle />
                   </div>
-                  <div className="w-[1px] h-5 bg-zinc-300 dark:bg-zinc-600 flex-shrink-0" />
+                  <div className="w-[1px] h-5 bg-zinc-100/50 dark:bg-white/5 flex-shrink-0" />
                   <div className="flex-1 flex justify-center">
                     <FloatingLanguageToggle />
                   </div>
