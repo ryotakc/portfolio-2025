@@ -27,11 +27,10 @@ export function FloatingLanguageToggle() {
   return (
     <motion.button
       onClick={toggleLanguage}
-      className="group flex w-full items-center justify-between px-4 py-2.5 mx-1 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
+      className="group flex w-full items-center justify-center px-3 py-2.5 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
       whileHover="hover"
       whileTap={{ scale: 0.98 }}
     >
-      <span className="font-medium">Language</span>
       <div className="flex items-center gap-2">
         <motion.span
           className="text-xs font-mono font-medium text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors"

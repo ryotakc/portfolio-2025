@@ -52,10 +52,10 @@ export function FloatingModeToggle() {
         sunRef.current?.stopAnimation();
         moonRef.current?.stopAnimation();
       }}
-      className="group flex w-full items-center justify-between px-4 py-2.5 mx-1 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
+      className="group flex w-full items-center justify-center px-3 py-2.5 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
       whileTap={{ scale: 0.98 }}
     >
-      <span className="font-medium">Theme</span>
+      <span className="font-medium">{isDark ? "Dark" : "Light"}</span>
       <div className="relative flex items-center justify-center">
         <motion.div
           initial={false}
