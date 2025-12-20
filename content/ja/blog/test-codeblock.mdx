@@ -1,0 +1,39 @@
+---
+title: "Test CodeBlock"
+publishedAt: "2025-12-20"
+summary: "Testing code block features"
+---
+
+## Normal Code Block
+
+```typescript
+function hello() {
+  console.log("Hello world");
+}
+```
+
+## Long Line Code Block
+
+```typescript
+function longLine() {
+  console.log("This is a very long line that should trigger a horizontal scrollbar if the implementation is correct. It needs to be quite long to exceed the container width. Adding more text to ensure it really overflows the container on most screens.");
+}
+```
+
+## With Filename
+
+```typescript:example.ts
+export const example = "filename test";
+```
+
+## Long line with Filename
+
+```typescript:long-file.ts
+export const longExample = "This is another very long line that should trigger a horizontal scrollbar even with a filename header present. It needs to be quite long to exceed the container width of the code block.";
+```
+
+## Plain Text
+
+```text
+Just some plain text
+```

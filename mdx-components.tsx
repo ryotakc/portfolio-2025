@@ -5,6 +5,7 @@ import { BlockMath, InlineMath } from "react-katex";
 
 import { BlockSideTitle } from "@/components/block-sidetitle";
 import { CodeBlock } from "./components/mdx/CodeBlock";
+import { PreBlock } from "./components/mdx/PreBlock";
 import { IframeCard } from "./components/mdx/iframe-wrapper";
 import Instagram from "./components/mdx/instagram";
 import LinkCard from "./components/mdx/link-card";
@@ -22,6 +23,7 @@ import { TypingAnimation } from "./components/ui/typing-animation";
 export const components: MDXComponents = {
   ...Typography,
   code: CodeBlock,
+  pre: PreBlock,
   Image,
   // biome-ignore lint/suspicious/noExplicitAny: MDX types incompatibility
   img: MDXImage as any,
