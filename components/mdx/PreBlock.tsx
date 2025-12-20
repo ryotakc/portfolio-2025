@@ -50,6 +50,11 @@ export async function PreBlock(props: React.HTMLAttributes<HTMLPreElement>) {
       language = match[1];
       filename = match[2];
     }
+    
+    // Alias terminal to bash
+    if (language === "terminal") {
+      language = "bash";
+    }
   } else {
       // Fallback if not a standard pre > code structure
       // In MDX, pre usually wraps code.

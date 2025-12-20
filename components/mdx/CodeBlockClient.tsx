@@ -85,8 +85,8 @@ export function CodeBlockClient({
         )}
 
         <ScrollArea className="w-full" type="auto">
-          <div
-            className="p-4 pt-1 font-mono text-sm leading-relaxed whitespace-pre"
+          <code
+            className="shiki css-variables block w-full p-4 pt-1 font-mono text-sm leading-relaxed whitespace-pre !bg-transparent"
             dangerouslySetInnerHTML={{ __html: html }}
           />
           <ScrollBar orientation="horizontal" />
