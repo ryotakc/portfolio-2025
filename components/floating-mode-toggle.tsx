@@ -55,39 +55,43 @@ export function FloatingModeToggle() {
       className="group flex w-full items-center justify-center px-3 py-2.5 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
       whileTap={{ scale: 0.98 }}
     >
-      <span className="font-medium">{isDark ? "Dark" : "Light"}</span>
-      <div className="relative flex items-center justify-center">
-        <motion.div
-          initial={false}
-          animate={{
-            scale: isDark ? 1 : 0,
-            rotate: isDark ? 0 : 90,
-            opacity: isDark ? 1 : 0,
-          }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
-          className="absolute"
-        >
-          <MoonIcon
-            ref={moonRef}
-            size={16}
-            className="w-4 h-4 group-hover:text-sky-400 transition-colors"
-          />
-        </motion.div>
-        <motion.div
-          initial={false}
-          animate={{
-            scale: isDark ? 0 : 1,
-            rotate: isDark ? -90 : 0,
-            opacity: isDark ? 0 : 1,
-          }}
-          transition={{ duration: 0.2, ease: "easeInOut" }}
-        >
-          <SunIcon
-            ref={sunRef}
-            size={16}
-            className="w-4 h-4 group-hover:text-orange-500 transition-colors"
-          />
-        </motion.div>
+      <div className="flex items-center gap-2">
+        <span className="text-xs font-mono font-medium text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors">
+          {isDark ? "Dark" : "Light"}
+        </span>
+        <div className="relative flex items-center justify-center">
+          <motion.div
+            initial={false}
+            animate={{
+              scale: isDark ? 1 : 0,
+              rotate: isDark ? 0 : 90,
+              opacity: isDark ? 1 : 0,
+            }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="absolute"
+          >
+            <MoonIcon
+              ref={moonRef}
+              size={16}
+              className="w-4 h-4 group-hover:text-sky-400 transition-colors"
+            />
+          </motion.div>
+          <motion.div
+            initial={false}
+            animate={{
+              scale: isDark ? 0 : 1,
+              rotate: isDark ? -90 : 0,
+              opacity: isDark ? 0 : 1,
+            }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+          >
+            <SunIcon
+              ref={sunRef}
+              size={16}
+              className="w-4 h-4 group-hover:text-orange-500 transition-colors"
+            />
+          </motion.div>
+        </div>
       </div>
     </motion.button>
   );

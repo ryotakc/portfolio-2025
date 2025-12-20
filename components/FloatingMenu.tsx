@@ -94,7 +94,7 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                 <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                   Settings
                 </div>
-                <div className="flex items-center w-full">
+                <div className="flex items-center w-full gap-1.5">
                   <div className="flex-1 flex justify-center">
                     <FloatingModeToggle />
                   </div>
