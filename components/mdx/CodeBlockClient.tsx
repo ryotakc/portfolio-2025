@@ -4,7 +4,7 @@ import { ClipboardCheckIcon } from "@/components/ui/clipboard-check";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { useRef, useState } from "react";
-import { toast } from "sonner"; // Assuming sonner is used for toasts, or I can use a simple state for feedback
+// import { toast } from "sonner"; // Assuming sonner is used for toasts, or I can use a simple state for feedback
 
 interface CodeBlockClientProps {
   html: string;
