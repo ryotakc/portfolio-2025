@@ -63,7 +63,10 @@ export function CodeBlockClient({
             )}
              <button
               onClick={copyToClipboard}
-              className="text-neutral-400 hover:text-white transition-colors focus:outline-none"
+              className={cn(
+                "transition-colors focus:outline-none",
+                isCopied ? "text-green-500" : "text-neutral-400 hover:text-white",
+              )}
               title="Copy to clipboard"
             >
               <ClipboardCheckIcon ref={checkIconRef} size={16} />
@@ -77,7 +80,12 @@ export function CodeBlockClient({
         {!filename && !language && (
            <button
               onClick={copyToClipboard}
-              className="absolute top-2 right-2 z-10 p-2 rounded-md bg-neutral-800/50 text-neutral-400 hover:bg-neutral-700 hover:text-white transition-colors focus:outline-none backdrop-blur-sm"
+              className={cn(
+                "absolute top-2 right-2 z-10 p-2 rounded-md transition-colors focus:outline-none backdrop-blur-sm",
+                isCopied
+                  ? "bg-green-500/10 text-green-500"
+                  : "bg-neutral-800/50 text-neutral-400 hover:bg-neutral-700 hover:text-white",
+              )}
               title="Copy to clipboard"
             >
                <ClipboardCheckIcon ref={checkIconRef} size={16} />
