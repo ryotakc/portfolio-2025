@@ -1,9 +1,10 @@
 "use client";
 
+import { useRef, useState } from "react";
 import { ClipboardCheckIcon } from "@/components/ui/clipboard-check";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
-import { useRef, useState } from "react";
+
 // import { toast } from "sonner"; // Assuming sonner is used for toasts, or I can use a simple state for feedback
 
 interface CodeBlockClientProps {
@@ -12,11 +13,7 @@ interface CodeBlockClientProps {
   filename?: string;
 }
 
-export function CodeBlockClient({
-  html,
-  language,
-  filename,
-}: CodeBlockClientProps) {
+export function CodeBlockClient({ html, language, filename }: CodeBlockClientProps) {
   const [isCopied, setIsCopied] = useState(false);
   const checkIconRef = useRef<{ startAnimation: () => void; stopAnimation: () => void }>(null);
 
@@ -29,7 +26,7 @@ export function CodeBlockClient({
       await navigator.clipboard.writeText(text);
       setIsCopied(true);
       checkIconRef.current?.startAnimation();
-      
+
       // Reset after 2 seconds
       setTimeout(() => {
         setIsCopied(false);
@@ -46,23 +43,18 @@ export function CodeBlockClient({
       {(filename || language) && (
         <div className="flex items-center justify-between bg-neutral-800/50 px-4 py-2 border-b border-neutral-700/50">
           <div className="flex items-center gap-2">
-            {filename && (
-              <span className="font-mono text-xs text-neutral-200">
-                {filename}
-              </span>
-            )}
+            {filename && <span className="font-mono text-xs text-neutral-200">{filename}</span>}
             {/* Optional: Use language as fallback or badge? User example shows filename prominently. 
                 I'll verify if language should be shown if filename is missing. 
                 For now, showing filename is priority. */}
           </div>
           <div className="flex items-center gap-2">
-             {language && !filename && (
-                <span className="font-mono text-xs text-neutral-400 capitalize">
-                    {language}
-                </span>
+            {language && !filename && (
+              <span className="font-mono text-xs text-neutral-400 capitalize">{language}</span>
             )}
-             <button
+            <button
               onClick={copyToClipboard}
+              type="button"
               className={cn(
                 "transition-colors focus:outline-none",
                 isCopied ? "text-green-500" : "text-neutral-400 hover:text-white",
@@ -78,18 +70,19 @@ export function CodeBlockClient({
       {/* Content */}
       <div className={cn("relative", !filename && !language && "pt-2")}>
         {!filename && !language && (
-           <button
-              onClick={copyToClipboard}
-              className={cn(
-                "absolute top-2 right-2 z-10 p-2 rounded-md transition-colors focus:outline-none backdrop-blur-sm",
-                isCopied
-                  ? "bg-green-500/10 text-green-500"
-                  : "bg-neutral-800/50 text-neutral-400 hover:bg-neutral-700 hover:text-white",
-              )}
-              title="Copy to clipboard"
-            >
-               <ClipboardCheckIcon ref={checkIconRef} size={16} />
-            </button>
+          <button
+            onClick={copyToClipboard}
+            type="button"
+            className={cn(
+              "absolute top-2 right-2 z-10 p-2 rounded-md transition-colors focus:outline-none backdrop-blur-sm",
+              isCopied
+                ? "bg-green-500/10 text-green-500"
+                : "bg-neutral-800/50 text-neutral-400 hover:bg-neutral-700 hover:text-white",
+            )}
+            title="Copy to clipboard"
+          >
+            <ClipboardCheckIcon ref={checkIconRef} size={16} />
+          </button>
         )}
 
         <ScrollArea className="w-full" type="auto">

@@ -5,12 +5,12 @@ import { BlockMath, InlineMath } from "react-katex";
 
 import { BlockSideTitle } from "@/components/block-sidetitle";
 import { CodeBlock } from "./components/mdx/CodeBlock";
-import { PreBlock } from "./components/mdx/PreBlock";
 import { IframeCard } from "./components/mdx/iframe-wrapper";
 import Instagram from "./components/mdx/instagram";
 import LinkCard from "./components/mdx/link-card";
 import { MDXImage } from "./components/mdx/MDXImage";
 import OEmbed from "./components/mdx/oembed";
+import { PreBlock } from "./components/mdx/PreBlock";
 import Spotify from "./components/mdx/spotify";
 import EmbeddedTweet from "./components/mdx/tweet";
 import { Typography } from "./components/mdx/typography";

@@ -16,8 +16,8 @@ export async function MDXImage({
 
   if (src.startsWith("https://")) {
     img = (
-      // biome-ignore lint/performance/noImgElement: External images require standard img tag due to unknown dimensions
       // eslint-disable-next-line @next/next/no-img-element
+      // biome-ignore lint/performance/noImgElement: External images require standard img tag due to unknown dimensions
       <img className="mt-7 w-full h-auto rounded-lg" src={src} alt={alt || ""} draggable={false} />
     );
   } else {

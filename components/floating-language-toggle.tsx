@@ -15,6 +15,7 @@ export function FloatingLanguageToggle() {
     const newLocale = currentLocale === "ja" ? "en" : "ja";
 
     // Cookie update (simplified, matching existing logic)
+    // biome-ignore lint/suspicious/noDocumentCookie: Cookie usage is intended for locale switching
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
 
     if (document.startViewTransition) {

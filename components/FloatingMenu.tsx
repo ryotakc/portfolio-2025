@@ -1,11 +1,11 @@
 "use client";
 
 import cn from "clsx";
+import type { Variants } from "motion/react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 import { navigation } from "@/lib/i18n";
 import { FloatingLanguageToggle } from "./floating-language-toggle";
 import { FloatingModeToggle } from "./floating-mode-toggle";
@@ -45,27 +45,24 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
-  const menuVariants = {
+  const menuVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 20,
       scale: 0.95,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      transition: { duration: 0.2, type: "tween" } as any,
+      transition: { duration: 0.2, type: "tween" },
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      transition: { type: "spring", stiffness: 300, damping: 25 } as any,
+      transition: { type: "spring", stiffness: 300, damping: 25 },
     },
     exit: {
       opacity: 0,
       y: 20,
       scale: 0.95,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      transition: { duration: 0.15, type: "tween" } as any,
+      transition: { duration: 0.15, type: "tween" },
     },
   };
 
