@@ -1,3 +1,5 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ryotakc/portfolio-2025)
+
 # Portfolio 2025
 
 This is a portfolio that powers [ryotakc.com](https://www.ryotakc.com/), build on [Next.js](https://nextjs.org) and deployed to the cloud via [Vercel](https://vercel.com).
