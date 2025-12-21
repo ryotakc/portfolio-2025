@@ -38,26 +38,34 @@ export function CodeBlockClient({ html, language, filename }: CodeBlockClientPro
   };
 
   return (
-    <div className="relative my-4 w-full min-w-0 overflow-hidden rounded-md border bg-neutral-900 border-neutral-800">
+    <div className="relative my-4 w-full min-w-0 overflow-hidden rounded-md border bg-zinc-50 border-zinc-200 dark:bg-neutral-900 dark:border-neutral-800">
       {/* Header */}
       {(filename || language) && (
-        <div className="flex items-center justify-between bg-neutral-800/50 px-4 py-2 border-b border-neutral-700/50">
+        <div className="flex items-center justify-between px-4 py-2 border-b bg-zinc-100/50 border-zinc-200/50 dark:bg-neutral-800/50 dark:border-neutral-700/50">
           <div className="flex items-center gap-2">
-            {filename && <span className="font-mono text-xs text-neutral-200">{filename}</span>}
+            {filename && (
+              <span className="font-mono text-xs text-zinc-600 dark:text-neutral-200">
+                {filename}
+              </span>
+            )}
             {/* Optional: Use language as fallback or badge? User example shows filename prominently. 
                 I'll verify if language should be shown if filename is missing. 
                 For now, showing filename is priority. */}
           </div>
           <div className="flex items-center gap-2">
             {language && !filename && (
-              <span className="font-mono text-xs text-neutral-400 capitalize">{language}</span>
+              <span className="font-mono text-xs capitalize text-zinc-400 dark:text-neutral-400">
+                {language}
+              </span>
             )}
             <button
               onClick={copyToClipboard}
               type="button"
               className={cn(
                 "transition-colors focus:outline-none",
-                isCopied ? "text-green-500" : "text-neutral-400 hover:text-white",
+                isCopied
+                  ? "text-green-500"
+                  : "text-zinc-400 hover:text-zinc-700 dark:text-neutral-400 dark:hover:text-white",
               )}
               title="Copy to clipboard"
             >
@@ -77,7 +85,7 @@ export function CodeBlockClient({ html, language, filename }: CodeBlockClientPro
               "absolute top-2 right-2 z-10 p-2 rounded-md transition-colors focus:outline-none backdrop-blur-sm",
               isCopied
                 ? "bg-green-500/10 text-green-500"
-                : "bg-neutral-800/50 text-neutral-400 hover:bg-neutral-700 hover:text-white",
+                : "bg-zinc-200/50 text-zinc-500 hover:bg-zinc-300/50 hover:text-zinc-800 dark:bg-neutral-800/50 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white",
             )}
             title="Copy to clipboard"
           >
@@ -87,7 +95,7 @@ export function CodeBlockClient({ html, language, filename }: CodeBlockClientPro
 
         <ScrollArea className="w-full" type="auto">
           <code
-            className="shiki css-variables block w-full !p-4 font-mono text-sm leading-relaxed whitespace-pre !bg-transparent"
+            className="shiki css-variables block w-full !p-4 font-mono text-sm leading-relaxed whitespace-pre !bg-transparent text-zinc-700 dark:text-neutral-200"
             dangerouslySetInnerHTML={{ __html: html }}
           />
           <ScrollBar orientation="horizontal" />
