@@ -7,8 +7,8 @@ export default async function LinkCard({ url }: { url: string }) {
   try {
     const { result } = await ogs({ url });
     meta = result;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     // biome-ignore lint/suspicious/noExplicitAny: Error type is unknown in catch block
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
     // Suppress verbose logging for expected errors
     const errorMsg = e?.result?.error || e?.message || "";
