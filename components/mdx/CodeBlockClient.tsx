@@ -41,7 +41,7 @@ export function CodeBlockClient({
   };
 
   return (
-    <div className="relative my-4 overflow-hidden rounded-md border bg-neutral-900 border-neutral-800">
+    <div className="relative my-4 w-full min-w-0 overflow-hidden rounded-md border bg-neutral-900 border-neutral-800">
       {/* Header */}
       {(filename || language) && (
         <div className="flex items-center justify-between bg-neutral-800/50 px-4 py-2 border-b border-neutral-700/50">

@@ -137,7 +137,7 @@ export default function Note({ type = "note", children }: NoteProps) {
   return (
     <div
       className={cn(
-        "my-6 w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start",
+        "my-6 w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_minmax(0,1fr)] grid-cols-[0_minmax(0,1fr)] has-[>svg]:gap-x-3 gap-y-0.5 items-start",
         bgColor,
         borderColor,
         type === "quote" ? "border-l-4" : "",
@@ -147,7 +147,7 @@ export default function Note({ type = "note", children }: NoteProps) {
       <div className="col-start-2 line-clamp-1 min-h-4 font-medium tracking-tight mb-2">
         {title}
       </div>
-      <div className="col-start-2 text-muted-foreground grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed">
+      <div className="col-start-2 text-muted-foreground grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed min-w-0">
         {children}
       </div>
     </div>
