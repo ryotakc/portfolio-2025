@@ -68,7 +68,10 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
     <div className="space-y-12">
       {/* 手書き風タイトル */}
       <div className="text-left">
-        <h2 className="text-4xl font-bold relative inline-block">
+        <h2
+          className="text-4xl font-bold relative inline-block"
+          style={{ fontFamily: "var(--font-karakaze)" }}
+        >
           <Highlighter action="underline">Changelog</Highlighter>
         </h2>
       </div>
