@@ -1,3 +1,4 @@
+import "server-only";
 import fs from "fs";
 import matter from "gray-matter";
 import type { MDXComponents } from "mdx/types";
@@ -23,6 +24,8 @@ export interface MDXFrontmatter {
   layout?: "blog" | "portfolio" | "default";
   tags?: string[];
   categories?: string[];
+  category?: string[];
+  isHome?: boolean;
   [key: string]: unknown;
 }
 
