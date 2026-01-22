@@ -91,7 +91,13 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
               type="button"
               aria-label={`Filter by ${label}`}
             >
-              <div className="w-14 h-14 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-2xl transition-colors hover:bg-gray-200 dark:hover:bg-gray-700">
+              <div
+                className={`w-14 h-14 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-2xl transition-all hover:bg-gray-200 dark:hover:bg-gray-700 ${
+                  activeFilter === key
+                    ? "ring-2 ring-gray-300 dark:ring-gray-600 ring-offset-2 dark:ring-offset-gray-950"
+                    : ""
+                }`}
+              >
                 {emoji}
               </div>
               <span className="text-xs text-muted-foreground font-medium">{label}</span>
@@ -155,7 +161,7 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
     <div className="relative group">
       {/* タイムラインドット */}
       {/* タイムラインアイコン */}
-      <div className="absolute -left-[2.5rem] top-1 w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-lg z-10">
+      <div className="absolute -left-[2.5rem] top-1 w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-lg z-10">
         {categoryEmoji}
       </div>
 
