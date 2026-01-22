@@ -64,9 +64,9 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
   }
 
   return (
-    <div className="space-y-12 py-16">
+    <div className="space-y-12">
       {/* 手書き風タイトル */}
-      <div className="text-center">
+      <div className="text-left">
         <h2 className="text-4xl font-bold relative inline-block">
           <span className="relative">
             Changelog
@@ -90,7 +90,7 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
       </div>
 
       {/* カテゴリフィルター */}
-      <div className="flex justify-center gap-4 flex-wrap">
+      <div className="flex justify-start gap-4 flex-wrap">
         {(Object.entries(CATEGORY_MAP) as [CategoryKey, (typeof CATEGORY_MAP)[CategoryKey]][]).map(
           ([key, { emoji, label }]) => (
             <button
@@ -98,7 +98,7 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
               onClick={() => setActiveFilter(key)}
               className={`flex flex-col items-center gap-1.5 transition-all ${
                 activeFilter === key
-                  ? "ring-2 ring-blue-400 dark:ring-blue-500 scale-105"
+                  ? "scale-105"
                   : "opacity-60 hover:opacity-100 hover:scale-105"
               }`}
               type="button"
@@ -123,7 +123,7 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
           {years.map((year) => (
             <div key={year} className="space-y-4">
               {/* 年ラベル */}
-              <div className="text-lg font-bold text-foreground sticky top-4 bg-background/80 backdrop-blur-sm py-2 z-10">
+              <div className="text-lg font-bold text-foreground sticky top-4 bg-[#F5F9FB] dark:bg-gray-900 py-2 z-10">
                 {year}
               </div>
 
@@ -167,12 +167,12 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
   return (
     <div className="relative group">
       {/* タイムラインドット */}
-      <div className="absolute -left-[1.6rem] top-2 w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-600 group-hover:bg-blue-400 dark:group-hover:bg-blue-500 transition-colors" />
+      <div className="absolute -left-[1.85rem] top-2 w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-600 group-hover:bg-blue-400 dark:group-hover:bg-blue-500 transition-colors" />
 
       {/* エントリーカード */}
       <Link
         href={url}
-        className="block p-4 rounded-lg bg-gray-50/50 dark:bg-gray-900/50 hover:bg-gray-100/80 dark:hover:bg-gray-800/80 transition-all border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
+        className="block p-4 rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
       >
         {/* 日付 */}
         <div className="text-xs text-muted-foreground mb-1">{formattedDate}</div>

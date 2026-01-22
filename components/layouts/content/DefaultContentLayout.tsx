@@ -28,14 +28,16 @@ export default async function DefaultContentLayout({
 
     return (
       <>
-        {/* メインコンテンツ - 画面中央に配置 */}
-        <div className="min-h-screen flex flex-col items-center justify-center px-5">
-          <div className="w-full max-w-[680px]">{children}</div>
+        {/* メインコンテンツ - 白背景で画面上部寄りに配置 */}
+        <div className="min-h-screen flex flex-col items-center justify-start pt-20 md:pt-32 bg-white dark:bg-gray-950">
+          <div className="w-full max-w-[680px] px-5">{children}</div>
         </div>
 
-        {/* Changelogセクション - スクロールで表示 */}
-        <div className="w-full max-w-[680px] mx-auto px-5 pb-32">
-          <ChangelogSection locale={locale} entries={changelogEntries} />
+        {/* Changelogセクション - 淡い青灰色背景 */}
+        <div className="w-full bg-[#F5F9FB] dark:bg-gray-900">
+          <div className="w-full max-w-[680px] mx-auto px-5 py-16 pb-32">
+            <ChangelogSection locale={locale} entries={changelogEntries} />
+          </div>
         </div>
       </>
     );
