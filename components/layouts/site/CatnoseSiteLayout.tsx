@@ -8,7 +8,7 @@ import type { SiteLayoutProps } from "@/lib/layout-registry";
 export default function CatnoseSiteLayout({ children }: SiteLayoutProps) {
   const pathname = usePathname();
   // Extract locale from pathname (e.g., /en/...)
-  const locale = pathname.split("/")[1] || "en";
+  const locale = pathname.split("/")[1] || "ja";
 
   // Homeページかどうかを判定（/en または /ja のみ）
   const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;

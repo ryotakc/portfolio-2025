@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Highlighter } from "@/components/ui/highlighter";
 
 // 型定義とカテゴリマップ（サーバー側のchangelog-utilsから複製）
 export interface ChangelogEntry {
@@ -15,8 +16,8 @@ export interface ChangelogEntry {
 export const CATEGORY_MAP = {
   all: { emoji: "✨", label: "All" },
   blog: { emoji: "✍️", label: "Blog" },
-  work: { emoji: "🚀", label: "Work" },
-  misc: { emoji: "📝", label: "Misc" },
+  work: { emoji: "🧭", label: "Work" },
+  misc: { emoji: "💬", label: "Misc" },
 } as const;
 
 export type CategoryKey = keyof typeof CATEGORY_MAP;
@@ -68,24 +69,7 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
       {/* 手書き風タイトル */}
       <div className="text-left">
         <h2 className="text-4xl font-bold relative inline-block">
-          <span className="relative">
-            Changelog
-            {/* 手書き風下線 */}
-            <svg
-              className="absolute -bottom-2 left-0 w-full h-3"
-              viewBox="0 0 200 10"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M0,7 Q50,3 100,7 T200,7"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-                className="text-primary opacity-30"
-              />
-            </svg>
-          </span>
+          <Highlighter action="underline">Changelog</Highlighter>
         </h2>
       </div>
 
@@ -167,7 +151,10 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
   return (
     <div className="relative group">
       {/* タイムラインドット */}
-      <div className="absolute -left-[1.85rem] top-2 w-3 h-3 rounded-full bg-gray-400 dark:bg-gray-600 group-hover:bg-blue-400 dark:group-hover:bg-blue-500 transition-colors" />
+      {/* タイムラインアイコン */}
+      <div className="absolute -left-[2.5rem] top-1 w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center text-lg z-10">
+        {categoryEmoji}
+      </div>
 
       {/* エントリーカード */}
       <Link
@@ -179,7 +166,6 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
 
         {/* タイトル */}
         <div className="font-medium text-foreground mb-1 flex items-center gap-2">
-          <span>{categoryEmoji}</span>
           <span>{entry.title}</span>
         </div>
 
