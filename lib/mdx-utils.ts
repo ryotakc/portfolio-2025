@@ -10,6 +10,8 @@ import { components } from "@/mdx-components";
 import { remarkLinkCard } from "./remark-link-card.mjs";
 import { remarkNotePlugin } from "./remark-note-plugin.mjs";
 import { remarkOEmbed } from "./remark-oembed";
+import remarkBreaks from "remark-breaks";
+import remarkPreserveBreaks from "./remark-preserve-breaks";
 
 // コンテンツディレクトリのパス
 const contentDir = path.join(process.cwd(), "content");
@@ -80,6 +82,8 @@ export async function getMdxBySlug(locale: string, slug: string[]) {
             remarkNotePlugin,
             remarkOEmbed,
             remarkLinkCard,
+            remarkBreaks,
+            remarkPreserveBreaks,
           ],
         },
       },

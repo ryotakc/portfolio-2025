@@ -4,10 +4,12 @@ import type { NextConfig } from "next";
 import remarkDirective from "remark-directive";
 import { remarkNotePlugin } from "./lib/remark-note-plugin.mjs";
 import { remarkOEmbed } from "./lib/remark-oembed";
+import remarkBreaks from "remark-breaks";
+import remarkPreserveBreaks from "./lib/remark-preserve-breaks";
 
 export default withMDX({
   options: {
-    remarkPlugins: [remarkDirective, remarkOEmbed, remarkNotePlugin],
+    remarkPlugins: [remarkDirective, remarkOEmbed, remarkNotePlugin, remarkBreaks, remarkPreserveBreaks],
   },
 })({
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
