@@ -8,13 +8,22 @@ import type { SiteLayoutProps } from "@/lib/layout-registry";
 export default function CatnoseSiteLayout({ children }: SiteLayoutProps) {
   const pathname = usePathname();
   // Extract locale from pathname (e.g., /en/...)
-  const locale = pathname.split("/")[1] || "en";
+  const locale = pathname.split("/")[1] || "ja";
+
+  // Homeページかどうかを判定（/en または /ja のみ）
+  const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-zinc-200 dark:selection:bg-zinc-800">
       <main className="w-full">
         {/* Main Content Area - Very clean and focused */}
-        <div className="mx-auto w-full max-w-[680px] px-5 pt-12 pb-32 md:pt-20">
+        <div
+          className={
+            isHomePage
+              ? "w-full" // Homeページの場合はパディングと最大幅を削除
+              : "mx-auto w-full max-w-[680px] pt-12 pb-32 md:pt-20"
+          }
+        >
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

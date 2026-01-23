@@ -7,9 +7,10 @@ export default async function LinkCard({ url }: { url: string }) {
   try {
     const { result } = await ogs({ url });
     meta = result;
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     // biome-ignore lint/suspicious/noExplicitAny: Error type is unknown in catch block
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
+    /* eslint-enable @typescript-eslint/no-explicit-any */
     // Suppress verbose logging for expected errors
     const errorMsg = e?.result?.error || e?.message || "";
     if (!errorMsg.includes("403") && !errorMsg.includes("404") && !errorMsg.includes("503")) {

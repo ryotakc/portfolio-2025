@@ -3,11 +3,17 @@ import type { Metadata, Viewport } from "next";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import localFont from "next/font/local";
 import { JsonLd } from "@/components/json-ld";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/config/site";
 import { siteConfig as themeSiteConfig } from "@/config/theme";
 import { getSiteLayout } from "@/lib/layout-registry";
+
+const karakaze = localFont({
+  src: "./_fonts/karakaze-R.ttf",
+  variable: "--font-karakaze",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -68,7 +74,11 @@ export default function RootLayout({
   const SiteLayout = getSiteLayout(themeSiteConfig.layout);
 
   return (
-    <html lang="en" className="overflow-x-hidden touch-manipulation" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={cn("overflow-x-hidden touch-manipulation", karakaze.variable)}
+      suppressHydrationWarning
+    >
       <body className={cn("antialiased", "w-full h-full")}>
         <ThemeProvider
           attribute="class"
