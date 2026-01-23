@@ -188,11 +188,6 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
           <span>{entry.title}</span>
         </div>
 
-        {/* 説明 */}
-        {entry.description && (
-          <div className="text-sm text-muted-foreground line-clamp-2">{entry.description}</div>
-        )}
-
         {/* カテゴリタグ */}
         <div className="flex gap-1.5 mt-2 flex-wrap">
           {entry.category.map((cat) => (

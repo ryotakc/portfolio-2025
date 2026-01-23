@@ -1,4 +1,3 @@
-import { Balancer } from "react-wrap-balancer";
 import { DynamicBreadcrumb } from "@/components/DynamicBreadcrumb";
 import { Badge } from "@/components/ui/badge";
 
@@ -24,23 +23,45 @@ export default function BlogContentLayout({
     <div className="mt-0">
       <DynamicBreadcrumb />
       <header className="mb-10">
-        {frontmatter.date && (
-          <div className="text-rurikon-400 text-sm mb-3 font-mono">
-            {frontmatter.date.split("T")[0]}
-          </div>
-        )}
         {frontmatter.title && (
-          <h1 className="text-2xl sm:text-3xl font-bold text-rurikon-700 dark:text-rurikon-100 mb-4">
-            <Balancer>{frontmatter.title}</Balancer>
+          <h1 className="text-[1.3rem] md:text-[1.5rem] font-mediumtext-rurikon-700 dark:text-rurikon-100 mb-10 mt-3">
+            {frontmatter.title}
           </h1>
         )}
-        {frontmatter.description && (
-          <p className="text-rurikon-500 italic mb-4">
-            <Balancer>{frontmatter.description}</Balancer>
-          </p>
-        )}
+
+        {/* Published と Tag を横並びに */}
+        <div className="flex gap-12 mb-6">
+          {frontmatter.date && (
+            <div>
+              <div className="text-sm text-rurikon-400 mb-1">Published</div>
+              <div className="text-rurikon-700 dark:text-rurikon-100 font-medium">
+                {new Date(frontmatter.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
+              </div>
+            </div>
+          )}
+
+          {frontmatter.tags && frontmatter.tags.length > 0 && (
+            <div>
+              <div className="text-sm text-rurikon-400 mb-1">Tag</div>
+              <div className="flex flex-wrap gap-2">
+                {frontmatter.tags.map((tag) => (
+                  <a key={tag} href={`/${locale}/tags?t=${tag}`} className="no-underline">
+                    <Badge variant="secondary" className="hover:opacity-80 transition-opacity">
+                      {tag}
+                    </Badge>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
         {frontmatter.categories && frontmatter.categories.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-2">
+          <div className="flex flex-wrap gap-2 mb-4">
             {frontmatter.categories.map((category) => (
               <a
                 key={category}
@@ -54,17 +75,7 @@ export default function BlogContentLayout({
             ))}
           </div>
         )}
-        {frontmatter.tags && frontmatter.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {frontmatter.tags.map((tag) => (
-              <a key={tag} href={`/${locale}/tags?t=${tag}`} className="no-underline">
-                <Badge variant="secondary" className="hover:opacity-80 transition-opacity">
-                  #{tag}
-                </Badge>
-              </a>
-            ))}
-          </div>
-        )}
+
         <hr className="mt-8 border-rurikon-border dark:border-rurikon-border-dark opacity-50" />
       </header>
       <div className="blog-content">{children}</div>
