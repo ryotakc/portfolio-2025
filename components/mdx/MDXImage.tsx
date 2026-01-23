@@ -1,7 +1,7 @@
 import fs from "fs";
-import path from "path";
-import Image from "next/image";
 import imageSize from "image-size";
+import Image from "next/image";
+import path from "path";
 import { BlockSideTitle } from "@/components/block-sidetitle";
 
 export async function MDXImage({
@@ -27,7 +27,7 @@ export async function MDXImage({
   } else {
     // Construct public path
     const publicDir = path.join(process.cwd(), "public", "images");
-    
+
     // Check for light/dark variations
     const match = src.match(/(.*)(\.[^.]+)$/);
     let hasThemeImages = false;
@@ -36,7 +36,7 @@ export async function MDXImage({
       const [_, basePath, ext] = match;
       const lightFilename = `${basePath}-light${ext}`;
       const darkFilename = `${basePath}-dark${ext}`;
-      
+
       const lightPath = path.join(publicDir, lightFilename);
       const darkPath = path.join(publicDir, darkFilename);
 
@@ -100,8 +100,8 @@ export async function MDXImage({
             />
           );
         } catch (e) {
-             console.error("Failed to get dimensions for image", src, e);
-             return <span className="text-red-500 block">Image dimensions error: {src}</span>;
+          console.error("Failed to get dimensions for image", src, e);
+          return <span className="text-red-500 block">Image dimensions error: {src}</span>;
         }
       } else {
         console.error("Image file not found", imagePath);
