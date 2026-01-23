@@ -1,11 +1,10 @@
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 type TaxonomyItem = {
   label: string;
   count?: number;
-  href: string;
+  onClick: () => void;
 };
 
 type TaxonomyListProps = {
@@ -21,11 +20,16 @@ export function TaxonomyList({ items, type, className, activeItem }: TaxonomyLis
       {items.map((item) => {
         const isActive = item.label === activeItem;
         return (
-          <Link key={item.label} href={item.href} className="no-underline">
+          <button
+            key={item.label}
+            onClick={item.onClick}
+            type="button"
+            className="no-underline"
+          >
             <Badge
               variant={isActive ? "default" : "secondary"}
               className={cn(
-                "text-sm py-1 px-3 transition-all",
+                "text-sm py-1 px-3 transition-all cursor-pointer",
                 isActive ? "hover:opacity-90" : "hover:opacity-80 opacity-70 hover:opacity-100",
                 type === "tag" && !isActive && "bg-secondary/50",
               )}
@@ -38,7 +42,7 @@ export function TaxonomyList({ items, type, className, activeItem }: TaxonomyLis
                 </span>
               )}
             </Badge>
-          </Link>
+          </button>
         );
       })}
     </div>

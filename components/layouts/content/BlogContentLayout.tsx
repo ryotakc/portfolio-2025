@@ -1,3 +1,6 @@
+"use client";
+
+import Link from "next/link";
 import { DynamicBreadcrumb } from "@/components/DynamicBreadcrumb";
 import { Badge } from "@/components/ui/badge";
 
@@ -19,6 +22,14 @@ export default function BlogContentLayout({
   frontmatter,
   locale,
 }: BlogContentLayoutProps) {
+  const handleTagClick = (tag: string) => {
+    sessionStorage.setItem("tags_filter_preload", tag);
+  };
+
+  const handleCategoryClick = (category: string) => {
+    sessionStorage.setItem("categories_filter_preload", category);
+  };
+
   return (
     <div className="mt-0">
       <DynamicBreadcrumb />
@@ -49,11 +60,16 @@ export default function BlogContentLayout({
               <div className="text-sm text-rurikon-400 mb-1">Tag</div>
               <div className="flex flex-wrap gap-2">
                 {frontmatter.tags.map((tag) => (
-                  <a key={tag} href={`/${locale}/tags?t=${tag}`} className="no-underline">
+                  <Link
+                    key={tag}
+                    href={`/${locale}/tags`}
+                    onClick={() => handleTagClick(tag)}
+                    className="no-underline"
+                  >
                     <Badge variant="secondary" className="hover:opacity-80 transition-opacity">
                       {tag}
                     </Badge>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -63,15 +79,16 @@ export default function BlogContentLayout({
         {frontmatter.categories && frontmatter.categories.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
             {frontmatter.categories.map((category) => (
-              <a
+              <Link
                 key={category}
-                href={`/${locale}/categories?c=${category}`}
+                href={`/${locale}/categories`}
+                onClick={() => handleCategoryClick(category)}
                 className="no-underline"
               >
                 <Badge variant="default" className="hover:opacity-80 transition-opacity">
                   {category}
                 </Badge>
-              </a>
+              </Link>
             ))}
           </div>
         )}

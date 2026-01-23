@@ -1,7 +1,6 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { DynamicBreadcrumb } from "@/components/DynamicBreadcrumb";
 import type { MDXPostMeta } from "@/lib/mdx-utils";
@@ -25,72 +24,53 @@ export function TaxonomyExplorer({
   type,
   locale,
 }: TaxonomyExplorerProps) {
-  // const router = useRouter(); removed unused
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
+  const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [mounted, setMounted] = useState(false);
 
-  // Get active filter from URL, default to "All" (which is represented by null or empty param)
-  const paramKey = type === "tag" ? "t" : "c";
-  const activeParam = searchParams.get(paramKey);
-  const activeFilter = activeParam || "All";
+  // Session Storageからフィルタのプリロードを読み取る
+  useEffect(() => {
+    setMounted(true);
 
-  // _handleSelect removed
+    const storageKey = type === "tag" ? "tags_filter_preload" : "categories_filter_preload";
+    const preloadValue = sessionStorage.getItem(storageKey);
+
+    if (preloadValue) {
+      setActiveFilter(preloadValue);
+      sessionStorage.removeItem(storageKey);
+    }
+  }, [type]);
 
   // Filter posts logic
   const filteredPosts = useMemo(() => {
-    if (!activeParam || activeFilter === "All") {
+    if (activeFilter === "All") {
       return posts;
     }
     return posts.filter((post) => {
       const list = type === "tag" ? post.frontmatter.tags : post.frontmatter.categories;
-      return Array.isArray(list) && list.includes(activeParam);
+      return Array.isArray(list) && list.includes(activeFilter);
     });
-  }, [posts, activeParam, activeFilter, type]);
+  }, [posts, activeFilter, type]);
 
   // Transform items for TaxonomyList
   const taxonomyItems = useMemo(() => {
-    // "All" item
     const allItem = {
       label: "All",
-      href: "#", // Handled by onClick mostly, but href is good for SEO/Link.
-      // Actually TaxonomyList uses Link. We intercept or modify TaxonomyList?
-      // Wait, TaxonomyList renders `Link`.
-      // We should probably MODIFY TaxonomyList to accept `onClick` and optionally disable real navigation if we want pure client side.
-      // BUT, using Link with query params is also valid for client-side navigation in Next.js.
-      // E.g. href="/tags?t=Next.js"
       count: posts.length,
+      onClick: () => setActiveFilter("All"),
     };
 
-    const mappedItems = items.map((item) => {
-      const isSelected = item.name === activeParam;
-
-      // Determine target href for Link
-      const params = new URLSearchParams(searchParams);
-      if (isSelected) {
-        params.delete(paramKey);
-      } else {
-        params.set(paramKey, item.name);
-      }
-      const href = `${pathname}?${params.toString()}`;
-
-      return {
-        label: item.name,
-        count: item.count,
-        href,
-      };
-    });
-
-    // Special href for All
-    const allParams = new URLSearchParams(searchParams);
-    allParams.delete(paramKey);
-    allItem.href = `${pathname}?${allParams.toString()}`;
+    const mappedItems = items.map((item) => ({
+      label: item.name,
+      count: item.count,
+      onClick: () => setActiveFilter(item.name),
+    }));
 
     return [allItem, ...mappedItems];
-  }, [items, posts.length, activeParam, searchParams, pathname, paramKey]);
+  }, [items, posts.length]);
 
-  // Note: TaxonomyList uses Link, which is fine. Next.js Link performs client-side transition.
-  // We don't necessarily strictly need `onClick` handler if we construct correct `href`s.
-  // The state `activeFilter` will update via `useSearchParams`.
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className="container py-10 max-w-4xl mx-auto">
@@ -101,8 +81,6 @@ export function TaxonomyExplorer({
       </div>
 
       <div className="mb-12">
-        {/* We reuse TaxonomyList. It expects items with { label, count?, href }. 
-            It also expects activeItem to style it. */}
         <TaxonomyList items={taxonomyItems} type={type} activeItem={activeFilter} />
       </div>
 
@@ -110,8 +88,7 @@ export function TaxonomyExplorer({
         <FilteredPostList
           posts={filteredPosts}
           filterType={type}
-          // Display "All" if no filter, otherwise the filter name
-          filterValue={activeFilter === "All" ? "All" : activeFilter}
+          filterValue={activeFilter}
           locale={locale}
         />
       </div>
