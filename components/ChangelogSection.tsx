@@ -54,6 +54,12 @@ export default function ChangelogSection({
 
   useEffect(() => {
     setMounted(true);
+
+    const preloadCategory = sessionStorage.getItem("note_category_preload");
+    if (preloadCategory && Object.keys(CATEGORY_MAP).includes(preloadCategory)) {
+      setActiveFilter(preloadCategory as CategoryKey);
+      sessionStorage.removeItem("note_category_preload");
+    }
   }, []);
 
   // エントリーをフィルター

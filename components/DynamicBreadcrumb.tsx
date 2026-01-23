@@ -63,7 +63,15 @@ export function DynamicBreadcrumb() {
 
           {pathSegments.map((segment, index) => {
             const isLast = index === pathSegments.length - 1;
-            const href = `/${locale}/${pathSegments.slice(0, index + 1).join("/")}`;
+            let href = `/${locale}/${pathSegments.slice(0, index + 1).join("/")}`;
+            let onClick: (() => void) | undefined;
+
+            if (["blog", "work"].includes(segment.toLowerCase())) {
+              href = `/${locale}/note`;
+              onClick = () => {
+                sessionStorage.setItem("note_category_preload", segment.toLowerCase());
+              };
+            }
 
             return (
               <React.Fragment key={href}>
@@ -72,7 +80,9 @@ export function DynamicBreadcrumb() {
                     <BreadcrumbPage>{decodeURIComponent(segment)}</BreadcrumbPage>
                   ) : (
                     <BreadcrumbLink asChild>
-                      <Link href={href}>{decodeURIComponent(segment)}</Link>
+                      <Link href={href} onClick={onClick}>
+                        {decodeURIComponent(segment)}
+                      </Link>
                     </BreadcrumbLink>
                   )}
                 </BreadcrumbItem>
