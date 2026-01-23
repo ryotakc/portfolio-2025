@@ -166,7 +166,7 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
   // 4ヶ月以内なら相対表記、それ以外は日付（年なし）
   // 英語表記のスクリーンショットに合わせて英語で相対表記
   const relativeDate = isWithin4Months
-    ? formatDistanceToNow(date, { addSuffix: true, locale: enUS })
+    ? formatDistanceToNow(date, { addSuffix: true, locale: enUS }).replace("about ", "")
     : format(date, "MMM d", { locale: enUS });
 
   // カテゴリの絵文字を取得
