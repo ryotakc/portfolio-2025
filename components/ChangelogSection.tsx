@@ -1,9 +1,9 @@
 "use client";
 
+import cn from "clsx";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Highlighter } from "@/components/ui/highlighter";
-import cn from "clsx";
 
 // 型定義とカテゴリマップ（サーバー側のchangelog-utilsから複製）
 export interface ChangelogEntry {
