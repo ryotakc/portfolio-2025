@@ -178,7 +178,7 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
       {/* エントリーカード */}
       <Link
         href={url}
-        className="block p-4 rounded-lg bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
+        className="block p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
       >
         {/* 日付 */}
         <div className="text-xs text-muted-foreground mb-1">{formattedDate}</div>

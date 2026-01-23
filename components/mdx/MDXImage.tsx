@@ -18,7 +18,7 @@ export async function MDXImage({
     img = (
       /* eslint-disable @next/next/no-img-element */
       // biome-ignore lint/performance/noImgElement: External images require standard img tag due to unknown dimensions
-      <img className="mt-7 w-full h-auto rounded-lg" src={src} alt={alt || ""} draggable={false} />
+      <img className="mt-7 w-full h-auto rounded-xl" src={src} alt={alt || ""} draggable={false} />
       /* eslint-enable @next/next/no-img-element */
     );
   } else {
@@ -27,7 +27,7 @@ export async function MDXImage({
       const image = await import(`@/assets/images/${src}`);
       img = (
         <Image
-          className="mt-7"
+          className="mt-7 rounded-xl"
           src={image.default}
           alt={alt || ""}
           quality={95}
