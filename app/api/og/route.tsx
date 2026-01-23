@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
     const textColor = theme === "dark" ? "#FFFFFF" : "#141414";
 
     // Load avatar image
-    const avatarPath = path.join(process.cwd(), "assets/images/avatar.jpg");
+    const avatarPath = path.join(process.cwd(), "public/images/avatar.jpg");
     const avatarData = await fs.promises.readFile(avatarPath);
     const avatarBase64 = `data:image/jpeg;base64,${avatarData.toString("base64")}`;
 
