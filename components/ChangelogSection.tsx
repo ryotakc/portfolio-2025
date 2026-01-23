@@ -162,7 +162,7 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
   const now = new Date();
   const monthsDiff = differenceInMonths(now, date);
   const isWithin4Months = monthsDiff <= 4;
-  
+
   // 4ヶ月以内なら相対表記、それ以外は日付（年なし）
   // 英語表記のスクリーンショットに合わせて英語で相対表記
   const relativeDate = isWithin4Months
@@ -205,9 +205,7 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
         className="block p-5 rounded-3xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
       >
         {/* タイトル */}
-        <h3 className="text-lg font-bold text-foreground mb-3 leading-snug">
-          {entry.title}
-        </h3>
+        <h3 className="text-lg font-bold text-foreground mb-3 leading-snug">{entry.title}</h3>
 
         {/* 日付とアイコン（カード下部） */}
         <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
