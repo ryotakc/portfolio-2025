@@ -1,6 +1,8 @@
 "use client";
 
 import cn from "clsx";
+import { differenceInMonths, format, formatDistanceToNow } from "date-fns";
+import { enUS } from "date-fns/locale";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Highlighter } from "@/components/ui/highlighter";
@@ -151,10 +153,22 @@ interface ChangelogEntryItemProps {
 
 function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
   const date = new Date(entry.date);
+  // カード下の表示用日付（年は表示しない）
   const formattedDate = date.toLocaleDateString(locale === "ja" ? "ja-JP" : "en-US", {
     month: "short",
     day: "numeric",
   });
+
+  // バッジ用日付ロジック
+  const now = new Date();
+  const monthsDiff = differenceInMonths(now, date);
+  const isWithin4Months = monthsDiff <= 4;
+  
+  // 4ヶ月以内なら相対表記、それ以外は日付（年なし）
+  // 英語表記のスクリーンショットに合わせて英語で相対表記
+  const relativeDate = isWithin4Months
+    ? formatDistanceToNow(date, { addSuffix: true, locale: enUS })
+    : format(date, "MMM d", { locale: enUS });
 
   // カテゴリの絵文字を取得
   const categoryEmoji = entry.category
@@ -175,29 +189,31 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
         {categoryEmoji}
       </div>
 
+      {/* Published ... Header */}
+      <div className="flex items-center gap-2 mb-4 pt-2 text-sm text-muted-foreground pl-1">
+        <span>Published a post on</span>
+        <Link href="/" className="font-medium text-foreground hover:underline">
+          ryotakc.com
+        </Link>
+        <div className="bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-full text-xs">
+          {relativeDate}
+        </div>
+      </div>
+
       {/* エントリーカード */}
       <Link
         href={url}
-        className="block p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
+        className="block p-5 rounded-3xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border border-gray-200 dark:border-gray-700"
       >
-        {/* 日付 */}
-        <div className="text-xs text-muted-foreground mb-1">{formattedDate}</div>
-
         {/* タイトル */}
-        <div className="font-medium text-foreground mb-1 flex items-center gap-2">
-          <span>{entry.title}</span>
-        </div>
+        <h3 className="text-lg font-bold text-foreground mb-3 leading-snug">
+          {entry.title}
+        </h3>
 
-        {/* カテゴリタグ */}
-        <div className="flex gap-1.5 mt-2 flex-wrap">
-          {entry.category.map((cat) => (
-            <span
-              key={cat}
-              className="text-xs px-2 py-0.5 rounded-full bg-gray-200/50 dark:bg-gray-700/50 text-muted-foreground"
-            >
-              {cat}
-            </span>
-          ))}
+        {/* 日付とアイコン（カード下部） */}
+        <div className="flex items-center gap-2 text-muted-foreground text-sm font-medium">
+          <span>{categoryEmoji}</span>
+          <span>{formattedDate}</span>
         </div>
       </Link>
     </div>
