@@ -16,12 +16,12 @@ export default async function NotePage({ params }: { params: Promise<Params> }) 
 
   return (
     // 白背景で画面上部寄りに配置
-    <div className="min-h-screen flex flex-col items-center justify-start bg-white dark:bg-gray-950 pt-2 pb-32">
+    <div className="min-h-screen flex flex-col items-center justify-start pt-2 pb-32">
       <div className="w-full max-w-[680px] px-5">
         <ChangelogSection
           locale={locale}
           entries={changelogEntries}
-          headerBg="bg-white dark:bg-gray-950"
+          headerBg="bg-background"
         />
       </div>
     </div>
