@@ -66,7 +66,7 @@ export function DynamicBreadcrumb() {
             let href = `/${locale}/${pathSegments.slice(0, index + 1).join("/")}`;
             let onClick: (() => void) | undefined;
 
-            if (["blog", "work"].includes(segment.toLowerCase())) {
+            if (["blog", "work", "misc"].includes(segment.toLowerCase())) {
               href = `/${locale}/note`;
               onClick = () => {
                 sessionStorage.setItem("note_category_preload", segment.toLowerCase());
