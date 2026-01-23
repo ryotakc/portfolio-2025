@@ -21,7 +21,7 @@ export default function CatnoseSiteLayout({ children }: SiteLayoutProps) {
           className={
             isHomePage
               ? "w-full" // Homeページの場合はパディングと最大幅を削除
-              : "mx-auto w-full max-w-[680px] pt-12 pb-32 md:pt-20"
+              : "mx-auto w-full max-w-[680px] px-5 pt-12 pb-32 md:pt-20"
           }
         >
           <motion.div
