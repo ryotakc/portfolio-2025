@@ -52,9 +52,7 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
 
   // エントリーをフィルター
   const filteredEntries =
-    activeFilter === "all"
-      ? entries
-      : entries.filter((e) => e.category.includes(activeFilter));
+    activeFilter === "all" ? entries : entries.filter((e) => e.category.includes(activeFilter));
 
   // 年ごとにグループ化
   const groupedByYear = groupEntriesByYear(filteredEntries);
@@ -84,9 +82,7 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
               key={key}
               onClick={() => setActiveFilter(key)}
               className={`flex flex-col items-center gap-1.5 transition-all ${
-                activeFilter === key
-                  ? "scale-105"
-                  : "opacity-60 hover:opacity-100 hover:scale-105"
+                activeFilter === key ? "scale-105" : "opacity-60 hover:opacity-100 hover:scale-105"
               }`}
               type="button"
               aria-label={`Filter by ${label}`}

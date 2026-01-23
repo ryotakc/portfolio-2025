@@ -3,11 +3,11 @@ import type { Metadata, Viewport } from "next";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import localFont from "next/font/local";
 import { JsonLd } from "@/components/json-ld";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/config/site";
 import { siteConfig as themeSiteConfig } from "@/config/theme";
-import localFont from "next/font/local";
 import { getSiteLayout } from "@/lib/layout-registry";
 
 const karakaze = localFont({
@@ -74,7 +74,11 @@ export default function RootLayout({
   const SiteLayout = getSiteLayout(themeSiteConfig.layout);
 
   return (
-    <html lang="en" className={cn("overflow-x-hidden touch-manipulation", karakaze.variable)} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={cn("overflow-x-hidden touch-manipulation", karakaze.variable)}
+      suppressHydrationWarning
+    >
       <body className={cn("antialiased", "w-full h-full")}>
         <ThemeProvider
           attribute="class"

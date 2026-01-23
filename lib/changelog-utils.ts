@@ -32,8 +32,5 @@ export async function getChangelogEntries(locale: string): Promise<ChangelogEntr
     }));
 
   // 日付でソート（新しい順）
-  return changelogPosts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  );
+  return changelogPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
-
