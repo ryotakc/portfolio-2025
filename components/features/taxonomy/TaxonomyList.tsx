@@ -20,12 +20,7 @@ export function TaxonomyList({ items, type, className, activeItem }: TaxonomyLis
       {items.map((item) => {
         const isActive = item.label === activeItem;
         return (
-          <button
-            key={item.label}
-            onClick={item.onClick}
-            type="button"
-            className="no-underline"
-          >
+          <button key={item.label} onClick={item.onClick} type="button" className="no-underline">
             <Badge
               variant={isActive ? "default" : "secondary"}
               className={cn(
