@@ -83,7 +83,7 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                   Pages
                 </div>
                 <MenuLink href="/" label={navItems.home} locale={currentLocale} />
-                <MenuLink href="/about" label={navItems.about} locale={currentLocale} />
+                <MenuLink href="/note" label={navItems.note} locale={currentLocale} />
                 <MenuLink href="/contact" label={navItems.contact} locale={currentLocale} />
 
                 <div className="my-1 border-t border-zinc-100/50 dark:border-white/5" />

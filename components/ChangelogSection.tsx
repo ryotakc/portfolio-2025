@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Highlighter } from "@/components/ui/highlighter";
+import cn from "clsx";
 
 // 型定義とカテゴリマップ（サーバー側のchangelog-utilsから複製）
 export interface ChangelogEntry {
@@ -40,9 +41,14 @@ function groupEntriesByYear(entries: ChangelogEntry[]): Record<string, Changelog
 interface ChangelogSectionProps {
   locale: string;
   entries: ChangelogEntry[];
+  headerBg?: string; // Stickyヘッダーの背景色
 }
 
-export default function ChangelogSection({ locale, entries }: ChangelogSectionProps) {
+export default function ChangelogSection({
+  locale,
+  entries,
+  headerBg = "bg-[#F5F9FB] dark:bg-gray-900", // デフォルト色
+}: ChangelogSectionProps) {
   const [activeFilter, setActiveFilter] = useState<CategoryKey>("all");
   const [mounted, setMounted] = useState(false);
 
@@ -112,7 +118,9 @@ export default function ChangelogSection({ locale, entries }: ChangelogSectionPr
           {years.map((year) => (
             <div key={year} className="space-y-4">
               {/* 年ラベル */}
-              <div className="text-lg font-bold text-foreground sticky top-4 bg-[#F5F9FB] dark:bg-gray-900 py-2 z-10">
+              <div
+                className={cn("text-lg font-bold text-foreground sticky top-4 py-2 z-10", headerBg)}
+              >
                 {year}
               </div>
 

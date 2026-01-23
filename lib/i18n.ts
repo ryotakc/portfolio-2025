@@ -12,12 +12,12 @@ export const languageNames: Record<Language, string> = {
 export const navigation: Record<Language, Record<string, string>> = {
   en: {
     home: "Home",
-    about: "About",
+    note: "Note",
     contact: "Contact",
   },
   ja: {
     home: "Home",
-    about: "About",
+    note: "Note",
     contact: "Contact",
   },
 };
