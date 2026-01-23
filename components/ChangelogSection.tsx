@@ -189,12 +189,12 @@ function ChangelogEntryItem({ entry, locale }: ChangelogEntryItemProps) {
       </div>
 
       {/* Published ... Header */}
-      <div className="flex items-center gap-2 mb-4 pt-2 text-sm text-muted-foreground pl-1">
+      <div className="flex flex-wrap items-center gap-2 mb-4 pt-2 text-sm text-muted-foreground pl-1">
         <span>Published a post on</span>
         <Link href="/" className="font-medium text-foreground hover:underline">
           ryotakc.com
         </Link>
-        <div className="bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-full text-xs">
+        <div className="bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-full text-xs whitespace-nowrap">
           {relativeDate}
         </div>
       </div>
