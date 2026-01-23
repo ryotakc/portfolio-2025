@@ -4,13 +4,13 @@ import matter from "gray-matter";
 import type { MDXComponents } from "mdx/types";
 import { compileMDX } from "next-mdx-remote/rsc";
 import path from "path";
+import remarkBreaks from "remark-breaks";
 import remarkDirective from "remark-directive";
 import remarkGfm from "remark-gfm";
 import { components } from "@/mdx-components";
 import { remarkLinkCard } from "./remark-link-card.mjs";
 import { remarkNotePlugin } from "./remark-note-plugin.mjs";
 import { remarkOEmbed } from "./remark-oembed";
-import remarkBreaks from "remark-breaks";
 import remarkPreserveBreaks from "./remark-preserve-breaks";
 
 // コンテンツディレクトリのパス

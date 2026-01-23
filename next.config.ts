@@ -1,15 +1,20 @@
 import withMDX from "@next/mdx";
 import type { NextConfig } from "next";
-
+import remarkBreaks from "remark-breaks";
 import remarkDirective from "remark-directive";
 import { remarkNotePlugin } from "./lib/remark-note-plugin.mjs";
 import { remarkOEmbed } from "./lib/remark-oembed";
-import remarkBreaks from "remark-breaks";
 import remarkPreserveBreaks from "./lib/remark-preserve-breaks";
 
 export default withMDX({
   options: {
-    remarkPlugins: [remarkDirective, remarkOEmbed, remarkNotePlugin, remarkBreaks, remarkPreserveBreaks],
+    remarkPlugins: [
+      remarkDirective,
+      remarkOEmbed,
+      remarkNotePlugin,
+      remarkBreaks,
+      remarkPreserveBreaks,
+    ],
   },
 })({
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
