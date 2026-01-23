@@ -132,8 +132,7 @@ export default function ChangelogSection({
                 {year}
               </div>
 
-              {/* エントリーリスト */}
-              <div className="space-y-6 relative border-l-2 border-dotted border-gray-300 dark:border-gray-700 pl-6 ml-2">
+              <div className="space-y-12 relative border-l-2 border-dotted border-gray-300 dark:border-gray-700 pl-6 ml-2">
                 {groupedByYear[year].map((entry, idx) => (
                   <ChangelogEntryItem key={idx} entry={entry} locale={locale} />
                 ))}
