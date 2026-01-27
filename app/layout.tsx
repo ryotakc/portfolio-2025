@@ -10,9 +10,9 @@ import { siteConfig } from "@/config/site";
 import { siteConfig as themeSiteConfig } from "@/config/theme";
 import { getSiteLayout } from "@/lib/layout-registry";
 
-const karakaze = localFont({
-  src: "./_fonts/karakaze-R.ttf",
-  variable: "--font-karakaze",
+const grapeNuts = localFont({
+  src: "./_fonts/GrapeNuts-Regular.ttf",
+  variable: "--font-grapenuts",
 });
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("overflow-x-hidden touch-manipulation", karakaze.variable)}
+      className={cn("overflow-x-hidden touch-manipulation", grapeNuts.variable)}
       suppressHydrationWarning
     >
       <body className={cn("antialiased", "w-full h-full")}>

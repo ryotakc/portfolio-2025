@@ -82,7 +82,7 @@ export default function ChangelogSection({
       <div className="text-left">
         <h2
           className="text-4xl font-bold relative inline-block"
-          style={{ fontFamily: "var(--font-karakaze)" }}
+          style={{ fontFamily: "var(--font-grapenuts)" }}
         >
           <Highlighter action="underline">Changelog</Highlighter>
         </h2>
