@@ -81,10 +81,12 @@ export default function ChangelogSection({
       {/* 手書き風タイトル */}
       <div className="text-left">
         <h2
-          className="text-4xl font-bold relative inline-block"
+          className="text-4xl font-bold relative inline-block -rotate-5"
           style={{ fontFamily: "var(--font-grapenuts)" }}
         >
-          <Highlighter action="underline">Changelog</Highlighter>
+          <Highlighter action="underline" color="#60A5FA">
+            Changelog
+          </Highlighter>
         </h2>
       </div>
 
