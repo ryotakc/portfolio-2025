@@ -1,0 +1,20 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { getDictionary } from "@/shared/lib/i18n";
+
+export default function NotFound({ params: _params }: { params: { locale: string } }) {
+  const pathname = usePathname();
+  const locale = pathname.split("/")[1] === "en" ? "en" : "ja";
+  const dictionary = getDictionary(locale);
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[60vh]">
+      <h1 className="font-semibold mb-7 text-rurikon-600 text-2xl">{dictionary.notFound}</h1>
+      <Link href={`/${locale}`} className="underline">
+        {dictionary.returnHome}
+      </Link>
+    </div>
+  );
+}
