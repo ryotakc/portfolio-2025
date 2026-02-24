@@ -9,7 +9,17 @@ export const defaultLocale = "ja";
 
 // Get the preferred locale from request headers
 function getLocale(request: NextRequest) {
-  // ブラウザから送信された希望言語を取得
+  // Vercel, Cloudflare, CloudFront等のヘッダーから国コードを取得
+  const country =
+    request.headers.get("x-vercel-ip-country") ||
+    request.headers.get("cf-ipcountry") ||
+    request.headers.get("cloudfront-viewer-country");
+
+  if (country) {
+    return country === "JP" ? "ja" : "en";
+  }
+
+  // ローカル開発等で取得できない場合のフォールバック
   const acceptLanguage = request.headers.get("accept-language");
 
   if (acceptLanguage) {
