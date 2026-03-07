@@ -64,9 +64,7 @@ export const Dropdown = ({
                   }}
                   disabled={option.disabled}
                 >
-                  {option.icon && (
-                    <span className={styles.icon}>{option.icon}</span>
-                  )}
+                  {option.icon && <span className={styles.icon}>{option.icon}</span>}
                   <span>{option.label}</span>
                 </button>
               ))}

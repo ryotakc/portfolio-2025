@@ -4,12 +4,7 @@ export type BoxProps<T extends ElementType> = {
   as: T;
   flexDirection?: "row" | "column";
   alignItems?: "center" | "flex-start" | "flex-end" | "stretch";
-  justifyContent?:
-    | "center"
-    | "flex-start"
-    | "flex-end"
-    | "space-between"
-    | "stretch";
+  justifyContent?: "center" | "flex-start" | "flex-end" | "space-between" | "stretch";
   gap?: number;
 } & ComponentPropsWithoutRef<T>;
 

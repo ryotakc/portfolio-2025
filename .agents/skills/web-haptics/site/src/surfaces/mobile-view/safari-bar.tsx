@@ -137,15 +137,8 @@ export const SafariBar = () => {
           <feOffset dy="2" />
           <feGaussianBlur stdDeviation="20" />
           <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_7388_437"
-          />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_7388_437" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -175,15 +168,8 @@ export const SafariBar = () => {
           <feOffset dy="2" />
           <feGaussianBlur stdDeviation="20" />
           <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_7388_437"
-          />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_7388_437" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -213,15 +199,8 @@ export const SafariBar = () => {
           <feOffset dy="2" />
           <feGaussianBlur stdDeviation="20" />
           <feComposite in2="hardAlpha" operator="out" />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow_7388_437"
-          />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_7388_437" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -229,10 +208,7 @@ export const SafariBar = () => {
             result="shape"
           />
         </filter>
-        <clipPath
-          id="bgblur_2_7388_437_clip_path"
-          transform="translate(-276 0)"
-        >
+        <clipPath id="bgblur_2_7388_437_clip_path" transform="translate(-276 0)">
           <path d="M316 62C316 48.7452 326.745 38 340 38C353.255 38 364 48.7452 364 62C364 75.2548 353.255 86 340 86C326.745 86 316 75.2548 316 62Z" />
         </clipPath>
         <linearGradient

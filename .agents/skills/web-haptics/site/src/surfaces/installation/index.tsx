@@ -38,9 +38,7 @@ export const InstallCommands = () => {
       </div>
 
       <div className={styles.cmd}>
-        <CodeBlock
-          code={pkgCmds[Object.keys(pkgCmds)[cmdIndex] as keyof typeof pkgCmds]}
-        >
+        <CodeBlock code={pkgCmds[Object.keys(pkgCmds)[cmdIndex] as keyof typeof pkgCmds]}>
           <span
             style={{
               opacity: 0.4,
@@ -49,9 +47,7 @@ export const InstallCommands = () => {
           >
             {"$ "}
           </span>
-          <TextMorph>
-            {pkgCmds[Object.keys(pkgCmds)[cmdIndex] as keyof typeof pkgCmds]}
-          </TextMorph>
+          <TextMorph>{pkgCmds[Object.keys(pkgCmds)[cmdIndex] as keyof typeof pkgCmds]}</TextMorph>
         </CodeBlock>
       </div>
     </div>

@@ -52,11 +52,7 @@ function expandWeighted(entries: EmojiEntry[]): EmojiOption[] {
   );
 }
 
-export const Demo = ({
-  setShaking,
-}: {
-  setShaking?: (shaking: boolean) => void;
-}) => {
+export const Demo = ({ setShaking }: { setShaking?: (shaking: boolean) => void }) => {
   const { trigger } = useHaptics();
   const { create } = useParticles();
 
@@ -100,9 +96,7 @@ export const Demo = ({
               if (el) spanRefs.current.set(name, el);
             }}
             onAnimationEnd={(e) =>
-              (e.currentTarget as HTMLSpanElement).classList.remove(
-                styles[name]!,
-              )
+              (e.currentTarget as HTMLSpanElement).classList.remove(styles[name]!)
             }
           >
             <button
@@ -110,12 +104,10 @@ export const Demo = ({
               onClick={(e) => {
                 const x =
                   e.clientX ||
-                  e.currentTarget.getBoundingClientRect().left +
-                    e.currentTarget.offsetWidth / 2;
+                  e.currentTarget.getBoundingClientRect().left + e.currentTarget.offsetWidth / 2;
                 const y =
                   e.clientY ||
-                  e.currentTarget.getBoundingClientRect().top +
-                    e.currentTarget.offsetHeight / 2;
+                  e.currentTarget.getBoundingClientRect().top + e.currentTarget.offsetHeight / 2;
                 handleTrigger(name, defaultPatterns[name], x, y);
               }}
             >

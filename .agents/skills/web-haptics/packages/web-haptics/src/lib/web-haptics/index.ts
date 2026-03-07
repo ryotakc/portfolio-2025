@@ -1,10 +1,5 @@
 import { defaultPatterns } from "./patterns";
-import type {
-  HapticInput,
-  TriggerOptions,
-  Vibration,
-  WebHapticsOptions,
-} from "./types";
+import type { HapticInput, TriggerOptions, Vibration, WebHapticsOptions } from "./types";
 
 const TOGGLE_MIN = 16; // ms at intensity 1 (every frame)
 const TOGGLE_MAX = 184; // range above min (0.5 intensity ≈ 100ms)
@@ -85,18 +80,12 @@ function modulateVibration(duration: number, intensity: number): number[] {
  * Convert Vibration[] to the flat number[] pattern for navigator.vibrate(),
  * applying per-vibration PWM intensity modulation.
  */
-function toVibratePattern(
-  vibrations: Vibration[],
-  defaultIntensity: number,
-): number[] {
+function toVibratePattern(vibrations: Vibration[], defaultIntensity: number): number[] {
   const result: number[] = [];
 
   for (let i = 0; i < vibrations.length; i++) {
     const vib = vibrations[i]!;
-    const intensity = Math.max(
-      0,
-      Math.min(1, vib.intensity ?? defaultIntensity),
-    );
+    const intensity = Math.max(0, Math.min(1, vib.intensity ?? defaultIntensity));
     const delay = vib.delay ?? 0;
 
     // Prepend delay: merge into trailing off-time or add new gap
@@ -165,10 +154,7 @@ export class WebHaptics {
     const { vibrations } = normalized;
     if (vibrations.length === 0) return;
 
-    const defaultIntensity = Math.max(
-      0,
-      Math.min(1, options?.intensity ?? 0.5),
-    );
+    const defaultIntensity = Math.max(0, Math.min(1, options?.intensity ?? 0.5));
 
     // Validate and clamp durations
     for (const vib of vibrations) {
@@ -176,8 +162,7 @@ export class WebHaptics {
       if (
         !Number.isFinite(vib.duration) ||
         vib.duration < 0 ||
-        (vib.delay !== undefined &&
-          (!Number.isFinite(vib.delay) || vib.delay < 0))
+        (vib.delay !== undefined && (!Number.isFinite(vib.delay) || vib.delay < 0))
       ) {
         console.warn(
           `[web-haptics] Invalid vibration values. Durations and delays must be finite non-negative numbers.`,
@@ -284,10 +269,7 @@ export class WebHaptics {
       const phases: { end: number; isOn: boolean; intensity: number }[] = [];
       let cumulative = 0;
       for (const vib of vibrations) {
-        const intensity = Math.max(
-          0,
-          Math.min(1, vib.intensity ?? defaultIntensity),
-        );
+        const intensity = Math.max(0, Math.min(1, vib.intensity ?? defaultIntensity));
         const delay = vib.delay ?? 0;
         if (delay > 0) {
           cumulative += delay;
@@ -322,8 +304,7 @@ export class WebHaptics {
         }
 
         if (phase.isOn) {
-          const toggleInterval =
-            TOGGLE_MIN + (1 - phase.intensity) * TOGGLE_MAX;
+          const toggleInterval = TOGGLE_MIN + (1 - phase.intensity) * TOGGLE_MAX;
 
           if (lastToggleTime === -1) {
             lastToggleTime = time;
@@ -350,13 +331,7 @@ export class WebHaptics {
   }
 
   private playClick(intensity: number): void {
-    if (
-      !this.audioCtx ||
-      !this.audioFilter ||
-      !this.audioGain ||
-      !this.audioBuffer
-    )
-      return;
+    if (!this.audioCtx || !this.audioFilter || !this.audioGain || !this.audioBuffer) return;
 
     const data = this.audioBuffer.getChannelData(0);
     for (let i = 0; i < data.length; i++) {

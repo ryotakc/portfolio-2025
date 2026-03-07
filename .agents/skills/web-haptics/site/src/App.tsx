@@ -8,9 +8,7 @@ function App() {
 
   return (
     <AppProvider>
-      <ParticlesProvider>
-        {isMobile ? <MobileView /> : <DesktopView />}
-      </ParticlesProvider>
+      <ParticlesProvider>{isMobile ? <MobileView /> : <DesktopView />}</ParticlesProvider>
     </AppProvider>
   );
 }

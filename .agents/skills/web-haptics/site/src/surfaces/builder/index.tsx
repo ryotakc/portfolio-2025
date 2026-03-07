@@ -39,10 +39,7 @@ let nextId = 100;
 const genId = () => String(nextId++);
 const snap = (v: number) => Math.round(v / 10) * 10;
 
-function getNeighborBounds(
-  taps: Tap[],
-  id: string,
-): { minPos: number; maxEnd: number } {
+function getNeighborBounds(taps: Tap[], id: string): { minPos: number; maxEnd: number } {
   const sorted = [...taps].sort((a, b) => a.position - b.position);
   const idx = sorted.findIndex((t) => t.id === id);
   const prev = idx > 0 ? sorted[idx - 1] : null;
@@ -67,9 +64,7 @@ function tapsToPattern(taps: Tap[]): Vibration[] {
   const sorted = [...taps].sort((a, b) => a.position - b.position);
   return sorted.map((tap, i) => {
     const prev = sorted[i - 1];
-    const delay = prev
-      ? tap.position - (prev.position + prev.duration)
-      : tap.position;
+    const delay = prev ? tap.position - (prev.position + prev.duration) : tap.position;
     return {
       ...(delay > 0 && { delay }),
       duration: tap.duration,
@@ -105,9 +100,7 @@ const initialState: BuilderState = {
 function reducer(state: BuilderState, action: BuilderAction): BuilderState {
   switch (action.type) {
     case "ADD_TAP": {
-      const snapped = snap(
-        Math.max(0, Math.min(1000 - DEFAULT_DURATION, action.position)),
-      );
+      const snapped = snap(Math.max(0, Math.min(1000 - DEFAULT_DURATION, action.position)));
       if (!canFitTap(state.taps, snapped, DEFAULT_DURATION)) return state;
       const newTap: Tap = {
         id: genId(),
@@ -130,16 +123,11 @@ function reducer(state: BuilderState, action: BuilderAction): BuilderState {
       if (!tap) return state;
       const bounds = getNeighborBounds(state.taps, action.id);
       const clamped = snap(
-        Math.max(
-          bounds.minPos,
-          Math.min(bounds.maxEnd - tap.duration, action.position),
-        ),
+        Math.max(bounds.minPos, Math.min(bounds.maxEnd - tap.duration, action.position)),
       );
       return {
         ...state,
-        taps: state.taps.map((t) =>
-          t.id === action.id ? { ...t, position: clamped } : t,
-        ),
+        taps: state.taps.map((t) => (t.id === action.id ? { ...t, position: clamped } : t)),
       };
     }
 
@@ -151,9 +139,7 @@ function reducer(state: BuilderState, action: BuilderAction): BuilderState {
       const dur = Math.max(10, Math.min(maxDur, action.duration));
       return {
         ...state,
-        taps: state.taps.map((t) =>
-          t.id === action.id ? { ...t, duration: dur } : t,
-        ),
+        taps: state.taps.map((t) => (t.id === action.id ? { ...t, duration: dur } : t)),
       };
     }
 
@@ -162,10 +148,7 @@ function reducer(state: BuilderState, action: BuilderAction): BuilderState {
       if (!tap) return state;
       const bounds = getNeighborBounds(state.taps, action.id);
       const newPos = snap(
-        Math.max(
-          bounds.minPos,
-          Math.min(tap.position + tap.duration - 10, action.position),
-        ),
+        Math.max(bounds.minPos, Math.min(tap.position + tap.duration - 10, action.position)),
       );
       const newDur = tap.position + tap.duration - newPos;
       return {
@@ -187,9 +170,7 @@ function reducer(state: BuilderState, action: BuilderAction): BuilderState {
       return {
         ...state,
         taps: state.taps.map((t) =>
-          t.id === action.id
-            ? { ...t, intensity: Math.max(0, Math.min(1, action.intensity)) }
-            : t,
+          t.id === action.id ? { ...t, intensity: Math.max(0, Math.min(1, action.intensity)) } : t,
         ),
       };
 
@@ -314,8 +295,7 @@ export const HapticBuilder = () => {
       let currentPosition = tap?.position ?? 0;
 
       // Grab offset so delete-drag doesn't snap circle to cursor
-      const initialTapScreenX =
-        rect.left + ((tap?.position ?? 0) / 1000) * rect.width;
+      const initialTapScreenX = rect.left + ((tap?.position ?? 0) / 1000) * rect.width;
       const initialTapScreenY = rect.top + rect.height / 2;
       const grabOffsetX = e.clientX - initialTapScreenX;
       const grabOffsetY = e.clientY - initialTapScreenY;
@@ -343,8 +323,7 @@ export const HapticBuilder = () => {
           setPendingDeleteId(null);
           pendingDeleteIdRef.current = null;
           setDragOffset({ x: 0, y: 0 });
-          const position =
-            ((me.clientX - rect.left) / rect.width) * 1000 - offsetMs;
+          const position = ((me.clientX - rect.left) / rect.width) * 1000 - offsetMs;
           dispatch({ type: "MOVE_TAP", id: tapId, position });
           currentPosition = snap(Math.max(0, Math.min(1000, position)));
         }
@@ -395,29 +374,26 @@ export const HapticBuilder = () => {
   );
 
   // Drag left resize handle
-  const handleResizeLeftStart = useCallback(
-    (e: React.PointerEvent, tapId: string) => {
-      e.preventDefault();
-      e.stopPropagation();
-      dispatch({ type: "SELECT_TAP", id: tapId });
+  const handleResizeLeftStart = useCallback((e: React.PointerEvent, tapId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dispatch({ type: "SELECT_TAP", id: tapId });
 
-      const container = timelineRef.current;
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
+    const container = timelineRef.current;
+    if (!container) return;
+    const rect = container.getBoundingClientRect();
 
-      const onMove = (me: PointerEvent) => {
-        const msAtCursor = ((me.clientX - rect.left) / rect.width) * 1000;
-        dispatch({ type: "RESIZE_LEFT", id: tapId, position: msAtCursor });
-      };
-      const onUp = () => {
-        window.removeEventListener("pointermove", onMove);
-        window.removeEventListener("pointerup", onUp);
-      };
-      window.addEventListener("pointermove", onMove);
-      window.addEventListener("pointerup", onUp);
-    },
-    [],
-  );
+    const onMove = (me: PointerEvent) => {
+      const msAtCursor = ((me.clientX - rect.left) / rect.width) * 1000;
+      dispatch({ type: "RESIZE_LEFT", id: tapId, position: msAtCursor });
+    };
+    const onUp = () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  }, []);
 
   // Drag intensity from top/bottom edges
   const handleIntensityDragStart = useCallback(
@@ -436,9 +412,7 @@ export const HapticBuilder = () => {
           edge === "top"
             ? (me.clientY - rect.top) / rect.height
             : (rect.bottom - me.clientY) / rect.height;
-        const intensity =
-          Math.round(Math.max(0, Math.min(1, 1 - distFromEdge * 2)) * 100) /
-          100;
+        const intensity = Math.round(Math.max(0, Math.min(1, 1 - distFromEdge * 2)) * 100) / 100;
         dispatch({ type: "SET_TAP_INTENSITY", id: tapId, intensity });
       };
       const onUp = () => {
@@ -460,9 +434,7 @@ export const HapticBuilder = () => {
     timeoutsRef.current = [];
 
     // Immediately activate taps at position 0 to avoid setTimeout race
-    const immediate = new Set(
-      state.taps.filter((t) => t.position === 0).map((t) => t.id),
-    );
+    const immediate = new Set(state.taps.filter((t) => t.position === 0).map((t) => t.id));
     setActiveTapIds(immediate);
 
     const pat = tapsToPattern(state.taps);
@@ -573,11 +545,7 @@ export const HapticBuilder = () => {
 
       {/* Timeline */}
       <div className={styles.timelineContainer}>
-        <div
-          className={styles.timeline}
-          ref={timelineRef}
-          onClick={handleTimelineClick}
-        >
+        <div className={styles.timeline} ref={timelineRef} onClick={handleTimelineClick}>
           {/* Gridlines */}
           {GRIDLINES.map((ms) => (
             <div
@@ -656,15 +624,11 @@ export const HapticBuilder = () => {
                       />
                       <div
                         className={styles.intensityHandleTop}
-                        onPointerDown={(e) =>
-                          handleIntensityDragStart(e, tap.id, "top")
-                        }
+                        onPointerDown={(e) => handleIntensityDragStart(e, tap.id, "top")}
                       />
                       <div
                         className={styles.intensityHandleBottom}
-                        onPointerDown={(e) =>
-                          handleIntensityDragStart(e, tap.id, "bottom")
-                        }
+                        onPointerDown={(e) => handleIntensityDragStart(e, tap.id, "bottom")}
                       />
                     </motion.div>
                   </div>

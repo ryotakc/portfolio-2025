@@ -1,11 +1,5 @@
 export const TypeScriptLogo = () => (
-  <svg
-    width="21"
-    height="19"
-    viewBox="0 0 21 19"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M18.1445 0H2.85547C1.83072 0 1 0.830722 1 1.85547V17.1445C1 18.1693 1.83072 19 2.85547 19H18.1445C19.1693 19 20 18.1693 20 17.1445V1.85547C20 0.830722 19.1693 0 18.1445 0Z"
       fill="#3178C6"
@@ -24,13 +18,7 @@ export const TypeScriptLogo = () => (
 );
 
 export const ReactLogo = () => (
-  <svg
-    width="21"
-    height="20"
-    viewBox="0 0 21 20"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M12.25 9.68066C12.25 8.55837 11.4666 7.64844 10.5 7.64844C9.53358 7.64844 8.75 8.55837 8.75 9.68066C8.75 10.8031 9.53358 11.713 10.5 11.713C11.4666 11.713 12.25 10.8031 12.25 9.68066Z"
       fill="#53C1DE"
@@ -45,13 +33,7 @@ export const ReactLogo = () => (
 );
 
 export const VueLogo = () => (
-  <svg
-    width="21"
-    height="19"
-    viewBox="0 0 21 19"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M7.96986 0.000720683L10.3631 4.38837L12.7564 0.000720683H20.7262L10.3631 19L1.37584e-05 0.000720683H7.96986Z"
       fill="#41B883"
@@ -64,13 +46,7 @@ export const VueLogo = () => (
 );
 
 export const SvelteLogo = () => (
-  <svg
-    width="21"
-    height="19"
-    viewBox="0 0 21 19"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M17.558 2.51347C15.7112 -0.0139105 12.0346 -0.754418 9.39145 0.839283L4.7321 3.67253C3.46137 4.42913 2.58033 5.66868 2.32618 7.0692C2.10592 8.24436 2.29229 9.45171 2.8853 10.4981C2.47867 11.0776 2.20758 11.7215 2.08898 12.3976C1.81789 13.8304 2.17369 15.3114 3.05473 16.4865C4.91847 19.0139 8.57818 19.7544 11.2213 18.1607L15.8807 15.3436C17.1514 14.587 18.0324 13.3474 18.2866 11.9469C18.5068 10.7717 18.3205 9.56439 17.7274 8.51802C18.1341 7.9385 18.4052 7.29458 18.5238 6.61846C18.8118 5.16964 18.456 3.68863 17.558 2.51347Z"
       fill="#FF3E00"

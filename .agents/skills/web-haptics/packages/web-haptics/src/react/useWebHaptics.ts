@@ -2,11 +2,7 @@
 
 import { useRef, useEffect, useCallback } from "react";
 import { WebHaptics } from "../lib/web-haptics";
-import type {
-  HapticInput,
-  TriggerOptions,
-  WebHapticsOptions,
-} from "../lib/web-haptics/types";
+import type { HapticInput, TriggerOptions, WebHapticsOptions } from "../lib/web-haptics/types";
 
 export function useWebHaptics(options?: WebHapticsOptions) {
   const instanceRef = useRef<WebHaptics | null>(null);
@@ -28,8 +24,7 @@ export function useWebHaptics(options?: WebHapticsOptions) {
   }, [options?.showSwitch]);
 
   const trigger = useCallback(
-    (input?: HapticInput, options?: TriggerOptions) =>
-      instanceRef.current?.trigger(input, options),
+    (input?: HapticInput, options?: TriggerOptions) => instanceRef.current?.trigger(input, options),
     [],
   );
 

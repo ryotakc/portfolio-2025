@@ -5,13 +5,7 @@ import { AutoResize } from "../auto-resizer";
 import { TextMorph } from "torph/react";
 import { useHaptics } from "../../hooks/useHaptics";
 
-export const CodeBlock = ({
-  code,
-  children,
-}: {
-  code: string;
-  children?: React.ReactNode;
-}) => {
+export const CodeBlock = ({ code, children }: { code: string; children?: React.ReactNode }) => {
   const { trigger } = useHaptics();
 
   const [isCopied, setIsCopied] = useState(false);

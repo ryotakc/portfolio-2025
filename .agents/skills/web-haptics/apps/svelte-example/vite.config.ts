@@ -6,10 +6,7 @@ export default defineConfig({
   plugins: [svelte()],
   resolve: {
     alias: {
-      "web-haptics/svelte": path.resolve(
-        __dirname,
-        "../../packages/web-haptics/src/svelte",
-      ),
+      "web-haptics/svelte": path.resolve(__dirname, "../../packages/web-haptics/src/svelte"),
     },
   },
 });

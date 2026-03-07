@@ -1,10 +1,6 @@
 import { onMounted, onUnmounted, watch } from "vue";
 import { WebHaptics } from "../lib/web-haptics";
-import type {
-  HapticInput,
-  TriggerOptions,
-  WebHapticsOptions,
-} from "../lib/web-haptics/types";
+import type { HapticInput, TriggerOptions, WebHapticsOptions } from "../lib/web-haptics/types";
 
 export function useWebHaptics(options?: WebHapticsOptions) {
   let instance: WebHaptics | null = null;

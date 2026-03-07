@@ -60,8 +60,7 @@ const methods = [
   },
   {
     signature: "WebHaptics.isSupported: boolean",
-    description:
-      "Static property. Returns true if the device supports the Vibration API.",
+    description: "Static property. Returns true if the device supports the Vibration API.",
   },
 ];
 
@@ -129,10 +128,7 @@ export const Docs = () => {
                 className={styles.preset}
                 onClick={() => trigger(preset.name)}
               >
-                <div
-                  className={styles.dot}
-                  style={{ background: preset.color }}
-                />
+                <div className={styles.dot} style={{ background: preset.color }} />
                 {preset.name}
               </button>
             )),
@@ -157,15 +153,11 @@ export const Docs = () => {
           </div>
           <div className={styles.type}>
             <div className={styles.typeName}>TriggerOptions</div>
-            <div className={styles.typeBody}>
-              {`{ intensity?: number }  // 0–1, default 0.5`}
-            </div>
+            <div className={styles.typeBody}>{`{ intensity?: number }  // 0–1, default 0.5`}</div>
           </div>
           <div className={styles.type}>
             <div className={styles.typeName}>WebHapticsOptions</div>
-            <div className={styles.typeBody}>
-              {`{ debug?: boolean, showSwitch?: boolean }`}
-            </div>
+            <div className={styles.typeBody}>{`{ debug?: boolean, showSwitch?: boolean }`}</div>
           </div>
         </div>
       </details>

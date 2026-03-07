@@ -199,7 +199,7 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                   <button
                     type="button"
                     onClick={toggleMenu}
-                    className="mx-1 mt-1 mb-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-white/5 transition-all active:scale-[0.98]"
+                    className="mx-1 my-0.5 flex items-center justify-center gap-2 px-4 py-1.5 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-white/5 transition-all active:scale-[0.98]"
                   >
                     <X className="w-4 h-4" />
                     Close Menu

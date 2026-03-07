@@ -1,12 +1,6 @@
 import styles from "./styles.module.scss";
 
-import React, {
-  createContext,
-  useContext,
-  useRef,
-  useCallback,
-  useEffect,
-} from "react";
+import React, { createContext, useContext, useRef, useCallback, useEffect } from "react";
 
 export type EmojiOption = { emoji: string; canFlip: boolean };
 
@@ -179,9 +173,7 @@ function spawnBurst(
 
   for (let i = 0; i < amount; i++) {
     const xv = Math.random() * 16 - 8;
-    const yv =
-      (i === 0 ? 4 : i === 1 ? 8 : i === 2 ? 8 : 0) *
-      (0.25 + Math.random() * 0.25);
+    const yv = (i === 0 ? 4 : i === 1 ? 8 : i === 2 ? 8 : 0) * (0.25 + Math.random() * 0.25);
 
     const pick = emojis[Math.floor(Math.random() * emojis.length)];
 
@@ -207,11 +199,7 @@ function spawnBurst(
 
 // --- Component ---
 
-export const ParticlesProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const ParticlesProvider = ({ children }: { children: React.ReactNode }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const rafIdRef = useRef<number | null>(null);
@@ -309,7 +297,10 @@ export const ParticlesProvider = ({
     (
       x: number,
       y: number,
-      emojis: EmojiOption[] = [{ emoji: "\u2728", canFlip: false }, { emoji: "\uD83D\uDD25", canFlip: false }],
+      emojis: EmojiOption[] = [
+        { emoji: "\u2728", canFlip: false },
+        { emoji: "\uD83D\uDD25", canFlip: false },
+      ],
       duration?: number,
       gx: number = 0,
       gy: number = -1.5,

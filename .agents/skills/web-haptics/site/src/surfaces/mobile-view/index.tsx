@@ -56,22 +56,13 @@ export default function MobileView({
           {!disabled && (
             <div className={styles.toggleGroup}>
               <ToggleGroup>
-                <Toggle
-                  onClick={() => navigate("play")}
-                  active={view === "play"}
-                >
+                <Toggle onClick={() => navigate("play")} active={view === "play"}>
                   Play
                 </Toggle>
-                <Toggle
-                  onClick={() => navigate("install")}
-                  active={view === "install"}
-                >
+                <Toggle onClick={() => navigate("install")} active={view === "install"}>
                   Install
                 </Toggle>
-                <Toggle
-                  onClick={() => navigate("build")}
-                  active={view === "build"}
-                >
+                <Toggle onClick={() => navigate("build")} active={view === "build"}>
                   Build
                 </Toggle>
               </ToggleGroup>

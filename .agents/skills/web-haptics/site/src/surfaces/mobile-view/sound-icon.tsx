@@ -6,13 +6,7 @@ const transition: Transition = {
 };
 
 export const SoundIcon = ({ enabled }: { enabled: boolean }) => (
-  <svg
-    width="28"
-    height="28"
-    viewBox="0 0 28 28"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M13 7L8 11H4V17H8L13 21V7Z"
       stroke="currentColor"

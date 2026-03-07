@@ -39,10 +39,7 @@ export function useVibration(shaking: boolean) {
 
       target.x = Math.max(-MAX_DRIFT, Math.min(MAX_DRIFT, target.x));
       target.y = Math.max(-MAX_DRIFT, Math.min(MAX_DRIFT, target.y));
-      target.r = Math.max(
-        -MAX_ROTATION_OFFSET,
-        Math.min(MAX_ROTATION_OFFSET, target.r),
-      );
+      target.r = Math.max(-MAX_ROTATION_OFFSET, Math.min(MAX_ROTATION_OFFSET, target.r));
 
       current.x += (target.x - current.x) * LERP_FACTOR;
       current.y += (target.y - current.y) * LERP_FACTOR;

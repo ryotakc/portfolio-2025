@@ -88,9 +88,7 @@ export const Usage = () => {
         ))}
       </div>
 
-      <CodeBlock
-        code={frameworks[frameworkIndex % frameworks.length].example}
-      />
+      <CodeBlock code={frameworks[frameworkIndex % frameworks.length].example} />
     </div>
   );
 };
