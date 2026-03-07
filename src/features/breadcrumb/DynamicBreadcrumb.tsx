@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { useWebHaptics } from "web-haptics/react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,6 +14,7 @@ import {
 } from "@/shared/ui/breadcrumb";
 
 export function DynamicBreadcrumb() {
+  const { trigger } = useWebHaptics();
   const pathname = usePathname();
   const segments = pathname.split("/").filter((segment) => segment !== "");
 
@@ -56,7 +58,14 @@ export function DynamicBreadcrumb() {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href={`/${locale}`}>{homeLabel}</Link>
+              <Link
+                href={`/${locale}`}
+                onClick={() => {
+                  trigger([{ duration: 40 }]);
+                }}
+              >
+                {homeLabel}
+              </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           {pathSegments.length > 0 && <BreadcrumbSeparator />}
@@ -80,7 +89,13 @@ export function DynamicBreadcrumb() {
                     <BreadcrumbPage>{decodeURIComponent(segment)}</BreadcrumbPage>
                   ) : (
                     <BreadcrumbLink asChild>
-                      <Link href={href} onClick={onClick}>
+                      <Link
+                        href={href}
+                        onClick={() => {
+                          if (onClick) onClick();
+                          trigger([{ duration: 40 }]);
+                        }}
+                      >
                         {decodeURIComponent(segment)}
                       </Link>
                     </BreadcrumbLink>
