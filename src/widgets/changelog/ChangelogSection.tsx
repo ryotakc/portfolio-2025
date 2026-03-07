@@ -5,6 +5,7 @@ import { differenceInMonths, format, formatDistanceToNow } from "date-fns";
 import { enUS } from "date-fns/locale";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useWebHaptics } from "web-haptics/react";
 import { Highlighter } from "@/shared/ui/highlighter";
 
 // 型定義とカテゴリマップ（サーバー側のchangelog-utilsから複製）
@@ -51,6 +52,7 @@ export default function ChangelogSection({
   entries,
   headerBg = "bg-[#F5F9FB] dark:bg-gray-900", // デフォルト色
 }: ChangelogSectionProps) {
+  const { trigger } = useWebHaptics();
   const [activeFilter, setActiveFilter] = useState<CategoryKey>("all");
   const [mounted, setMounted] = useState(false);
 
@@ -96,7 +98,10 @@ export default function ChangelogSection({
           ([key, { emoji, label }]) => (
             <button
               key={key}
-              onClick={() => setActiveFilter(key)}
+              onClick={() => {
+                setActiveFilter(key);
+                trigger([{ duration: 40 }]);
+              }}
               className={`flex flex-col items-center gap-1.5 transition-all ${
                 activeFilter === key ? "scale-105" : "opacity-60 hover:opacity-100 hover:scale-105"
               }`}
