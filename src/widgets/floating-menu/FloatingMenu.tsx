@@ -90,51 +90,61 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
 
   return (
     <div className="fixed bottom-8 left-0 right-0 z-50 flex justify-center pointer-events-none">
-      <div className="relative" ref={menuRef}>
-        <AnimatePresence mode="wait">
-          {!isOpen ? (
-            <motion.div
-              key="dock"
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={dockVariants}
-              className="pointer-events-auto flex items-center gap-1 p-1.5 rounded-full bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl shadow-lg border border-zinc-200/80 dark:border-white/10"
-            >
-              <DockLink
-                href="/"
-                icon={<Home className="w-[1.125rem] h-[1.125rem]" />}
-                label={navItems.home}
-                locale={currentLocale}
-              />
-              <DockLink
-                href="/note"
-                icon={<FileText className="w-[1.125rem] h-[1.125rem]" />}
-                label={navItems.note}
-                locale={currentLocale}
-              />
-              <div className="w-[1px] h-6 bg-zinc-200 dark:bg-white/10 mx-1" />
-              <button
-                type="button"
-                onClick={toggleMenu}
-                aria-label="Open menu"
-                className="flex items-center gap-2 pl-3 pr-4 py-2.5 h-10 rounded-full text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors active:scale-95 ml-0.5"
-                title="Menu"
+      <div className="relative flex justify-center items-end" ref={menuRef}>
+        <motion.div
+          layout
+          initial={{ opacity: 0, y: 15, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            layout: { type: "spring", stiffness: 400, damping: 30 },
+            opacity: { duration: 0.2 },
+          }}
+          style={{ borderRadius: isOpen ? 24 : 9999 }}
+          className="pointer-events-auto bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl shadow-2xl border border-zinc-200/80 dark:border-white/10 overflow-hidden origin-bottom"
+        >
+          <AnimatePresence mode="popLayout" initial={false}>
+            {!isOpen ? (
+              <motion.div
+                key="dock-ui"
+                initial={{ opacity: 0, filter: "blur(4px)", scale: 0.95 }}
+                animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+                exit={{ opacity: 0, filter: "blur(4px)", scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+                className="flex items-center gap-1 p-1.5"
               >
-                <Menu className="w-[1.125rem] h-[1.125rem]" />
-                <span className="text-sm font-medium">Menu</span>
-              </button>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="full-menu"
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              variants={menuVariants}
-              className="pointer-events-auto min-w-[280px] bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl rounded-[24px] shadow-2xl border border-zinc-200/80 dark:border-white/10 overflow-hidden flex flex-col"
-            >
-              <div className="p-2 flex flex-col gap-1">
+                <DockLink
+                  href="/"
+                  icon={<Home className="w-[1.125rem] h-[1.125rem]" />}
+                  label={navItems.home}
+                  locale={currentLocale}
+                />
+                <DockLink
+                  href="/note"
+                  icon={<FileText className="w-[1.125rem] h-[1.125rem]" />}
+                  label={navItems.note}
+                  locale={currentLocale}
+                />
+                <div className="w-[1px] h-6 bg-zinc-200 dark:bg-white/10 mx-1" />
+                <button
+                  type="button"
+                  onClick={toggleMenu}
+                  aria-label="Open menu"
+                  className="flex items-center gap-2 pl-3 pr-4 py-2.5 h-10 rounded-full text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors active:scale-95 ml-0.5"
+                  title="Menu"
+                >
+                  <Menu className="w-[1.125rem] h-[1.125rem]" />
+                  <span className="text-sm font-medium">Menu</span>
+                </button>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="menu-ui"
+                initial={{ opacity: 0, filter: "blur(4px)", scale: 0.95 }}
+                animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
+                exit={{ opacity: 0, filter: "blur(4px)", scale: 0.95 }}
+                transition={{ duration: 0.15 }}
+                className="min-w-[280px] p-2 flex flex-col gap-1 w-full"
+              >
                 <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                   Pages
                 </div>
@@ -167,10 +177,10 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                   <X className="w-4 h-4" />
                   Close Menu
                 </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   );
