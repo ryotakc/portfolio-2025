@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
+const { execSync } = require("node:child_process");
 
 const componentMap = {
   ChangelogSection: "widgets/changelog/ChangelogSection",
@@ -38,7 +38,7 @@ function walk(dir) {
   list.forEach((file) => {
     file = path.join(dir, file);
     const stat = fs.statSync(file);
-    if (stat && stat.isDirectory()) {
+    if (stat?.isDirectory()) {
       results = results.concat(walk(file));
     } else {
       if (file.endsWith(".ts") || file.endsWith(".tsx")) {
@@ -64,7 +64,7 @@ files.forEach((file) => {
 
     // Global replace for strings matching the partial prefix or exact
     const regex = new RegExp(`['"]${oldImport}(/?.*?)['"]`, "g");
-    content = content.replace(regex, (match, suffix) => {
+    content = content.replace(regex, (_match, suffix) => {
       changed = true;
       return `"${newImport}${suffix}"`;
     });
@@ -81,18 +81,18 @@ for (const [oldName, newPath] of Object.entries(componentMap)) {
   const oldFullPath = path.join(
     componentsDir,
     oldName +
-      (oldName.includes("/") || !fs.existsSync(path.join(componentsDir, oldName + ".tsx"))
+      (oldName.includes("/") || !fs.existsSync(path.join(componentsDir, `${oldName}.tsx`))
         ? ""
         : ".tsx"),
   );
-  const newFullPath = path.join(
+  const _newFullPath = path.join(
     srcDir,
     newPath + (path.extname(oldFullPath) || fs.statSync(oldFullPath).isDirectory() ? "" : ".tsx"),
   ); // handling dirs or files
 
   let oldTarget = path.join(componentsDir, oldName);
   // fallback for files without extension in map
-  if (!fs.existsSync(oldTarget) && fs.existsSync(oldTarget + ".tsx")) {
+  if (!fs.existsSync(oldTarget) && fs.existsSync(`${oldTarget}.tsx`)) {
     oldTarget += ".tsx";
   }
 
@@ -118,5 +118,5 @@ for (const [oldName, newPath] of Object.entries(componentMap)) {
 // remove empty components dir if it empty
 try {
   execSync(`rm -rf ${componentsDir}`);
-} catch (e) {}
+} catch (_e) {}
 console.log("Migration complete.");

@@ -25,8 +25,7 @@ export const components: MDXComponents = {
   pre: PreBlock,
   Image: MdxInlineImage,
   // biome-ignore lint/suspicious/noExplicitAny: MDX types incompatibility
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  img: MDXImage as any,
+  img: MDXImage as any, // eslint-disable-line @typescript-eslint/no-explicit-any
   BlockSideTitle,
   InlineMath,
   BlockMath,

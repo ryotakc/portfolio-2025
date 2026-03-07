@@ -7,11 +7,9 @@ declare module "react-katex" {
     errorColor?: string;
     renderError?: (error: Error | TypeError) => React.ReactNode;
     // biome-ignore lint/suspicious/noExplicitAny: Katex settings are complex
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    settings?: any;
+    settings?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
     // biome-ignore lint/suspicious/noExplicitAny: Polymorphic prop
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    as?: string | React.ComponentType<any>;
+    as?: string | React.ComponentType<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
     children?: React.ReactNode;
     className?: string;
   }

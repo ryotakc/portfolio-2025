@@ -442,7 +442,7 @@ article {
   }
 
   .mobile-full-width {
-    width: 100% !important;
+    width: 100%;
   }
 }
 

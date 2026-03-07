@@ -17,7 +17,7 @@ function walk(dir) {
   list.forEach((file) => {
     file = path.join(dir, file);
     const stat = fs.statSync(file);
-    if (stat && stat.isDirectory()) {
+    if (stat?.isDirectory()) {
       results = results.concat(walk(file));
     } else {
       if (file.endsWith(".ts") || file.endsWith(".tsx")) {
@@ -33,7 +33,7 @@ let updatedCount = 0;
 
 files.forEach((file) => {
   let content = fs.readFileSync(file, "utf8");
-  const originalContent = content;
+  const _originalContent = content;
   let changed = false;
 
   for (const { from, to } of replacements) {

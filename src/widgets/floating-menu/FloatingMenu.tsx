@@ -1,17 +1,16 @@
 "use client";
 
 import cn from "clsx";
-import type { Variants } from "motion/react";
+import { ChevronUp, FileText, Home, Mail, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { useWebHaptics } from "web-haptics/react";
 import { FloatingLanguageToggle } from "@/features/language-switcher/floating-language-toggle";
 import { FloatingModeToggle } from "@/features/theme-switcher/floating-mode-toggle";
 import { navigation } from "@/shared/lib/i18n";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/shared/ui/tooltip";
-import { Home, FileText, Menu, X, ChevronUp, Mail } from "lucide-react";
-import { useWebHaptics } from "web-haptics/react";
 
 interface FloatingMenuProps {
   currentLocale?: string;
@@ -50,48 +49,6 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
   const toggleMenu = () => {
     trigger([{ duration: 40 }]);
     setIsOpen((prev) => !prev);
-  };
-
-  const menuVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 10,
-      scale: 0.95,
-      transition: { duration: 0.15, type: "tween" },
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { type: "spring", stiffness: 400, damping: 30 },
-    },
-    exit: {
-      opacity: 0,
-      y: 10,
-      scale: 0.95,
-      transition: { duration: 0.15, type: "tween" },
-    },
-  };
-
-  const dockVariants: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 15,
-      scale: 0.9,
-      transition: { duration: 0.15, type: "tween" },
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { type: "spring", stiffness: 400, damping: 30 },
-    },
-    exit: {
-      opacity: 0,
-      y: 15,
-      scale: 0.9,
-      transition: { duration: 0.15, type: "tween" },
-    },
   };
 
   return (
