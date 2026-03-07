@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import { FloatingLanguageToggle } from "@/features/language-switcher/floating-language-toggle";
 import { FloatingModeToggle } from "@/features/theme-switcher/floating-mode-toggle";
 import { navigation } from "@/shared/lib/i18n";
+import { Home, FileText, Menu, X } from "lucide-react";
 
 interface FloatingMenuProps {
   currentLocale?: string;
@@ -48,35 +49,90 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
   const menuVariants: Variants = {
     hidden: {
       opacity: 0,
-      y: 20,
+      y: 10,
       scale: 0.95,
-      transition: { duration: 0.2, type: "tween" },
+      transition: { duration: 0.15, type: "tween" },
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { type: "spring", stiffness: 300, damping: 25 },
+      transition: { type: "spring", stiffness: 400, damping: 30 },
     },
     exit: {
       opacity: 0,
-      y: 20,
+      y: 10,
       scale: 0.95,
+      transition: { duration: 0.15, type: "tween" },
+    },
+  };
+
+  const dockVariants: Variants = {
+    hidden: {
+      opacity: 0,
+      y: 15,
+      scale: 0.9,
+      transition: { duration: 0.15, type: "tween" },
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { type: "spring", stiffness: 400, damping: 30 },
+    },
+    exit: {
+      opacity: 0,
+      y: 15,
+      scale: 0.9,
       transition: { duration: 0.15, type: "tween" },
     },
   };
 
   return (
     <div className="fixed bottom-8 left-0 right-0 z-50 flex justify-center pointer-events-none">
-      <div className="relative pointer-events-auto" ref={menuRef}>
-        <AnimatePresence>
-          {isOpen && (
+      <div className="relative" ref={menuRef}>
+        <AnimatePresence mode="wait">
+          {!isOpen ? (
             <motion.div
+              key="dock"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={dockVariants}
+              className="pointer-events-auto flex items-center gap-1 p-1.5 rounded-full bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl shadow-lg border border-zinc-200/80 dark:border-white/10"
+            >
+              <DockLink
+                href="/"
+                icon={<Home className="w-[1.125rem] h-[1.125rem]" />}
+                label={navItems.home}
+                locale={currentLocale}
+              />
+              <DockLink
+                href="/note"
+                icon={<FileText className="w-[1.125rem] h-[1.125rem]" />}
+                label={navItems.note}
+                locale={currentLocale}
+              />
+              <div className="w-[1px] h-6 bg-zinc-200 dark:bg-white/10 mx-1" />
+              <button
+                type="button"
+                onClick={toggleMenu}
+                aria-label="Open menu"
+                className="flex items-center gap-2 pl-3 pr-4 py-2.5 h-10 rounded-full text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors active:scale-95 ml-0.5"
+                title="Menu"
+              >
+                <Menu className="w-[1.125rem] h-[1.125rem]" />
+                <span className="text-sm font-medium">Menu</span>
+              </button>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="full-menu"
               initial="hidden"
               animate="visible"
               exit="exit"
               variants={menuVariants}
-              className="absolute bottom-16 left-1/2 -translate-x-1/2 min-w-[280px] bg-white/80 dark:bg-[#111111]/80 backdrop-blur-md rounded-[20px] shadow-2xl border border-zinc-200/80 dark:border-white/15 overflow-hidden"
+              className="pointer-events-auto min-w-[280px] bg-white/80 dark:bg-[#111111]/80 backdrop-blur-xl rounded-[24px] shadow-2xl border border-zinc-200/80 dark:border-white/10 overflow-hidden flex flex-col"
             >
               <div className="p-2 flex flex-col gap-1">
                 <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
@@ -91,74 +147,65 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
                 <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                   Settings
                 </div>
-                <div className="flex items-center w-full gap-1.5">
+                <div className="flex items-center w-full gap-1.5 px-2 mb-1">
                   <div className="flex-1 flex justify-center">
                     <FloatingModeToggle />
                   </div>
-                  <div className="w-[1px] h-5 bg-zinc-100/50 dark:bg-white/5 flex-shrink-0" />
+                  <div className="w-[1px] h-5 bg-zinc-200 dark:bg-white/10 flex-shrink-0" />
                   <div className="flex-1 flex justify-center">
                     <FloatingLanguageToggle />
                   </div>
                 </div>
 
-                {/* Links Section (Hidden for now) */}
-                {/* 
                 <div className="my-1 border-t border-zinc-100/50 dark:border-white/5" />
-                <div className="px-4 py-2 text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
-                  Links
-                </div>
-                <a
-                  href="https://github.com/ryotakc"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center px-4 py-2.5 mx-1 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
+
+                <button
+                  type="button"
+                  onClick={toggleMenu}
+                  className="mx-1 mt-1 mb-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100/80 dark:hover:bg-white/5 transition-all active:scale-[0.98]"
                 >
-                  GitHub
-                </a>
-                <a
-                  href="https://x.com/ryotakc"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center px-4 py-2.5 mx-1 rounded-lg text-sm text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5 transition-colors"
-                >
-                  X (Twitter)
-                </a> 
-                */}
+                  <X className="w-4 h-4" />
+                  Close Menu
+                </button>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-
-        <button
-          type="button"
-          onClick={toggleMenu}
-          className={cn(
-            "flex items-center gap-2 px-5 py-3 rounded-full shadow-lg transition-all active:scale-95 backdrop-blur-md",
-            "bg-white/70 text-zinc-900 border border-zinc-200 hover:bg-white/80",
-            "dark:bg-[#111111]/50 dark:text-white dark:border-white/10 dark:hover:bg-[#111111]/60",
-            isOpen &&
-              "ring-2 ring-offset-2 ring-zinc-900 dark:ring-white dark:ring-offset-zinc-950",
-          )}
-        >
-          <span className="text-sm font-medium">Menu</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className={cn("transition-transform duration-200", isOpen && "rotate-180")}
-            aria-hidden="true"
-          >
-            <path d="m18 15-6-6-6 6" />
-          </svg>
-        </button>
       </div>
     </div>
+  );
+}
+
+function DockLink({
+  href,
+  icon,
+  label,
+  locale,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  locale: string;
+}) {
+  const pathname = usePathname();
+  const fullPath = `/${locale}${href === "/" ? "" : href}`;
+  const isActive =
+    pathname === fullPath || (pathname.startsWith(`${fullPath}/`) && fullPath !== `/${locale}`);
+
+  return (
+    <Link
+      href={fullPath}
+      className={cn(
+        "flex items-center justify-center w-10 h-10 rounded-full transition-all active:scale-[0.85]",
+        isActive
+          ? "bg-zinc-100 dark:bg-white/10 text-zinc-900 dark:text-white"
+          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-white/5",
+      )}
+      title={label}
+      aria-label={label}
+    >
+      {icon}
+    </Link>
   );
 }
 
@@ -172,10 +219,10 @@ function MenuLink({ href, label, locale }: { href: string; label: string; locale
     <Link
       href={fullPath}
       className={cn(
-        "block px-4 py-2.5 mx-1 rounded-lg text-sm transition-colors",
+        "block px-4 py-2.5 mx-1 rounded-lg text-sm transition-all active:scale-[0.98]",
         isActive
           ? "bg-zinc-100/80 dark:bg-white/10 text-zinc-900 dark:text-white font-medium"
-          : "text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50/50 dark:hover:bg-white/5",
+          : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-50/80 dark:hover:bg-white/5",
       )}
     >
       {label}
