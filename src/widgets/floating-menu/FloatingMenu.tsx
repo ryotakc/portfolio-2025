@@ -11,6 +11,7 @@ import { FloatingModeToggle } from "@/features/theme-switcher/floating-mode-togg
 import { navigation } from "@/shared/lib/i18n";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/shared/ui/tooltip";
 import { Home, FileText, Menu, X, ChevronUp, Mail } from "lucide-react";
+import { useWebHaptics } from "web-haptics/react";
 
 interface FloatingMenuProps {
   currentLocale?: string;
@@ -44,8 +45,12 @@ export function FloatingMenu({ currentLocale = "en" }: FloatingMenuProps) {
   }, [pathname]);
 
   const navItems = navigation[currentLocale as keyof typeof navigation] || navigation.en;
+  const { trigger } = useWebHaptics();
 
-  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const toggleMenu = () => {
+    trigger([{ duration: 40 }]);
+    setIsOpen((prev) => !prev);
+  };
 
   const menuVariants: Variants = {
     hidden: {
